@@ -20,14 +20,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="overflow-x-hidden">
       <body
-        className={`${playfairDisplay.className} flex flex-col min-h-screen antialiased`}
+        className={`${playfairDisplay.className} antialiased overflow-x-hidden w-full`}
       >
         <Navbar />
-        <main className="flex flex-1 mt-16">
-        {children}
-        </main>
+        <div className="pt-16 w-full overflow-x-hidden">
+          {children}
+        </div>
         <Footer />
       </body>
     </html>

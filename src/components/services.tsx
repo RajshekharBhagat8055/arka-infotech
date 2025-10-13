@@ -1,5 +1,5 @@
 import React from 'react';
-import { Code, Smartphone, Globe, ShoppingCart, Cloud, Users, Puzzle } from 'lucide-react';
+import { Code, Smartphone, Globe, ShoppingCart, Cloud, Users, Puzzle, Shield, Database } from 'lucide-react';
 
 const services = [
   {
@@ -37,18 +37,28 @@ const services = [
     title: "API Dev & Integration",
     description: "We build robust, scalable APIs for seamless data exchange. Our expertise includes RESTful, GraphQL, and third-party integrations, delivering secure and efficient solutions.",
   },
+  {
+    icon: Database,
+    title: "Data Engineering",
+    description: "Transform your raw data into actionable insights with our comprehensive data engineering solutions and analytics services.",
+  },
+  {
+    icon: Shield,
+    title: "Cyber Security",
+    description: "Protect your digital assets with our advanced cybersecurity solutions, ensuring your business stays secure against evolving threats.",
+  },
 ];
 
 export default function Services() {
   return (
-    <section className="py-20 px-4 bg-gradient-to-b from-white to-gray-50">
+    <section className="py-20 px-4 bg-white">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-sm font-semibold text-blue-600 uppercase tracking-wide mb-3">
+          <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">
             Services
           </h2>
-          <h3 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h3 className="text-4xl md:text-5xl font-bold text-black mb-4">
             Bridging Innovation & Excellence With Modern Tech Solutions
           </h3>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
@@ -63,36 +73,36 @@ export default function Services() {
             return (
               <div
                 key={index}
-                className="group relative bg-white rounded-xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-blue-200"
+                className="group relative bg-gray-50 rounded-xl p-8 hover:bg-black transition-all duration-300 border border-gray-200 hover:border-black"
               >
                 {/* Icon */}
                 <div className="mb-6">
-                  <div className="w-16 h-16 bg-blue-50 rounded-lg flex items-center justify-center group-hover:bg-blue-600 transition-colors duration-300">
-                    <IconComponent className="w-8 h-8 text-blue-600 group-hover:text-white transition-colors duration-300" />
+                  <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center group-hover:bg-white transition-colors duration-300 shadow-sm">
+                    <IconComponent className="w-8 h-8 text-black transition-colors duration-300" />
                   </div>
                 </div>
 
                 {/* Content */}
-                <h4 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors duration-300">
+                <h4 className="text-xl font-bold text-black mb-3 group-hover:text-white transition-colors duration-300">
                   {service.title}
                 </h4>
-                <p className="text-gray-600 mb-6 leading-relaxed">
+                <p className="text-gray-600 mb-6 leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
                   {service.description}
                 </p>
 
                 {/* Action Buttons */}
-                <div className="flex gap-3">
-                  <button className="text-sm font-semibold text-blue-600 hover:text-blue-700 transition-colors">
+                <div className="flex gap-3 items-center">
+                  <button className="text-sm font-semibold text-black group-hover:text-white transition-colors">
                     Learn More
                   </button>
                   <span className="text-gray-300">|</span>
-                  <button className="text-sm font-semibold text-blue-600 hover:text-blue-700 transition-colors">
+                  <button className="text-sm font-semibold text-black group-hover:text-white transition-colors">
                     Contact Us
                   </button>
                 </div>
 
-                {/* Hover Effect Border */}
-                <div className="absolute inset-0 border-2 border-transparent group-hover:border-blue-500 rounded-xl transition-all duration-300 pointer-events-none opacity-0 group-hover:opacity-100"></div>
+                {/* Hover Effect */}
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-black transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 rounded-b-xl"></div>
               </div>
             );
           })}
