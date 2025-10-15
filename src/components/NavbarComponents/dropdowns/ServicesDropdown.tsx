@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 import { Star, Palette, Building2, Wrench, TrendingUp } from 'lucide-react'
 
 export default function ServicesDropdown() {
@@ -91,14 +92,20 @@ export default function ServicesDropdown() {
               
               {/* Services List */}
               <div className='space-y-2'>
-                {category.services.map((service, serviceIndex) => (
-                  <div 
-                    key={serviceIndex} 
-                    className='text-sm lg:text-base font-semibold text-gray-600 hover:text-black hover:bg-gray-50 hover:ring hover:ring-gray-200 px-2 py-1 rounded-md transition-colors'
-                  >
-                    {service}
-                  </div>
-                ))}
+                {category.services.map((service, serviceIndex) => {
+                  // Convert service name to slug (e.g., "Website Development" -> "website-development")
+                  const slug = service.toLowerCase().replace(/\s+/g, '-').replace(/\//g, '-');
+                  
+                  return (
+                    <Link 
+                      key={serviceIndex}
+                      href={`/services/${slug}`}
+                      className='block text-sm lg:text-base font-semibold text-gray-600 hover:text-black hover:bg-gray-50 hover:ring hover:ring-gray-200 px-2 py-1 rounded-md transition-colors'
+                    >
+                      {service}
+                    </Link>
+                  );
+                })}
               </div>
               </div>
             )

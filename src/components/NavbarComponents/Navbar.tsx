@@ -2,8 +2,8 @@
 
 import Link from 'next/link'
 import React, { useState } from 'react'
-import MaxWidthWrapper from './MaxWidthWrapper'
-import MainHeading from './MainHeading'
+import MaxWidthWrapper from '../MaxWidthWrapper'
+import MainHeading from '../MainHeading'
 import { Menu, ChevronDown } from 'lucide-react'
 import ServicesDropdown from './dropdowns/ServicesDropdown'
 import CloudDropdown from './dropdowns/CloudDropdown'
@@ -12,12 +12,12 @@ import SecurityDropdown from './dropdowns/SecurityDropdown'
 import IndustriesDropdown from './dropdowns/IndustriesDropdown'
 import TechnologiesDropdown from './dropdowns/TechnologiesDropdown'
 import SuccessStoriesDropdown from './dropdowns/SuccessStoriesDropdown'
-import DropdownWrapper from './DropdownWrapper'
+import DropdownWrapper from '../DropdownWrapper'
 
 interface NavLink {
   name: string
   href: string
-  dropdown?: React.ComponentType<{}>
+  dropdown?: React.ComponentType<Record<string, never>>
 }
 
 const navLinks: NavLink[] = [
@@ -66,7 +66,7 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Navigation */}
-        <div className='hidden lg:flex items-center gap-6'>
+        <div className='hidden xl:flex items-center gap-6'>
           {navLinks.map((link) => {
             return (
               <div
@@ -99,16 +99,14 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Menu Button */}
-        <button className='lg:hidden text-gray-700'>
+        <button className='xl:hidden text-gray-700'>
           <Menu className='w-6 h-6' />
         </button>
       </MaxWidthWrapper>
 
       {/* Full-width dropdowns outside MaxWidthWrapper */}
       <div className='relative max-w-5xl mx-auto'>
-        {navLinks.map((link: NavLink) => {
-          const DropdownComponent = link.dropdown
-          return (
+        {navLinks.map((link: NavLink) => (
             <div 
               key={link.name}
               onMouseEnter={() => handleMouseEnter(link.name)}
@@ -119,7 +117,7 @@ export default function Navbar() {
               </DropdownWrapper>
             </div>
           )
-        })}
+        )}
       </div>
     </nav>
   )

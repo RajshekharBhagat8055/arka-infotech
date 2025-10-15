@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Playfair_Display, Playfair_Display_SC } from "next/font/google";
+import { Playfair_Display } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/NavbarComponents/Navbar";
 import Footer from "@/components/Footer";
 
 const playfairDisplay = Playfair_Display({
