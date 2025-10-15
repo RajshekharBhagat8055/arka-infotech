@@ -36,11 +36,11 @@ const stats = [
 
 export default function About() {
   return (
-    <section className="py-20 px-4 bg-black text-white">
+    <section className="py-20 px-4 bg-gray-900 text-white">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-sm font-semibold text-gray-400 uppercase tracking-wide mb-3">
+          <h2 className="text-sm font-semibold text-orange-500 uppercase tracking-wide mb-3">
             About Us
           </h2>
           <h3 className="text-4xl md:text-5xl font-bold mb-6">
@@ -58,17 +58,17 @@ export default function About() {
             return (
               <div
                 key={index}
-                className="group relative bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10 hover:border-white/30 transition-all duration-300 hover:bg-white/10"
+                className="group relative bg-gray-800 rounded-xl p-8 border border-gray-700 hover:border-orange-500 transition-all duration-300 hover:bg-gray-800"
               >
                 {/* Icon */}
                 <div className="mb-6">
-                  <div className="w-14 h-14 bg-white/10 rounded-lg flex items-center justify-center group-hover:bg-white group-hover:scale-110 transition-all duration-300">
-                    <IconComponent className="w-7 h-7 text-white group-hover:text-black transition-colors duration-300" />
+                  <div className="w-14 h-14 bg-orange-500 rounded-lg flex items-center justify-center group-hover:bg-white group-hover:scale-110 transition-all duration-300">
+                    <IconComponent className="w-7 h-7 text-white group-hover:text-orange-500 transition-colors duration-300" />
                   </div>
                 </div>
 
                 {/* Number */}
-                <div className="text-5xl font-bold mb-2 group-hover:text-gray-200 transition-colors">
+                <div className="text-5xl font-bold mb-2 text-white group-hover:text-orange-500 transition-colors">
                   {stat.number}
                 </div>
 
@@ -78,7 +78,7 @@ export default function About() {
                 </div>
 
                 {/* Accent Line */}
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-white/50 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 rounded-t-xl"></div>
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-orange-500 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 rounded-t-xl"></div>
               </div>
             );
           })}
@@ -86,7 +86,7 @@ export default function About() {
 
         {/* Bottom CTA */}
         <div className="mt-16 text-center">
-          <button className="bg-white text-black px-8 py-4 rounded-lg font-semibold hover:bg-gray-200 transition-all duration-300">
+          <button className="bg-orange-500 text-white px-8 py-4 rounded-lg font-semibold hover:bg-orange-600 transition-all duration-300">
             Learn More About Us
           </button>
         </div>

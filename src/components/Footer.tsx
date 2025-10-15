@@ -4,7 +4,7 @@ import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin } from 'luc
 
 export default function Footer() {
   return (
-    <footer className='bg-black text-white'>
+    <footer className='bg-gray-900 text-white'>
       <div className='max-w-7xl mx-auto px-4 py-16'>
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12'>
           {/* Company Info */}
@@ -16,16 +16,16 @@ export default function Footer() {
               Empowering businesses with cutting-edge technology solutions for over 23 years.
             </p>
             <div className='flex gap-4'>
-              <a href='#' className='w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition-all'>
+              <a href='#' className='w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-orange-500 hover:text-white transition-all'>
                 <Facebook className='w-5 h-5' />
               </a>
-              <a href='#' className='w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition-all'>
+              <a href='#' className='w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-orange-500 hover:text-white transition-all'>
                 <Twitter className='w-5 h-5' />
               </a>
-              <a href='#' className='w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition-all'>
+              <a href='#' className='w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-orange-500 hover:text-white transition-all'>
                 <Linkedin className='w-5 h-5' />
               </a>
-              <a href='#' className='w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition-all'>
+              <a href='#' className='w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-orange-500 hover:text-white transition-all'>
                 <Instagram className='w-5 h-5' />
               </a>
             </div>
@@ -76,7 +76,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className='pt-8 border-t border-white/10'>
+        <div className='pt-8 border-t border-gray-700'>
           <div className='flex flex-col md:flex-row justify-between items-center gap-4'>
             <p className='text-gray-400 text-sm'>
               2025 Arka Infotech Software Solution. All rights reserved.

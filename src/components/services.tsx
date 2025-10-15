@@ -51,14 +51,14 @@ const services = [
 
 export default function Services() {
   return (
-    <section className="py-20 px-4 bg-white">
+    <section className="py-20 px-4 bg-gray-50">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">
+          <h2 className="text-sm font-semibold text-orange-600 uppercase tracking-wide mb-3">
             Services
           </h2>
-          <h3 className="text-4xl md:text-5xl font-bold text-black mb-4">
+          <h3 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             Bridging Innovation & Excellence With Modern Tech Solutions
           </h3>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
@@ -73,36 +73,36 @@ export default function Services() {
             return (
               <div
                 key={index}
-                className="group relative bg-gray-50 rounded-xl p-8 hover:bg-black transition-all duration-300 border border-gray-200 hover:border-black"
+                className="group relative bg-white rounded-xl p-8 hover:bg-orange-500 transition-all duration-300 border border-gray-200 hover:border-orange-500 shadow-sm hover:shadow-lg"
               >
                 {/* Icon */}
                 <div className="mb-6">
-                  <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center group-hover:bg-white transition-colors duration-300 shadow-sm">
-                    <IconComponent className="w-8 h-8 text-black transition-colors duration-300" />
+                  <div className="w-16 h-16 bg-orange-100 rounded-lg flex items-center justify-center group-hover:bg-white transition-colors duration-300 shadow-sm">
+                    <IconComponent className="w-8 h-8 text-orange-500 group-hover:text-orange-500 transition-colors duration-300" />
                   </div>
                 </div>
 
                 {/* Content */}
-                <h4 className="text-xl font-bold text-black mb-3 group-hover:text-white transition-colors duration-300">
+                <h4 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-white transition-colors duration-300">
                   {service.title}
                 </h4>
-                <p className="text-gray-600 mb-6 leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
+                <p className="text-gray-600 mb-6 leading-relaxed group-hover:text-white transition-colors duration-300">
                   {service.description}
                 </p>
 
                 {/* Action Buttons */}
                 <div className="flex gap-3 items-center">
-                  <button className="text-sm font-semibold text-black group-hover:text-white transition-colors">
+                  <button className="text-sm font-semibold text-gray-700 group-hover:text-white transition-colors">
                     Learn More
                   </button>
-                  <span className="text-gray-300">|</span>
-                  <button className="text-sm font-semibold text-black group-hover:text-white transition-colors">
+                  <span className="text-gray-300 group-hover:text-white">|</span>
+                  <button className="text-sm font-semibold text-gray-700 group-hover:text-white transition-colors">
                     Contact Us
                   </button>
                 </div>
 
                 {/* Hover Effect */}
-                <div className="absolute bottom-0 left-0 right-0 h-1 bg-black transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 rounded-b-xl"></div>
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-orange-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 rounded-b-xl"></div>
               </div>
             );
           })}
