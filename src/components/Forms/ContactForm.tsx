@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { Button } from '@/components/ui/button'
@@ -15,7 +15,7 @@ import {
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
-import { Mail, Phone, User, Building2, FileText } from 'lucide-react'
+import { Mail, Phone, User, Building2, FileText, CheckCircle, XCircle } from 'lucide-react'
 import contactFormSchema, { ContactFormData } from '@/validators/contact.validator'
 
 
@@ -29,26 +29,50 @@ const defaultValues: Partial<ContactFormData> = {
 }
 
 export default function ContactForm() {
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [submitMessage, setSubmitMessage] = useState('')
+
   const form = useForm<ContactFormData>({
     resolver: zodResolver(contactFormSchema),
     defaultValues,
     mode: 'onChange',
   })
 
-  function onSubmit(data: ContactFormData) {
-    console.log('Form Data:', data)
-    console.log('---')
-    console.log('Full Name:', data.fullName)
-    console.log('Email:', data.email)
-    console.log('Phone Number:', data.phoneNumber)
-    console.log('Company Name:', data.companyName || 'Not provided')
-    console.log('Requirement:', data.requirement)
-    
-    // Show success message
-    alert('Form submitted successfully! Check the console for details.')
-    
-    // Reset form after submission
-    form.reset()
+  async function onSubmit(data: ContactFormData) {
+    try {
+      setSubmitStatus('idle')
+      setSubmitMessage('')
+
+      // Call the API route to send email
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+
+      const result = await response.json()
+
+      if (response.ok && result.success) {
+        setSubmitStatus('success')
+        setSubmitMessage('Thank you! Your inquiry has been submitted successfully. We\'ll get back to you soon.')
+        form.reset()
+        
+        // Hide success message after 5 seconds
+        setTimeout(() => {
+          setSubmitStatus('idle')
+          setSubmitMessage('')
+        }, 5000)
+      } else {
+        setSubmitStatus('error')
+        setSubmitMessage(result.message || 'Failed to send your inquiry. Please try again.')
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error)
+      setSubmitStatus('error')
+      setSubmitMessage('An error occurred. Please try again later or contact us directly.')
+    }
   }
 
   return (
@@ -196,9 +220,27 @@ export default function ContactForm() {
                 className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-6 text-lg transition-all hover:scale-[1.02]"
                 disabled={form.formState.isSubmitting}
               >
-                {form.formState.isSubmitting ? 'Submitting...' : 'Submit Inquiry'}
+                {form.formState.isSubmitting ? 'Sending...' : 'Submit Inquiry'}
               </Button>
             </div>
+
+            {/* Status Message */}
+            {submitStatus !== 'idle' && (
+              <div
+                className={`flex items-center gap-3 p-4 rounded-lg border-2 ${
+                  submitStatus === 'success'
+                    ? 'bg-green-50 border-green-500 text-green-800'
+                    : 'bg-red-50 border-red-500 text-red-800'
+                }`}
+              >
+                {submitStatus === 'success' ? (
+                  <CheckCircle className="w-6 h-6 flex-shrink-0" />
+                ) : (
+                  <XCircle className="w-6 h-6 flex-shrink-0" />
+                )}
+                <p className="text-sm font-medium">{submitMessage}</p>
+              </div>
+            )}
 
             {/* Privacy Note */}
             <p className="text-xs text-gray-500 text-center pt-2">
