@@ -30,10 +30,12 @@ function ServiceCard({ service }: { service: ServiceProps }) {
       }}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
-      animate={{
-        borderColor: isHovered ? "rgb(249 115 22)" : "rgb(229 231 235)"
+      whileHover={{
+        borderColor: "rgb(249 115 22)",
+        scale: 1.01,
+        boxShadow: "0 4px 24px 0 rgb(0 0 0 / 0.5)"
       }}
-      className="relative overflow-clip z-20 border p-6 rounded-xl cursor-pointer bg-white"
+      className="relative overflow-clip z-20 border p-6 rounded-xl cursor-pointer bg-white flex flex-col h-full"
     >
       <motion.div 
         className='absolute -z-10 left-0 top-0 w-full h-full rounded-full bg-orange-50'
@@ -41,39 +43,54 @@ function ServiceCard({ service }: { service: ServiceProps }) {
         animate={{ scale: isHovered ? 2 : 0 }}
         transition={{ duration: 0.7 }}
       />
-      {/* Icon */}
-      <div className="mb-6 flex items-center gap-2">
+      
+      {/* Icon & Title */}
+      <div className="mb-4 flex items-center gap-2">
         <div className="w-16 h-16 rounded-lg flex items-center justify-center shadow-sm">
           <IconComponent className="w-8 h-8 text-orange-500" />
         </div>
-        <h4 className="text-xl font-bold text-gray-900 mb-3">
+        <h4 className="text-xl font-bold text-gray-900">
           {service.title}
         </h4>
       </div>
 
-      {/* Content */}
-      <p className="text-gray-600 mb-6 flex-1 leading-relaxed">
+      {/* Content - Takes available space */}
+      <p className="text-gray-600 leading-relaxed flex-1 mb-4">
         {service.description}
       </p>
 
-      {/* Action Buttons */}
-      <motion.div 
-        className="flex gap-3 items-center"
-        initial={{ y: 500, opacity: 0 }}
-        animate={{ 
-          y: isHovered ? 0 : 500, 
-          opacity: isHovered ? 1 : 0 
-        }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-      >
-        <button className="text-sm font-semibold text-gray-700">
-          Learn More
-        </button>
-        <span className="text-gray-300">|</span>
-        <button className="text-sm font-semibold text-gray-700">
-          Contact Us
-        </button>
-      </motion.div>
+      {/* Action Buttons - Always at bottom, visible on mobile, animated on desktop */}
+      <div className="mt-auto pt-4 border-t border-gray-100">
+        {/* Mobile: Always visible */}
+        <div className="flex gap-3 items-center md:hidden">
+          <button className="text-sm font-semibold text-gray-700 hover:text-orange-500 transition-colors">
+            Learn More
+          </button>
+          <span className="text-gray-300">|</span>
+          <button className="text-sm font-semibold text-gray-700 hover:text-orange-500 transition-colors">
+            Contact Us
+          </button>
+        </div>
+        
+        {/* Desktop: Animated on hover */}
+        <motion.div 
+          className="hidden md:flex gap-3 items-center"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ 
+            opacity: isHovered ? 1 : 0,
+            y: isHovered ? 0 : -10
+          }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
+        >
+          <button className="text-sm font-semibold text-gray-700 hover:text-orange-500 transition-colors">
+            Learn More
+          </button>
+          <span className="text-gray-300">|</span>
+          <button className="text-sm font-semibold text-gray-700 hover:text-orange-500 transition-colors">
+            Contact Us
+          </button>
+        </motion.div>
+      </div>
     </motion.div>
   );
 }

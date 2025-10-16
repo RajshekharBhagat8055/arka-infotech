@@ -2,7 +2,7 @@
 import React, { useRef, useState } from 'react';
 import { ArrowRight, Code, Smartphone, Globe, ShoppingCart, Brain, Users, Building2, LucideIcon } from 'lucide-react';
 import MaxWidthWrapper from '../MaxWidthWrapper';
-import { motion, useInView } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Statistics from './Statistics';
 
 interface ExpertiseArea {
@@ -33,7 +33,7 @@ function ExpertiseCard({ area }: { area: ExpertiseArea; index: number }) {
       animate={{
         backgroundColor: isHovered ? "rgb(0 0 0)" : "rgb(249 250 251)"
       }}
-      className='rounded-full p-4 flex items-center gap-2 border cursor-pointer border-gray-200'
+      className='rounded-full p-2 md:p-4 flex items-center gap-2 border cursor-pointer border-gray-200'
     >
       <motion.div
         animate={{
@@ -56,7 +56,6 @@ function ExpertiseCard({ area }: { area: ExpertiseArea; index: number }) {
 
 export default function Hero() {
   const expertiseRef = useRef(null);
-  const isExpertiseInView = useInView(expertiseRef, { once: true, margin: "-100px" });
 
   const expertiseAreas: ExpertiseArea[] = [
     { icon: Code, name: 'Software Development' },
@@ -70,7 +69,7 @@ export default function Hero() {
   ]
 
   return (
-    <section className="relative py-20 px-4 overflow-hidden bg-gradient-to-br from-gray-50 to-white">
+    <section className="relative py-10 md:py-20 px-4 overflow-hidden bg-gradient-to-br from-gray-50 to-white">
       <MaxWidthWrapper className='max-w-7xl'>
         <motion.h1 
           className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-6 leading-tight text-gray-900"
@@ -105,19 +104,8 @@ export default function Hero() {
         </motion.h2>
         <motion.div 
           ref={expertiseRef}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12"
-          initial="hidden"
-          animate={isExpertiseInView ? "visible" : "hidden"}
-          variants={{
-            hidden: { opacity: 0 },
-            visible: {
-              opacity: 1,
-              transition: {
-                staggerChildren: 0.05,
-                delayChildren: 0.2
-              }
-            }
-          }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 mb-12"
+          
         >
           {expertiseAreas.map((area, index) => (
             <ExpertiseCard key={index} area={area} index={index} />

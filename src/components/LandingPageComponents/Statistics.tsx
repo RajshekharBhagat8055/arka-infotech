@@ -113,7 +113,7 @@ export default function Statistics() {
                     }
                   }
                 }}
-                className="flex flex-col items-center"
+                className="flex flex-col text-center items-center"
               >
             
                 {/* Percentage */}

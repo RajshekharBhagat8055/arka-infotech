@@ -4,7 +4,7 @@ import Link from 'next/link'
 import React, { useState } from 'react'
 import MaxWidthWrapper from '../MaxWidthWrapper'
 import MainHeading from '../MainHeading'
-import { Menu, ChevronDown } from 'lucide-react'
+import { ChevronDown } from 'lucide-react'
 import ServicesDropdown from './dropdowns/ServicesDropdown'
 import CloudDropdown from './dropdowns/CloudDropdown'
 import DataAIDropdown from './dropdowns/DataAIDropdown'
@@ -13,6 +13,7 @@ import IndustriesDropdown from './dropdowns/IndustriesDropdown'
 import TechnologiesDropdown from './dropdowns/TechnologiesDropdown'
 import SuccessStoriesDropdown from './dropdowns/SuccessStoriesDropdown'
 import DropdownWrapper from '../DropdownWrapper'
+import MobileNav from './MobileNav'
 
 interface NavLink {
   name: string
@@ -48,6 +49,14 @@ export default function Navbar() {
       setHoveredLink(null)
     }, 150) // Small delay to allow moving to dropdown
     setHoverTimeout(timeout)
+  }
+
+  const handleDropdownClick = () => {
+    // Close dropdown immediately when a link is clicked
+    if (hoverTimeout) {
+      clearTimeout(hoverTimeout)
+    }
+    setHoveredLink(null)
   }
 
   return (
@@ -98,10 +107,8 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* Mobile Menu Button */}
-        <button className='xl:hidden text-gray-700'>
-          <Menu className='w-6 h-6' />
-        </button>
+        {/* Mobile Navigation */}
+        <MobileNav />
       </MaxWidthWrapper>
 
       {/* Full-width dropdowns outside MaxWidthWrapper */}
@@ -111,6 +118,7 @@ export default function Navbar() {
               key={link.name}
               onMouseEnter={() => handleMouseEnter(link.name)}
               onMouseLeave={handleMouseLeave}
+              onClick={handleDropdownClick}
             >
               <DropdownWrapper isVisible={hoveredLink === link.name}>
                 {link.dropdown && React.createElement(link.dropdown)}

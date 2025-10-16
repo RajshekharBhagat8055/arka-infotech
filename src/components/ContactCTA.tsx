@@ -54,11 +54,11 @@ export default function ContactCTA() {
   };
 
   return (
-    <section className="py-20 px-4 bg-gray-50">
+    <section className="py-20 px-2 bg-gray-50">
       <MaxWidthWrapper>
         {/* Main CTA Box */}
         <motion.div 
-          className="bg-white rounded-2xl border-2 border-gray-200 p-12 md:p-16 relative overflow-hidden shadow-lg"
+          className="bg-white rounded-2xl border-2 border-gray-200 px-3 md:px-6 py-6 relative overflow-hidden shadow-lg"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
