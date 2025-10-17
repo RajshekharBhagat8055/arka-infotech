@@ -21,14 +21,14 @@ export default function PageTransition() {
     const checkFrames = () => {
       frameCount++
       
-      // Wait for 2-3 frames to ensure content is painted
-      if (frameCount < 3) {
+      // Wait for 10 frames to ensure content is fully painted and interactive
+      if (frameCount < 10) {
         requestAnimationFrame(checkFrames)
       } else {
-        // Then wait for the slide-out animation to complete
+        // Then wait additional time for the slide-out animation to complete
         timerRef.current = setTimeout(() => {
           endTransition()
-        }, 600)
+        }, 800)
       }
     }
 

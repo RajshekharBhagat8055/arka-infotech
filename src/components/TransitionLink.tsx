@@ -55,8 +55,8 @@ export default function TransitionLink({
     // Start transition animation
     startTransition(displayName)
     
-    // Wait for slide-in animation to complete (500ms - reduced for better mobile performance)
-    await new Promise(resolve => setTimeout(resolve, 500))
+    // Wait for slide-in animation to complete + hold for visibility (600ms)
+    await new Promise(resolve => setTimeout(resolve, 600))
     
     // Navigate to new page (this will trigger the slide-out animation)
     router.push(href)
