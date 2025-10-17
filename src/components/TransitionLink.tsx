@@ -24,6 +24,11 @@ export default function TransitionLink({
   const { startTransition } = useTransition()
 
   const handleClick = async (e: MouseEvent<HTMLAnchorElement>) => {
+    // Safety check for event object
+    if (!e || typeof e.preventDefault !== 'function') {
+      return
+    }
+
     // Handle anchor links (like #services)
     if (href.startsWith('#')) {
       e.preventDefault()

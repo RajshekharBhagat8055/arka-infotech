@@ -1,14 +1,14 @@
 'use client'
 
-import React from 'react'
-import Link from 'next/link'
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger, SheetClose } from '@/components/ui/sheet'
+import React, { useState } from 'react'
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 import { Menu } from 'lucide-react'
 import { Palette, Building2, Wrench, TrendingUp, Cloud, Shield, Database, Globe, Code } from 'lucide-react'
 import TransitionLink from '../TransitionLink'
 
 export default function MobileNav() {
+  const [isOpen, setIsOpen] = useState(false)
   const serviceCategories = [
     {
       icon: Palette,
@@ -103,8 +103,12 @@ export default function MobileNav() {
     { name: 'AWS', icon: Code },
   ]
 
+  const handleClose = () => {
+    setIsOpen(false)
+  }
+
   return (
-    <Sheet>
+    <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger asChild>
         <button className='xl:hidden text-gray-700 hover:text-gray-900 transition-colors'>
           <Menu className='w-6 h-6' />
@@ -136,14 +140,15 @@ export default function MobileNav() {
                           {category.services.map((service, serviceIndex) => {
                             const slug = service.toLowerCase().replace(/\s+/g, '-').replace(/\//g, '-');
                             return (
-                              <SheetClose asChild key={serviceIndex}>
-                                <Link
-                                  href={`/services/${slug}`}
-                                  className="block text-sm font-medium text-gray-700 hover:text-white hover:bg-orange-500 bg-gray-50 border border-gray-200 px-3 py-2 rounded-lg transition-all duration-200 hover:shadow-md hover:scale-[1.02]"
-                                >
-                                  {service}
-                                </Link>
-                              </SheetClose>
+                              <TransitionLink
+                                key={serviceIndex}
+                                href={`/services/${slug}`}
+                                name={service}
+                                onClick={handleClose}
+                                className="block text-sm font-medium text-gray-700 hover:text-white hover:bg-orange-500 bg-gray-50 border border-gray-200 px-3 py-2 rounded-lg transition-all duration-200 hover:shadow-md hover:scale-[1.02]"
+                              >
+                                {service}
+                              </TransitionLink>
                             )
                           })}
                         </div>
@@ -164,15 +169,15 @@ export default function MobileNav() {
                   {cloudServices.map((service, index) => {
                     const IconComponent = service.icon
                     return (
-                      <SheetClose asChild key={index}>
-                        <Link
-                          href="#cloud"
-                          className="flex items-center gap-3 text-sm font-medium text-gray-700 hover:text-white hover:bg-orange-500 bg-gray-50 border border-gray-200 px-3 py-2.5 rounded-lg transition-all duration-200 hover:shadow-md hover:scale-[1.02]"
-                        >
-                          <IconComponent className="w-4 h-4" />
-                          <span>{service.name}</span>
-                        </Link>
-                      </SheetClose>
+                      <TransitionLink
+                        key={index}
+                        href="#cloud"
+                        onClick={handleClose}
+                        className="flex items-center gap-3 text-sm font-medium text-gray-700 hover:text-white hover:bg-orange-500 bg-gray-50 border border-gray-200 px-3 py-2.5 rounded-lg transition-all duration-200 hover:shadow-md hover:scale-[1.02]"
+                      >
+                        <IconComponent className="w-4 h-4" />
+                        <span>{service.name}</span>
+                      </TransitionLink>
                     )
                   })}
                 </div>
@@ -189,15 +194,15 @@ export default function MobileNav() {
                   {dataAIServices.map((service, index) => {
                     const IconComponent = service.icon
                     return (
-                      <SheetClose asChild key={index}>
-                        <Link
-                          href="#data-ai"
-                          className="flex items-center gap-3 text-sm font-medium text-gray-700 hover:text-white hover:bg-orange-500 bg-gray-50 border border-gray-200 px-3 py-2.5 rounded-lg transition-all duration-200 hover:shadow-md hover:scale-[1.02]"
-                        >
-                          <IconComponent className="w-4 h-4" />
-                          <span>{service.name}</span>
-                        </Link>
-                      </SheetClose>
+                      <TransitionLink
+                        key={index}
+                        href="#data-ai"
+                        onClick={handleClose}
+                        className="flex items-center gap-3 text-sm font-medium text-gray-700 hover:text-white hover:bg-orange-500 bg-gray-50 border border-gray-200 px-3 py-2.5 rounded-lg transition-all duration-200 hover:shadow-md hover:scale-[1.02]"
+                      >
+                        <IconComponent className="w-4 h-4" />
+                        <span>{service.name}</span>
+                      </TransitionLink>
                     )
                   })}
                 </div>
@@ -214,15 +219,15 @@ export default function MobileNav() {
                   {securityServices.map((service, index) => {
                     const IconComponent = service.icon
                     return (
-                      <SheetClose asChild key={index}>
-                        <Link
-                          href="#security"
-                          className="flex items-center gap-3 text-sm font-medium text-gray-700 hover:text-white hover:bg-orange-500 bg-gray-50 border border-gray-200 px-3 py-2.5 rounded-lg transition-all duration-200 hover:shadow-md hover:scale-[1.02]"
-                        >
-                          <IconComponent className="w-4 h-4" />
-                          <span>{service.name}</span>
-                        </Link>
-                      </SheetClose>
+                      <TransitionLink
+                        key={index}
+                        href="#security"
+                        onClick={handleClose}
+                        className="flex items-center gap-3 text-sm font-medium text-gray-700 hover:text-white hover:bg-orange-500 bg-gray-50 border border-gray-200 px-3 py-2.5 rounded-lg transition-all duration-200 hover:shadow-md hover:scale-[1.02]"
+                      >
+                        <IconComponent className="w-4 h-4" />
+                        <span>{service.name}</span>
+                      </TransitionLink>
                     )
                   })}
                 </div>
@@ -239,15 +244,15 @@ export default function MobileNav() {
                   {industries.map((industry, index) => {
                     const IconComponent = industry.icon
                     return (
-                      <SheetClose asChild key={index}>
-                        <Link
-                          href="#industries"
-                          className="flex items-center gap-3 text-sm font-medium text-gray-700 hover:text-white hover:bg-orange-500 bg-gray-50 border border-gray-200 px-3 py-2.5 rounded-lg transition-all duration-200 hover:shadow-md hover:scale-[1.02]"
-                        >
-                          <IconComponent className="w-4 h-4" />
-                          <span>{industry.name}</span>
-                        </Link>
-                      </SheetClose>
+                      <TransitionLink
+                        key={index}
+                        href="#industries"
+                        onClick={handleClose}
+                        className="flex items-center gap-3 text-sm font-medium text-gray-700 hover:text-white hover:bg-orange-500 bg-gray-50 border border-gray-200 px-3 py-2.5 rounded-lg transition-all duration-200 hover:shadow-md hover:scale-[1.02]"
+                      >
+                        <IconComponent className="w-4 h-4" />
+                        <span>{industry.name}</span>
+                      </TransitionLink>
                     )
                   })}
                 </div>
@@ -256,14 +261,13 @@ export default function MobileNav() {
 
             {/* On-Demand Developer (No Dropdown) */}
             <div className="border-b border-gray-200">
-              <SheetClose asChild>
-                <Link
-                  href="#on-demand-developer"
-                  className="flex items-center py-4 text-base font-semibold text-gray-900 hover:text-orange-500"
-                >
-                  On-Demand Developer
-                </Link>
-              </SheetClose>
+              <TransitionLink
+                href="#on-demand-developer"
+                onClick={handleClose}
+                className="flex items-center py-4 text-base font-semibold text-gray-900 hover:text-orange-500"
+              >
+                On-Demand Developer
+              </TransitionLink>
             </div>
 
             {/* Technologies */}
@@ -276,15 +280,15 @@ export default function MobileNav() {
                   {technologies.map((tech, index) => {
                     const IconComponent = tech.icon
                     return (
-                      <SheetClose asChild key={index}>
-                        <Link
-                          href="#technologies"
-                          className="flex items-center gap-3 text-sm font-medium text-gray-700 hover:text-white hover:bg-orange-500 bg-gray-50 border border-gray-200 px-3 py-2.5 rounded-lg transition-all duration-200 hover:shadow-md hover:scale-[1.02]"
-                        >
-                          <IconComponent className="w-4 h-4" />
-                          <span>{tech.name}</span>
-                        </Link>
-                      </SheetClose>
+                      <TransitionLink
+                        key={index}
+                        href="#technologies"
+                        onClick={handleClose}
+                        className="flex items-center gap-3 text-sm font-medium text-gray-700 hover:text-white hover:bg-orange-500 bg-gray-50 border border-gray-200 px-3 py-2.5 rounded-lg transition-all duration-200 hover:shadow-md hover:scale-[1.02]"
+                      >
+                        <IconComponent className="w-4 h-4" />
+                        <span>{tech.name}</span>
+                      </TransitionLink>
                     )
                   })}
                 </div>
@@ -293,26 +297,23 @@ export default function MobileNav() {
 
             {/* Success Stories */}
             <div className="border-b border-gray-200">
-              <SheetClose asChild>
-                <Link
-                  href="#success-stories"
-                  className="flex items-center py-4 text-base font-semibold text-gray-900 hover:text-orange-500"
-                >
-                  Success Stories
-                </Link>
-              </SheetClose>
+              <TransitionLink
+                href="#success-stories"
+                onClick={handleClose}
+                className="flex items-center py-4 text-base font-semibold text-gray-900 hover:text-orange-500"
+              >
+                Success Stories
+              </TransitionLink>
             </div>
           </Accordion>
 
           {/* CTA Buttons */}
           <div className="mt-6 px-4 mb-10 space-y-3">
-            <SheetClose asChild className='mb-3 md:mb-0'>
-              <TransitionLink href="/contact" name="Contact Us">
-                <button className="w-full bg-orange-500 text-white py-3 rounded-lg font-semibold hover:bg-orange-600 transition-colors">
-                  Get Started
-                </button>
-              </TransitionLink>
-            </SheetClose>
+            <TransitionLink href="/contact" name="Contact Us" onClick={handleClose} className="block mb-3 md:mb-0">
+              <button className="w-full bg-orange-500 text-white py-3 rounded-lg font-semibold hover:bg-orange-600 transition-colors">
+                Get Started
+              </button>
+            </TransitionLink>
           </div>
         </div>
       </SheetContent>
