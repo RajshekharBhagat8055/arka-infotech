@@ -47,7 +47,7 @@ export default function PageTransition() {
     <AnimatePresence mode="wait">
       {isTransitioning && (
         <motion.div
-          key={`transition-${pathname}`}
+          key="page-transition"
           className="fixed inset-0 z-[99999] flex items-center justify-center bg-black pointer-events-auto"
           initial={{ y: '100%' }}
           animate={{ y: 0 }}
