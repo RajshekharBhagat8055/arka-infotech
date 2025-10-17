@@ -1,9 +1,10 @@
 'use client'
-import React, { useRef } from 'react';
+import React from 'react';
 import { Users, Briefcase, Award, Globe, Clock, Building } from 'lucide-react';
 import MaxWidthWrapper from '../MaxWidthWrapper';
-import { motion, useInView } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { DotPattern } from '../ui/dot-pattern';
+import TransitionLink from '../TransitionLink';
 
 const stats = [
   {
@@ -39,16 +40,13 @@ const stats = [
 ];
 
 export default function About() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
   return (
-    <section className="relative py-20 px-4 bg-black text-white">
+    <section className="relative py-20 bg-black text-white">
       <DotPattern opacity={0.2} />
-      <MaxWidthWrapper className="">
+      <MaxWidthWrapper className="text-center">
         {/* Header */}
         <motion.div 
-          className="text-center mb-16"
+          className="mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -66,39 +64,23 @@ export default function About() {
         </motion.div>
 
         {/* Stats Grid */}
-        <motion.div 
-          ref={ref}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-10"
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          variants={{
-            hidden: { opacity: 0 },
-            visible: {
-              opacity: 1,
-              transition: {
-                staggerChildren: 0.08,
-                delayChildren: 0.1
-              }
-            }
-          }}
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-10">
           {stats.map((stat, index) => {
             const IconComponent = stat.icon;
             return (
               <motion.div 
                 key={index} 
                 className='flex flex-col items-center gap-2'
-                variants={{
-                  hidden: { opacity: 0, y: 40, scale: 0.8 },
-                  visible: { 
-                    opacity: 1, 
-                    y: 0, 
-                    scale: 1,
-                    transition: {
-                    duration: 0.3,
-                    ease: "easeOut"
-                    }
-                  }
+                initial={{ opacity: 0, y: 40, scale: 0.8 }}
+                whileInView={{ 
+                  opacity: 1, 
+                  y: 0, 
+                  scale: 1
+                }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{
+                  duration: 0.3,
+                  ease: "easeOut"
                 }}
               >
                 <div className="size-12 bg-orange-500 rounded-full flex items-center justify-center">
@@ -111,7 +93,7 @@ export default function About() {
               </motion.div>
             );
           })}
-        </motion.div>
+        </div>
 
         {/* Bottom CTA */}
         <motion.div 
@@ -121,13 +103,15 @@ export default function About() {
           viewport={{ once: true }}
           transition={{ duration: 0.3, delay: 0.2 }}
         >
-          <motion.button 
-            className="bg-orange-500 text-white px-8 py-4 rounded-lg font-semibold"
-            whileHover={{ backgroundColor: "rgb(234 88 12)" }}
-            whileTap={{ scale: 0.98 }}
-          >
-            Learn More About Us
-          </motion.button>
+          <TransitionLink href="/contact" name="Contact Us">
+            <motion.button 
+              className="bg-orange-500 text-white px-8 py-4 rounded-lg font-semibold"
+              whileHover={{ backgroundColor: "rgb(234 88 12)" }}
+              whileTap={{ scale: 0.98 }}
+            >
+              Learn More About Us
+            </motion.button>
+          </TransitionLink>
         </motion.div>
       </MaxWidthWrapper>
     </section>

@@ -1,6 +1,6 @@
 import React from 'react'
-import Link from 'next/link'
 import { Star, Palette, Building2, Wrench, TrendingUp } from 'lucide-react'
+import TransitionLink from '@/components/TransitionLink'
 
 export default function ServicesDropdown() {
   const serviceCategories = [
@@ -97,13 +97,14 @@ export default function ServicesDropdown() {
                   const slug = service.toLowerCase().replace(/\s+/g, '-').replace(/\//g, '-');
                   
                   return (
-                    <Link 
+                    <TransitionLink 
                       key={serviceIndex}
                       href={`/services/${slug}`}
+                      name={service}
                       className='block text-sm lg:text-base font-semibold text-gray-600 hover:text-black hover:bg-gray-50 hover:ring hover:ring-gray-200 px-2 py-1 rounded-md transition-colors'
                     >
                       {service}
-                    </Link>
+                    </TransitionLink>
                   );
                 })}
               </div>

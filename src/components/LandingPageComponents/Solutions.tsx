@@ -1,6 +1,6 @@
 'use client'
-import React, { useRef, useState } from 'react';
-import { motion, useInView } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import MaxWidthWrapper from '../MaxWidthWrapper';
 import { Rocket, Building2, Briefcase, ArrowRight, CheckCircle2, LucideIcon } from 'lucide-react';
 import { DotPattern } from '../ui/dot-pattern';
@@ -20,17 +20,16 @@ function SolutionCard({ solution }: { solution: SolutionCardProps }) {
 
   return (
     <motion.div
-      variants={{
-        hidden: { opacity: 0, y: 40, scale: 0.95 },
-        visible: { 
-          opacity: 1, 
-          y: 0, 
-          scale: 1,
-          transition: {
-            duration: 0.3,
-            ease: "easeOut"
-          }
-        }
+      initial={{ opacity: 0, y: 40, scale: 0.95 }}
+      whileInView={{ 
+        opacity: 1, 
+        y: 0, 
+        scale: 1
+      }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{
+        duration: 0.3,
+        ease: "easeOut"
       }}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
@@ -161,9 +160,6 @@ const solutions: SolutionCardProps[] = [
 ];
 
 export default function Solutions() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
   return (
     <section className="relative py-20 bg-black text-white overflow-hidden">
       <DotPattern opacity={0.4} />
@@ -188,26 +184,11 @@ export default function Solutions() {
         </motion.div>
 
         {/* Solutions Grid */}
-        <motion.div 
-          ref={ref}
-          className="grid grid-cols-1 lg:grid-cols-3 gap-8"
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          variants={{
-            hidden: { opacity: 0 },
-            visible: {
-              opacity: 1,
-              transition: {
-                staggerChildren: 0.1,
-                delayChildren: 0.1
-              }
-            }
-          }}
-        >
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {solutions.map((solution, index) => (
             <SolutionCard key={index} solution={solution} />
           ))}
-        </motion.div>
+        </div>
       </MaxWidthWrapper>
     </section>
   );

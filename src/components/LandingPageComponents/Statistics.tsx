@@ -65,11 +65,12 @@ export default function Statistics() {
 
   return (
     <div className="py-20 bg-gradient-to-br from-gray-50 to-white">
-      <MaxWidthWrapper className=" mx-auto">
+      <MaxWidthWrapper className="">
         {/* Header */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.3 }}
           className="text-center mb-16"
         >
@@ -82,36 +83,20 @@ export default function Statistics() {
         </motion.div>
 
         {/* Statistics Grid */}
-        <motion.div 
-          ref={ref} 
-          className="grid grid-cols-1 lg:grid-cols-3 gap-10"
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          variants={{
-            hidden: { opacity: 0 },
-            visible: {
-              opacity: 1,
-              transition: {
-                staggerChildren: 0.1,
-                delayChildren: 0.05
-              }
-            }
-          }}
-        >
+        <div ref={ref} className="grid grid-cols-1 lg:grid-cols-3 gap-10">
           {statisticsData.map((stat, index) => (
               <motion.div
                 key={index}
-                variants={{
-                  hidden: { opacity: 0, y: 50, scale: 0.9 },
-                  visible: { 
-                    opacity: 1, 
-                    y: 0, 
-                    scale: 1,
-                    transition: {
-                      duration: 0.3,
-                      ease: "easeOut"
-                    }
-                  }
+                initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                whileInView={{ 
+                  opacity: 1, 
+                  y: 0, 
+                  scale: 1
+                }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{
+                  duration: 0.3,
+                  ease: "easeOut"
                 }}
                 className="flex flex-col text-center items-center"
               >
@@ -138,7 +123,7 @@ export default function Statistics() {
               </motion.div>
             )
           )}
-        </motion.div>
+        </div>
       </MaxWidthWrapper>
     </div>
   )

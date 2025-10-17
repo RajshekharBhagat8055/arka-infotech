@@ -14,6 +14,7 @@ import TechnologiesDropdown from './dropdowns/TechnologiesDropdown'
 import SuccessStoriesDropdown from './dropdowns/SuccessStoriesDropdown'
 import DropdownWrapper from '../DropdownWrapper'
 import MobileNav from './MobileNav'
+import TransitionLink from '../TransitionLink'
 
 interface NavLink {
   name: string
@@ -62,17 +63,9 @@ export default function Navbar() {
   return (
     <nav className='fixed top-0 w-full bg-white backdrop-blur-sm border-b border-gray-200 z-[9999] shadow-sm'>
       <MaxWidthWrapper className='flex items-center justify-between py-4'>
-        <Link href="/">
-          {/* <div className="flex items-center gap-2">
-            <img  
-              src="/logo_main.png"
-              alt="AISS Logo"
-              className="h-10 w-10 object-contain"
-            />
-            
-          </div> */}
+        <TransitionLink href="/" name='Home'>
           <MainHeading>AISS</MainHeading>
-        </Link>
+        </TransitionLink>
 
         {/* Desktop Navigation */}
         <div className='hidden xl:flex items-center gap-6'>
@@ -102,9 +95,11 @@ export default function Navbar() {
               </div>
             )
           })}
-          <button className='bg-orange-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-orange-600 transition-all'>
-            Get Started
-          </button>
+          <TransitionLink href="/contact" name="Contact Us">
+            <button className='bg-orange-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-orange-600 transition-all'>
+              Get Started
+            </button>
+          </TransitionLink>
         </div>
 
         {/* Mobile Navigation */}

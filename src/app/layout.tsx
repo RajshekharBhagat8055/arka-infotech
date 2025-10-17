@@ -3,6 +3,9 @@ import { Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/NavbarComponents/Navbar";
 import Footer from "@/components/Footer";
+import Preloader from "@/components/Preloader";
+import PageTransition from "@/components/PageTransition";
+import { TransitionProvider } from "@/contexts/TransitionContext";
 
 const playfairDisplay = Playfair_Display({
   subsets: ["latin"],
@@ -24,11 +27,15 @@ export default function RootLayout({
       <body
         className={`${playfairDisplay.className} antialiased overflow-x-hidden w-full`}
       >
-        <Navbar />
-        <div className="pt-16 w-full overflow-x-hidden">
-          {children}
-        </div>
-        <Footer />
+        <TransitionProvider>
+          {/* <Preloader /> */}
+          <PageTransition />
+          <Navbar />
+          <div className="pt-16 w-full overflow-x-hidden">
+            {children}
+          </div>
+          <Footer />
+        </TransitionProvider>
       </body>
     </html>
   );

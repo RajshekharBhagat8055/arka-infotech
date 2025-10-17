@@ -1,8 +1,9 @@
 'use client'
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { Code, Smartphone, Globe, ShoppingCart, Cloud, Users, Puzzle, Shield, Database, LucideIcon } from 'lucide-react';
 import MaxWidthWrapper from '../MaxWidthWrapper';
-import { motion, useInView } from 'framer-motion';
+import { motion } from 'framer-motion';
+import TransitionLink from '../TransitionLink';
 
 interface ServiceProps {
   icon: LucideIcon;
@@ -16,17 +17,16 @@ function ServiceCard({ service }: { service: ServiceProps }) {
   
   return (
     <motion.div
-      variants={{
-        hidden: { opacity: 0, y: 30, scale: 0.95 },
-        visible: { 
-          opacity: 1, 
-          y: 0, 
-          scale: 1,
-          transition: {
-            duration: 0.3,
-            ease: "easeOut"
-          }
-        }
+      initial={{ opacity: 0, y: 30, scale: 0.95 }}
+      whileInView={{ 
+        opacity: 1, 
+        y: 0, 
+        scale: 1
+      }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{
+        duration: 0.3,
+        ease: "easeOut"
       }}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
@@ -35,7 +35,7 @@ function ServiceCard({ service }: { service: ServiceProps }) {
         scale: 1.01,
         boxShadow: "0 4px 24px 0 rgb(0 0 0 / 0.5)"
       }}
-      className="relative overflow-clip z-20 border p-6 rounded-xl cursor-pointer bg-white flex flex-col h-full"
+      className="relative overflow-clip z-20 border p-3 md:p-6 rounded-xl cursor-pointer bg-white flex flex-col h-full"
     >
       <motion.div 
         className='absolute -z-10 left-0 top-0 w-full h-full rounded-full bg-orange-50'
@@ -45,9 +45,9 @@ function ServiceCard({ service }: { service: ServiceProps }) {
       />
       
       {/* Icon & Title */}
-      <div className="mb-4 flex items-center gap-2">
-        <div className="w-16 h-16 rounded-lg flex items-center justify-center shadow-sm">
-          <IconComponent className="w-8 h-8 text-orange-500" />
+      <div className="mb-4 flex items-center gap-3">
+        <div className="size-14 md:size-16 rounded-lg flex items-center justify-center shadow-sm">
+          <IconComponent className="size-8 md:size-10 text-orange-500" />
         </div>
         <h4 className="text-xl font-bold text-gray-900">
           {service.title}
@@ -67,9 +67,9 @@ function ServiceCard({ service }: { service: ServiceProps }) {
             Learn More
           </button>
           <span className="text-gray-300">|</span>
-          <button className="text-sm font-semibold text-gray-700 hover:text-orange-500 transition-colors">
+          <TransitionLink href="/contact" name="Contact Us" className="text-sm font-semibold text-gray-700 hover:text-orange-500 transition-colors">
             Contact Us
-          </button>
+          </TransitionLink>
         </div>
         
         {/* Desktop: Animated on hover */}
@@ -82,13 +82,13 @@ function ServiceCard({ service }: { service: ServiceProps }) {
           }}
           transition={{ duration: 0.3, ease: "easeOut" }}
         >
-          <button className="text-sm font-semibold text-gray-700 hover:text-orange-500 transition-colors">
+          <TransitionLink href="#" className="text-sm font-semibold text-gray-700 hover:text-orange-500 transition-colors">
             Learn More
-          </button>
+          </TransitionLink>
           <span className="text-gray-300">|</span>
-          <button className="text-sm font-semibold text-gray-700 hover:text-orange-500 transition-colors">
+          <TransitionLink href="/contact" name="Contact Us" className="text-sm font-semibold text-gray-700 hover:text-orange-500 transition-colors">
             Contact Us
-          </button>
+          </TransitionLink>
         </motion.div>
       </div>
     </motion.div>
@@ -144,17 +144,15 @@ const services = [
 ];
 
 export default function Services() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
   return (
-    <section className="py-20 px-4 bg-gray-50">
+    <section className="py-20 bg-gray-50">
       <MaxWidthWrapper className=" mx-auto">
         {/* Header */}
         <motion.div 
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.3 }}
         >
           <h2 className="text-sm md:text-base lg:text-lg xl:text-2xl font-semibold text-orange-600 uppercase tracking-wide mb-3">
@@ -169,26 +167,11 @@ export default function Services() {
         </motion.div>
 
         {/* Services Grid */}
-        <motion.div 
-          ref={ref}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          variants={{
-            hidden: { opacity: 0 },
-            visible: {
-              opacity: 1,
-              transition: {
-                staggerChildren: 0.05,
-                delayChildren: 0.1
-              }
-            }
-          }}
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {services.map((service, index) => (
             <ServiceCard key={index} service={service} />
           ))}
-        </motion.div>
+        </div>
       </MaxWidthWrapper>
     </section>
   );

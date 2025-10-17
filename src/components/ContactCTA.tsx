@@ -3,6 +3,7 @@ import React, { useRef, useState } from 'react';
 import { ArrowRight, Mail, Phone, MapPin, LucideIcon } from 'lucide-react';
 import { motion, useInView, Variants } from 'framer-motion';
 import MaxWidthWrapper from './MaxWidthWrapper';
+import TransitionLink from './TransitionLink';
 
 function ContactMethod({ Icon, title, info, variants }: { Icon: LucideIcon; title: string; info: string; variants: Variants }) {
   const [isHovered, setIsHovered] = useState(false);
@@ -54,7 +55,7 @@ export default function ContactCTA() {
   };
 
   return (
-    <section className="py-20 px-2 bg-gray-50">
+    <section className="py-20 bg-gray-50">
       <MaxWidthWrapper>
         {/* Main CTA Box */}
         <motion.div 
@@ -89,23 +90,25 @@ export default function ContactCTA() {
 
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <motion.button 
-                  className="bg-orange-500 text-white px-8 py-4 rounded-lg font-semibold flex items-center justify-center gap-2"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.3, delay: 0.2 }}
-                  whileHover={{ 
-                    backgroundColor: "rgb(234 88 12)",
-                    scale: 1.05 
-                  }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Schedule Free Consultation
-                  <motion.div whileHover={{ x: 4 }}>
-                    <ArrowRight className="w-5 h-5" />
-                  </motion.div>
-                </motion.button>
+                <TransitionLink href="/contact" name="Contact Us">
+                  <motion.button 
+                    className="bg-orange-500 text-white px-8 py-4 rounded-lg font-semibold flex items-center justify-center gap-2"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.3, delay: 0.2 }}
+                    whileHover={{ 
+                      backgroundColor: "rgb(234 88 12)",
+                      scale: 1.05 
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Schedule Free Consultation
+                    <motion.div whileHover={{ x: 4 }}>
+                      <ArrowRight className="w-5 h-5" />
+                    </motion.div>
+                  </motion.button>
+                </TransitionLink>
                 <motion.button 
                   className="border-2 border-gray-900 text-gray-900 px-8 py-4 rounded-lg font-semibold"
                   initial={{ opacity: 0, scale: 0.9 }}
@@ -144,19 +147,19 @@ export default function ContactCTA() {
               <ContactMethod 
                 Icon={Mail} 
                 title="Email Us" 
-                info="info@arkainfotech.com" 
+                info="arkasoftware@zohomail.in" 
                 variants={contactMethodVariants}
               />
               <ContactMethod 
                 Icon={Phone} 
                 title="Call Us" 
-                info="+1 (555) 123-4567" 
+                info="+91 8898124167" 
                 variants={contactMethodVariants}
               />
               <ContactMethod 
                 Icon={MapPin} 
                 title="Visit Us" 
-                info="6+ Offices Worldwide" 
+                info="Ghatkopar, Mumbai - 400077" 
                 variants={contactMethodVariants}
               />
             </motion.div>

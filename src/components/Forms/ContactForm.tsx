@@ -18,7 +18,6 @@ import { Textarea } from '@/components/ui/textarea'
 import { Mail, Phone, User, Building2, FileText, CheckCircle, XCircle } from 'lucide-react'
 import contactFormSchema, { ContactFormData } from '@/validators/contact.validator'
 
-
 // Default values for the form
 const defaultValues: Partial<ContactFormData> = {
   fullName: '',
@@ -28,7 +27,12 @@ const defaultValues: Partial<ContactFormData> = {
   requirement: '',
 }
 
-export default function ContactForm() {
+interface ContactFormProps {
+  serviceName?: string;
+  serviceCategory?: string;
+}
+
+export default function ContactForm({ serviceName, serviceCategory }: ContactFormProps) {
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
   const [submitMessage, setSubmitMessage] = useState('')
 
@@ -43,13 +47,22 @@ export default function ContactForm() {
       setSubmitStatus('idle')
       setSubmitMessage('')
 
+      // Prepare payload with service information
+      const payload = {
+        ...data,
+        serviceName: serviceName || 'General Inquiry',
+        serviceCategory: serviceCategory || 'Contact Form',
+        pageUrl: typeof window !== 'undefined' ? window.location.href : '',
+        timestamp: new Date().toISOString(),
+      }
+
       // Call the API route to send email
       const response = await fetch('/api/send-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(payload),
       })
 
       const result = await response.json()
@@ -77,18 +90,21 @@ export default function ContactForm() {
 
   return (
     <div className="w-full mx-auto mb-10">
-      <div className="relative bg-gradient-to-br from-gray-900 to-black rounded-2xl p-4 md:p-8 border-2 overflow-hidden">
-        <div className="mb-8">
+      <div className="relative bg-gradient-to-br from-gray-900 to-black rounded-2xl py-6 px-2 md:p-8 border-2 overflow-hidden">
+        <div className="mb-8 px-2">
           <h2 className="text-3xl font-bold text-white mb-2">Get In Touch</h2>
           <p className="text-orange-500">
-            Fill out the form below and we&apos;ll get back to you as soon as possible.
+            {serviceName 
+              ? `Interested in ${serviceName}? Fill out the form below and we'll get back to you as soon as possible.`
+              : "Fill out the form below and we'll get back to you as soon as possible."
+            }
           </p>
         </div>
 
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 px-2">
             {/* Full Name */}
-            <div className='grid grid-cols-2 gap-4'>
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
 
             <FormField
               control={form.control}
@@ -134,7 +150,7 @@ export default function ContactForm() {
               )}
               />
               </div>
-              <div className='grid grid-cols-2 gap-4'>
+              <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
 
             {/* Phone Number */}
             <FormField

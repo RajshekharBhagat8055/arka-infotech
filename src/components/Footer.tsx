@@ -123,15 +123,29 @@ export default function Footer() {
             <ul className='space-y-4'>
               <li className='flex items-start gap-3 text-gray-400'>
                 <Mail className='w-5 h-5 mt-1 flex-shrink-0 text-orange-500' />
-                <span>info@arkainfotech.com</span>
+                <div>
+                  <a href="mailto:arkasoftware@zohomail.in" className="hover:text-orange-500 transition-colors block">
+                    arkasoftware@zohomail.in
+                  </a>
+                  <a href="mailto:arka.infotech.solutions@gmail.com" className="hover:text-orange-500 transition-colors text-sm block mt-1">
+                    arka.infotech.solutions@gmail.com
+                  </a>
+                </div>
               </li>
               <li className='flex items-start gap-3 text-gray-400'>
                 <Phone className='w-5 h-5 mt-1 flex-shrink-0 text-orange-500' />
-                <span>+1 (555) 123-4567</span>
+                <div>
+                  <a href="tel:+918898124167" className="hover:text-orange-500 transition-colors block">
+                    +91 8898124167
+                  </a>
+                  <a href="tel:+918879133093" className="hover:text-orange-500 transition-colors text-sm block mt-1">
+                    +91 8879133093
+                  </a>
+                </div>
               </li>
               <li className='flex items-start gap-3 text-gray-400'>
                 <MapPin className='w-5 h-5 mt-1 flex-shrink-0 text-orange-500' />
-                <span>6+ Offices Worldwide</span>
+                <span>Ghatkopar, Mumbai - 400077, India</span>
               </li>
             </ul>
           </motion.div>
@@ -147,7 +161,7 @@ export default function Footer() {
         >
           <div className='flex flex-col md:flex-row justify-between items-center gap-4'>
             <p className='text-gray-400 text-sm'>
-              © 2025 Arka Infotech Software Solution. All rights reserved.
+              © 2025 Arka Infotech Software Solutions LLP. All rights reserved.
             </p>
             <div className='flex gap-6'>
               {['Privacy Policy', 'Terms of Service', 'Cookie Policy'].map((policy, i) => (

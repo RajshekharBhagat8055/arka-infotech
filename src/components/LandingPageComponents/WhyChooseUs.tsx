@@ -1,7 +1,7 @@
 'use client'
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { Shield, Zap, HeadphonesIcon, TrendingUp, Users2, Sparkles, LucideIcon } from 'lucide-react';
-import { motion, useInView } from 'framer-motion';
+import { motion } from 'framer-motion';
 import MaxWidthWrapper from '../MaxWidthWrapper';
 
 interface ReasonProps {
@@ -16,24 +16,23 @@ function ReasonCard({ reason, index }: { reason: ReasonProps; index: number }) {
   
   return (
     <motion.div
-      variants={{
-        hidden: { opacity: 0, y: 30, scale: 0.95 },
-        visible: { 
-          opacity: 1, 
-          y: 0, 
-          scale: 1,
-          transition: {
-            duration: 0.3,
-            ease: "easeOut"
-          }
-        }
+      initial={{ opacity: 0, y: 30, scale: 0.95 }}
+      whileInView={{ 
+        opacity: 1, 
+        y: 0, 
+        scale: 1
+      }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{
+        duration: 0.3,
+        ease: "easeOut"
       }}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
       animate={{
         borderColor: isHovered ? "rgb(249 115 22)" : "rgb(229 231 235)"
       }}
-      className="relative overflow-clip z-20 border p-6 rounded-xl cursor-pointer bg-white"
+      className="relative overflow-clip z-20 border p-3 md:p-6 rounded-xl cursor-pointer bg-white"
     >
       {/* Background Effect - Orange expanding circle */}
       <motion.div 
@@ -45,8 +44,8 @@ function ReasonCard({ reason, index }: { reason: ReasonProps; index: number }) {
 
       {/* Icon and Title */}
       <div className="mb-6 flex items-center gap-3">
-        <div className="w-16 h-16 rounded-lg flex items-center justify-center shadow-sm">
-          <IconComponent className="w-8 h-8 text-orange-500" />
+        <div className="size-14 md:size-16 rounded-lg flex items-center justify-center shadow-sm">
+          <IconComponent className="size-8 md:size-10 text-orange-500" />
         </div>
         <h4 className="text-xl font-bold text-gray-900">
           {reason.title}
@@ -60,7 +59,7 @@ function ReasonCard({ reason, index }: { reason: ReasonProps; index: number }) {
 
       {/* Number Badge - Shows on hover */}
       <motion.div 
-        className="absolute top-6 right-6 w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center"
+        className="absolute top-6 right-6 size-10 md:size-12 rounded-full bg-orange-100 flex items-center justify-center"
         initial={{ opacity: 0, scale: 0 }}
         animate={{ 
           opacity: isHovered ? 1 : 0,
@@ -110,15 +109,12 @@ const reasons = [
 ];
 
 export default function WhyChooseUs() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
   return (
-    <section className="py-20 px-4 bg-gray-50">
-      <MaxWidthWrapper>
+    <section className="py-20 bg-gray-50">
+      <MaxWidthWrapper className="text-center">
         {/* Header */}
         <motion.div 
-          className="text-center mb-16"
+          className="mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -136,26 +132,11 @@ export default function WhyChooseUs() {
         </motion.div>
 
         {/* Reasons Grid */}
-        <motion.div 
-          ref={ref}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          variants={{
-            hidden: { opacity: 0 },
-            visible: {
-              opacity: 1,
-              transition: {
-                staggerChildren: 0.06,
-                delayChildren: 0.1
-              }
-            }
-          }}
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {reasons.map((reason, index) => (
             <ReasonCard key={index} reason={reason} index={index} />
           ))}
-        </motion.div>
+        </div>
       </MaxWidthWrapper>
     </section>
   );

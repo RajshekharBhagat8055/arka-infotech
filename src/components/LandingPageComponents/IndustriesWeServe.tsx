@@ -1,8 +1,9 @@
 'use client'
 import React, { useRef, useState, useEffect, useMemo } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { motion } from 'framer-motion';
 import MaxWidthWrapper from '../MaxWidthWrapper';
 import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
+import TransitionLink from '../TransitionLink';
 
 interface IndustryCardProps {
   name: string;
@@ -99,8 +100,6 @@ const industries: IndustryCardProps[] = [
 ];
 
 export default function IndustriesWeServe() {
-  const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
   const carouselRef = useRef<HTMLDivElement>(null);
 
   // Duplicate industries array for infinite loop effect
@@ -135,10 +134,10 @@ export default function IndustriesWeServe() {
 
   // Initialize scroll position to middle set for infinite loop
   useEffect(() => {
-    if (carouselRef.current && isInView) {
+    if (carouselRef.current) {
       carouselRef.current.scrollLeft = industries.length * 450;
     }
-  }, [isInView]);
+  }, []);
 
   // Handle infinite loop by resetting position when reaching edges
   useEffect(() => {
@@ -166,7 +165,7 @@ export default function IndustriesWeServe() {
   }, [duplicatedIndustries]);
 
   return (
-    <section ref={sectionRef} className="py-20 bg-white overflow-hidden">
+    <section className="py-20 bg-white overflow-hidden">
       <MaxWidthWrapper>
         {/* Header */}
         <motion.div 
@@ -195,18 +194,9 @@ export default function IndustriesWeServe() {
           className="flex gap-6 overflow-x-scroll scrollbar-hide px-4 md:px-8 lg:px-16 scroll-smooth"
         >
           {duplicatedIndustries.map((industry, index) => (
-            <motion.div
-              key={`industry-${index}`}
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{
-                duration: 0.3,
-                delay: (index % industries.length) * 0.05,
-                ease: "easeOut"
-              }}
-            >
+            <div key={`industry-${index}`}>
               <IndustryCard industry={industry} />
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
@@ -295,13 +285,15 @@ export default function IndustriesWeServe() {
           <p className="text-gray-600 mb-6">
             Don&apos;t see your industry? We work across all sectors to deliver custom solutions.
           </p>
-          <motion.button 
-            className="bg-orange-500 text-white px-8 py-4 rounded-lg font-semibold"
-            whileHover={{ backgroundColor: "rgb(234 88 12)", scale: 1.05 }}
-            whileTap={{ scale: 0.98 }}
-          >
-            Contact Us for Custom Solutions
-          </motion.button>
+          <TransitionLink href="/contact" name="Contact Us">
+            <motion.button 
+              className="bg-orange-500 text-white px-8 py-4 rounded-lg font-semibold"
+              whileHover={{ backgroundColor: "rgb(234 88 12)", scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              Contact Us for Custom Solutions
+            </motion.button>
+          </TransitionLink>
         </motion.div>
       </MaxWidthWrapper>
     </section>

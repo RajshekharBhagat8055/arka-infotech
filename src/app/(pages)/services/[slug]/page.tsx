@@ -65,7 +65,10 @@ export default function ServicePage({ params }: ServicePageProps) {
                 <ArrowRight className="w-5 h-5" />
               </button>
             </div>
-            <ContactForm />
+            <ContactForm 
+              serviceName={service.hero.title}
+              serviceCategory={service.category}
+            />
           </div>
         </MaxWidthWrapper>
       </section>
@@ -111,7 +114,7 @@ export default function ServicePage({ params }: ServicePageProps) {
 
           {/* Process Section */}
           {service.process.length > 0 && (
-            <div className="bg-white rounded-xl shadow-lg p-8 md:p-12 mb-16">
+            <div className="bg-white rounded-xl shadow-lg p-6 md:p-12 mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8 text-center">Our Development Process</h2>
               <div className="space-y-8">
                 {service.process.map((phase, index) => (
@@ -119,7 +122,7 @@ export default function ServicePage({ params }: ServicePageProps) {
                     <div className="absolute -left-[17px] top-0 w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold">
                       {index + 1}
                     </div>
-                    <div className="bg-gray-50 p-6 rounded-lg">
+                    <div className="bg-gray-50 p-3 md:p-6 rounded-lg">
                       <h3 className="text-2xl font-bold text-gray-900 mb-4">{phase.phase}</h3>
                       <ul className="space-y-2">
                         {phase.steps.map((step, stepIndex) => (
@@ -558,7 +561,7 @@ function SubServiceCard({ subService }: { subService: { name: string; descriptio
         scale: 1.01,
         boxShadow: "0 4px 24px 0 rgb(0 0 0 / 0.1)"
       }}
-      className="relative overflow-clip z-20 border p-6 rounded-xl cursor-pointer bg-white flex flex-col h-full"
+      className="relative overflow-clip z-20 border p-3 md:p-6 rounded-xl cursor-pointer bg-white flex flex-col h-full"
     >
       <motion.div 
         className='absolute -z-10 left-0 top-0 w-full h-full rounded-full bg-orange-50'
@@ -569,8 +572,8 @@ function SubServiceCard({ subService }: { subService: { name: string; descriptio
       
       {/* Icon & Title */}
       <div className="mb-4 flex items-center gap-2">
-        <div className="w-16 h-16 rounded-lg flex items-center justify-center shadow-sm">
-          <IconComponent className="w-8 h-8 text-orange-500" />
+        <div className="size-14 md:size-16 rounded-lg flex items-center justify-center shadow-sm">
+          <IconComponent className="size-8 md:size-10 text-orange-500" />
         </div>
         <h4 className="text-xl font-bold text-gray-900">
           {subService.name}

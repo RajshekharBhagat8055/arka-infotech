@@ -1,9 +1,10 @@
 'use client'
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { ArrowRight, Code, Smartphone, Globe, ShoppingCart, Brain, Users, Building2, LucideIcon } from 'lucide-react';
 import MaxWidthWrapper from '../MaxWidthWrapper';
 import { motion } from 'framer-motion';
 import Statistics from './Statistics';
+import TransitionLink from '../TransitionLink';
 
 interface ExpertiseArea {
   icon: LucideIcon;
@@ -16,17 +17,16 @@ function ExpertiseCard({ area }: { area: ExpertiseArea; index: number }) {
 
   return (
     <motion.div 
-      variants={{
-        hidden: { opacity: 0, scale: 0.8, y: 20 },
-        visible: { 
-          opacity: 1, 
-          scale: 1, 
-          y: 0,
-          transition: {
-            duration: 0.3,
-            ease: "easeOut"
-          }
-        }
+      initial={{ opacity: 0, scale: 0.8, y: 20 }}
+      whileInView={{ 
+        opacity: 1, 
+        scale: 1, 
+        y: 0
+      }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{
+        duration: 0.3,
+        ease: "easeOut"
       }}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
@@ -48,15 +48,15 @@ function ExpertiseCard({ area }: { area: ExpertiseArea; index: number }) {
           color: isHovered ? "rgb(249 115 22)" : "rgb(17 24 39)"
         }}
       >
+        <p className='text-base'>
         {area.name}
+        </p>
       </motion.h3>
     </motion.div>
   );
 }
 
 export default function Hero() {
-  const expertiseRef = useRef(null);
-
   const expertiseAreas: ExpertiseArea[] = [
     { icon: Code, name: 'Software Development' },
     { icon: Smartphone, name: 'Mobile App Development' },
@@ -69,7 +69,7 @@ export default function Hero() {
   ]
 
   return (
-    <section className="relative py-10 md:py-20 px-4 overflow-hidden bg-gradient-to-br from-gray-50 to-white">
+    <section className="relative py-10 md:py-20 overflow-hidden bg-gradient-to-br from-gray-50 to-white">
       <MaxWidthWrapper className='max-w-7xl'>
         <motion.h1 
           className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-6 leading-tight text-gray-900"
@@ -102,45 +102,45 @@ export default function Hero() {
         >
           Key Areas of Our Expertise
         </motion.h2>
-        <motion.div 
-          ref={expertiseRef}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 mb-12"
-          
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 mb-12">
           {expertiseAreas.map((area, index) => (
             <ExpertiseCard key={index} area={area} index={index} />
           ))}
-        </motion.div>
+        </div>
       </MaxWidthWrapper>
 
       {/* CTA Buttons */}
-      <MaxWidthWrapper className="flex flex-col sm:flex-row gap-4">
-        <motion.button 
-          className="bg-orange-500 text-white px-8 py-4 rounded-lg font-semibold flex items-center justify-center gap-2 shadow-lg"
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.3, delay: 0.3 }}
-          whileHover={{ backgroundColor: "rgb(234 88 12)" }}
-          whileTap={{ scale: 0.98 }}
-        >
-          Let&apos;s Talk About Your Business
-          <motion.div whileHover={{ x: 4 }}>
-            <ArrowRight className="w-5 h-5" />
-          </motion.div>
-        </motion.button>
-        <motion.button 
-          className="border-2 border-gray-900 text-gray-900 px-8 py-4 rounded-lg font-semibold"
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.3, delay: 0.35 }}
-          whileHover={{ 
-            backgroundColor: "rgb(17 24 39)",
-            color: "rgb(255 255 255)"
-          }}
-          whileTap={{ scale: 0.98 }}
-        >
-          View Our Services
-        </motion.button>
+      <MaxWidthWrapper className="flex flex-col md:flex-row items-center gap-4">
+        <TransitionLink href="/contact" name="Contact Us">
+          <motion.button 
+            className="bg-orange-500 text-white px-8 py-4 rounded-lg font-semibold flex items-center justify-center gap-2 shadow-lg"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.3, delay: 0.3 }}
+            whileHover={{ backgroundColor: "rgb(234 88 12)" }}
+            whileTap={{ scale: 0.98 }}
+          >
+            Let&apos;s Talk About Your Business
+            <motion.div whileHover={{ x: 4 }}>
+              <ArrowRight className="w-5 h-5" />
+            </motion.div>
+          </motion.button>
+        </TransitionLink>
+        <TransitionLink href="#services">
+          <motion.button 
+            className="border-2 border-gray-900 text-gray-900 px-8 py-4 rounded-lg font-semibold"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.3, delay: 0.35 }}
+            whileHover={{ 
+              backgroundColor: "rgb(17 24 39)",
+              color: "rgb(255 255 255)"
+            }}
+            whileTap={{ scale: 0.98 }}
+          >
+            View Our Services
+          </motion.button>
+        </TransitionLink>
       </MaxWidthWrapper>
 
       <Statistics />

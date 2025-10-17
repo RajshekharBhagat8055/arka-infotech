@@ -3,6 +3,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import MaxWidthWrapper from '../MaxWidthWrapper';
 import { Marquee } from '../ui/marquee';
+import TransitionLink from '../TransitionLink';
 import { 
   SiGooglecloud, 
   SiAmazon, 
@@ -132,13 +133,15 @@ export default function Technologies() {
           <p className="text-gray-600 mb-6">
             And many more cutting-edge technologies to power your digital transformation
           </p>
-          <motion.button 
-            className="bg-black text-white px-8 py-4 rounded-lg font-semibold"
-            whileHover={{ backgroundColor: "rgb(249 115 22)" }}
-            whileTap={{ scale: 0.98 }}
-          >
-            View All Technologies
-          </motion.button>
+          <TransitionLink href="/contact" name="Contact Us">
+            <motion.button 
+              className="bg-black text-white px-8 py-4 rounded-lg font-semibold"
+              whileHover={{ backgroundColor: "rgb(249 115 22)" }}
+              whileTap={{ scale: 0.98 }}
+            >
+              View All Technologies
+            </motion.button>
+          </TransitionLink>
         </motion.div>
       </MaxWidthWrapper>
     </section>

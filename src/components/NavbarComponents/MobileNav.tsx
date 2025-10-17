@@ -6,6 +6,7 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger, SheetClose 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 import { Menu } from 'lucide-react'
 import { Palette, Building2, Wrench, TrendingUp, Cloud, Shield, Database, Globe, Code } from 'lucide-react'
+import TransitionLink from '../TransitionLink'
 
 export default function MobileNav() {
   const serviceCategories = [
@@ -303,12 +304,14 @@ export default function MobileNav() {
             </div>
           </Accordion>
 
-          {/* CTA Button */}
-          <div className="mt-6 px-4 mb-10">
-            <SheetClose asChild>
-              <button className="w-full bg-orange-500 text-white py-3 rounded-lg font-semibold hover:bg-orange-600 transition-colors">
-                Close
-              </button>
+          {/* CTA Buttons */}
+          <div className="mt-6 px-4 mb-10 space-y-3">
+            <SheetClose asChild className='mb-3 md:mb-0'>
+              <TransitionLink href="/contact" name="Contact Us">
+                <button className="w-full bg-orange-500 text-white py-3 rounded-lg font-semibold hover:bg-orange-600 transition-colors">
+                  Get Started
+                </button>
+              </TransitionLink>
             </SheetClose>
           </div>
         </div>

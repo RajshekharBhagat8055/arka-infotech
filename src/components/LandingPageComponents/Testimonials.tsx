@@ -1,9 +1,10 @@
 'use client'
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { Quote, Star } from 'lucide-react';
-import { motion, useInView } from 'framer-motion';
+import { motion } from 'framer-motion';
 import MaxWidthWrapper from '../MaxWidthWrapper';
 import { DotPattern } from '../ui/dot-pattern';
+import TransitionLink from '../TransitionLink';
 
 interface TestimonialProps {
   name: string;
@@ -18,17 +19,16 @@ function TestimonialCard({ testimonial }: { testimonial: TestimonialProps }) {
   
   return (
     <motion.div
-      variants={{
-        hidden: { opacity: 0, y: 40, scale: 0.95 },
-        visible: { 
-          opacity: 1, 
-          y: 0, 
-          scale: 1,
-          transition: {
-            duration: 0.3,
-            ease: "easeOut"
-          }
-        }
+      initial={{ opacity: 0, y: 40, scale: 0.95 }}
+      whileInView={{ 
+        opacity: 1, 
+        y: 0, 
+        scale: 1
+      }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{
+        duration: 0.3,
+        ease: "easeOut"
       }}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
@@ -36,7 +36,7 @@ function TestimonialCard({ testimonial }: { testimonial: TestimonialProps }) {
         borderColor: isHovered ? "rgb(249 115 22)" : "rgba(255, 255, 255, 0.1)",
         backgroundColor: isHovered ? "rgba(255, 255, 255, 0.1)" : "rgba(255, 255, 255, 0.05)"
       }}
-      className="relative backdrop-blur-sm rounded-xl p-8 border overflow-clip"
+      className="relative backdrop-blur-sm rounded-xl border p-3 md:p-8 overflow-clip"
     >
       {/* Orange Accent Top Border */}
       <motion.div
@@ -148,11 +148,8 @@ const testimonials = [
 ];
 
 export default function Testimonials() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
   return (
-    <section className="relative py-20 px-4 bg-black text-white">
+    <section className="relative py-20 bg-black text-white">
       <DotPattern opacity={0.2} />
       <MaxWidthWrapper>
         {/* Header */}
@@ -175,26 +172,11 @@ export default function Testimonials() {
         </motion.div>
 
         {/* Testimonials Grid */}
-        <motion.div 
-          ref={ref}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8"
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          variants={{
-            hidden: { opacity: 0 },
-            visible: {
-              opacity: 1,
-              transition: {
-                staggerChildren: 0.1,
-                delayChildren: 0.1
-              }
-            }
-          }}
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {testimonials.map((testimonial, index) => (
             <TestimonialCard key={index} testimonial={testimonial} />
           ))}
-        </motion.div>
+        </div>
 
         {/* Bottom CTA */}
         <motion.div 
@@ -207,13 +189,15 @@ export default function Testimonials() {
           <p className="text-gray-400 mb-6">
             Join thousands of satisfied clients worldwide
           </p>
-          <motion.button 
-            className="bg-orange-500 text-white px-8 py-4 rounded-lg font-semibold"
-            whileHover={{ backgroundColor: "rgb(234 88 12)" }}
-            whileTap={{ scale: 0.98 }}
-          >
-            Read More Success Stories
-          </motion.button>
+          <TransitionLink href="/contact" name="Contact Us">
+            <motion.button 
+              className="bg-orange-500 text-white px-8 py-4 rounded-lg font-semibold"
+              whileHover={{ backgroundColor: "rgb(234 88 12)" }}
+              whileTap={{ scale: 0.98 }}
+            >
+              Read More Success Stories
+            </motion.button>
+          </TransitionLink>
         </motion.div>
       </MaxWidthWrapper>
     </section>
