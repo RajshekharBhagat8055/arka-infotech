@@ -5,11 +5,11 @@ import {
   FolderOpen, 
   Code, 
   Layers, 
-  Users, 
   Gamepad2, 
   Cloud, 
   Link2 
 } from 'lucide-react'
+import TransitionLink from '@/components/TransitionLink'
 
 export default function TechnologiesDropdown() {
   const technologyCategories = [
@@ -17,113 +17,78 @@ export default function TechnologiesDropdown() {
       icon: Smartphone,
       header: 'Mobile Apps',
       services: [
-        'Android',
-        'React Native',
-        'iOS',
-        'Flutter',
-        'Swift',
-        'Kotlin',
-        'Xamarin'
+        { name: 'Android', slug: 'android' },
+        { name: 'React Native', slug: 'react-native' },
+        { name: 'iOS', slug: 'ios' },
+        { name: 'Flutter', slug: 'flutter' },
+        { name: 'Swift', slug: 'swift' },
+        { name: 'Kotlin', slug: 'kotlin' },
+        { name: 'Xamarin', slug: 'xamarin' }
       ]
     },
     {
       icon: ShoppingCart,
       header: 'Ecommerce',
       services: [
-        'Adobe Commerce',
-        'Shopify',
-        'Symfony',
-        'WooCommerce',
-        'BigCommerce',
-        'Magento'
+        { name: 'Shopify', slug: 'shopify' },
+        { name: 'WooCommerce', slug: 'woocommerce' }
       ]
     },
     {
       icon: FolderOpen,
       header: 'CMS',
       services: [
-        'Wordpress',
-        'Drupal',
-        'Craft',
-        'Acquia',
-        'Joomla',
-        'SharePoint',
-        'Umbraco',
-        'Sitecore',
-        'Pantheon',
-        'AEM Development',
-        'Sitefinity'
+        { name: 'WordPress', slug: 'wordpress' }
       ]
     },
     {
       icon: Code,
       header: 'Custom Development',
       services: [
-        'PHP',
-        'Laravel',
-        'ROR (Ruby on Rails)',
-        'Power Platform',
-        'HTML5',
-        'JavaScript',
-        'Zoho Creator',
-        'Python',
-        'DotNet',
-        'NodeJS',
-        'Angular',
-        'Spring',
-        'C#'
+        { name: 'PHP', slug: 'php' },
+        { name: 'Laravel', slug: 'laravel' },
+        { name: 'Ruby on Rails', slug: 'ruby-on-rails' },
+        { name: 'JavaScript', slug: 'javascript' },
+        { name: 'Python', slug: 'python' },
+        { name: 'DotNet', slug: 'dotnet' },
+        { name: 'Node.js', slug: 'nodejs' },
+        { name: 'Angular', slug: 'angular' },
+        { name: 'Spring', slug: 'spring' },
+        { name: 'C#', slug: 'csharp' }
       ]
     },
     {
       icon: Layers,
       header: 'Full Stack Development',
       services: [
-        'MEAN',
-        'Full Stack',
-        'MERN',
-        'Java',
-        'React JS'
-      ]
-    },
-    {
-      icon: Users,
-      header: 'CRM',
-      services: [
-        'ServiceNow',
-        'Salesforce',
-        'Odoo',
-        'HubSpot',
-        'Zoho',
-        'MS Dynamics'
+        { name: 'MEAN', slug: 'mean-stack' },
+        { name: 'MERN', slug: 'mern' },
+        { name: 'Java', slug: 'java' },
+        { name: 'React', slug: 'react' }
       ]
     },
     {
       icon: Gamepad2,
       header: 'Games',
       services: [
-        'Unity',
-        'Unreal',
-        'Maya',
-        '3DS MAX',
-        'Blender'
+        { name: 'Unity', slug: 'unity' }
       ]
     },
     {
       icon: Cloud,
       header: 'Cloud',
       services: [
-        'AWS',
-        'Azure',
-        'Google Cloud',
-        'DevOps'
+        { name: 'AWS', slug: 'aws', isCloud: true },
+        { name: 'Azure', slug: 'azure', isCloud: true },
+        { name: 'Google Cloud', slug: 'gcp', isCloud: true },
+        { name: 'DigitalOcean', slug: 'digitalocean', isCloud: true }
       ]
     },
     {
       icon: Link2,
       header: 'Other',
       services: [
-        'Golang',
-        'AR/VR'
+        { name: 'Golang', slug: 'golang' }
       ]
     }
   ]
@@ -151,14 +116,24 @@ export default function TechnologiesDropdown() {
               
                 {/* Services List */}
                 <div className='space-y-1'>
-                  {category.services.map((service, serviceIndex) => (
-                    <div 
-                      key={serviceIndex} 
-                      className='text-xs lg:text-sm font-medium text-gray-600 hover:text-black hover:bg-gray-50 hover:ring hover:ring-gray-200 px-1 py-1 rounded transition-colors cursor-pointer'
-                    >
-                      {service}
-                    </div>
-                  ))}
+                  {category.services.map((service, serviceIndex) => {
+                    // Check if it's a cloud service
+                    const isCloudService = 'isCloud' in service && service.isCloud
+                    const href = isCloudService 
+                      ? `/cloud/${service.slug}` 
+                      : `/technology/${service.slug}`
+                    
+                    return (
+                      <TransitionLink
+                        key={serviceIndex}
+                        href={href}
+                        name={service.name}
+                        className='block text-xs lg:text-sm font-medium text-gray-600 hover:text-black hover:bg-gray-50 hover:ring hover:ring-gray-200 px-1 py-1 rounded transition-colors cursor-pointer'
+                      >
+                        {service.name}
+                      </TransitionLink>
+                    )
+                  })}
                 </div>
               </div>
             )
@@ -167,9 +142,11 @@ export default function TechnologiesDropdown() {
 
         {/* CTA Button */}
         <div className='mt-6'>
-          <button className='w-full bg-orange-500 text-white py-3 rounded-lg font-semibold hover:bg-orange-600 transition-colors'>
-            Explore Our Technology Stack
-          </button>
+          <TransitionLink href="/technology/react-native" name="Explore Technologies">
+            <button className='w-full bg-orange-500 text-white py-3 rounded-lg font-semibold hover:bg-orange-600 transition-colors'>
+              Explore Our Technology Stack
+            </button>
+          </TransitionLink>
         </div>
       </div>
     </div>

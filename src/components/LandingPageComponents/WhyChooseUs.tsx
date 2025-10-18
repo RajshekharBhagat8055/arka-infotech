@@ -79,7 +79,7 @@ const reasons = [
   {
     icon: Shield,
     title: "Proven Expertise",
-    description: "23+ years of experience delivering successful projects across diverse industries with cutting-edge technology solutions.",
+    description: "6+ years of experience delivering 100+ successful projects across diverse industries with cutting-edge technology solutions.",
   },
   {
     icon: Zap,

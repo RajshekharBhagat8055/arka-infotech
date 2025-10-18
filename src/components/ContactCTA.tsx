@@ -89,10 +89,10 @@ export default function ContactCTA() {
               </p>
 
               {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex w-full flex-col sm:flex-row gap-4 justify-center">
                 <TransitionLink href="/contact" name="Contact Us">
                   <motion.button 
-                    className="bg-orange-500 text-white px-8 py-4 rounded-lg font-semibold flex items-center justify-center gap-2"
+                    className="bg-orange-500 w-full text-white px-8 py-4 rounded-lg font-semibold flex items-center justify-center gap-2"
                     initial={{ opacity: 0, scale: 0.9 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}

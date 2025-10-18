@@ -4,7 +4,7 @@ import MaxWidthWrapper from '@/components/MaxWidthWrapper';
 import { getServiceBySlug, ServicePageContent } from '@/data/services';
 import { notFound } from 'next/navigation';
 import { 
-  CheckCircle2, DollarSign, Star, ArrowRight, Lightbulb, Package, TrendingUp, Zap, Award, Quote, 
+  CheckCircle2, Star, ArrowRight, Lightbulb, Package, TrendingUp, Zap, Award, Quote, 
   Rocket, Target, Users, Gauge, Shield, Sparkles
 } from 'lucide-react';
 import * as LucideIcons from 'lucide-react';
@@ -17,6 +17,7 @@ import ContactForm from '@/components/Forms/ContactForm';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import CloudMetrics from '@/components/CloudComponents/CloudMetrics';
 
 interface ServicePageProps {
   params: Promise<{
@@ -73,16 +74,14 @@ export default function ServicePage({ params }: ServicePageProps) {
         </MaxWidthWrapper>
       </section>
 
-      <div className="py-20 bg-gradient-to-br from-gray-50 to-white">
-        <MaxWidthWrapper>
-          {/* Key Metrics */}
-          <KeyMetrics 
-            deliveryTime={service.deliveryTime}
-            pricing={service.pricing.starter}
-            featuresCount={service.features.length}
-          />
-        </MaxWidthWrapper>
-      </div>
+      {/* Metrics Section - LIGHT */}
+      {service.metrics && service.metrics.length > 0 && (
+        <div className="py-20 bg-gradient-to-br from-gray-50 to-white">
+          <MaxWidthWrapper>
+            <CloudMetrics metrics={service.metrics} providerName={service.name} />
+          </MaxWidthWrapper>
+        </div>
+      )}
 
       <MaxWidthWrapper className='bg-gray-100'>
         <div className="py-16">
@@ -209,33 +208,6 @@ export default function ServicePage({ params }: ServicePageProps) {
               </div>
             </div>
           )}
-
-          {/* Pricing Section */}
-          <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl shadow-lg p-2 pt-6 mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8 text-center">Pricing Plans</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-lg transition-shadow">
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Starter</h3>
-                <p className="text-3xl font-bold text-orange-500 mb-4">{service.pricing.starter}</p>
-                <p className="text-gray-600">Perfect for small projects and startups</p>
-              </div>
-              <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-lg transition-shadow border-2 border-orange-500 relative">
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <span className="bg-orange-500 text-white px-4 py-1 rounded-full text-sm font-semibold">
-                    Popular
-                  </span>
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Professional</h3>
-                <p className="text-3xl font-bold text-orange-500 mb-4">{service.pricing.professional}</p>
-                <p className="text-gray-600">Ideal for growing businesses</p>
-              </div>
-              <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-lg transition-shadow">
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Enterprise</h3>
-                <p className="text-3xl font-bold text-orange-500 mb-4">{service.pricing.enterprise}</p>
-                <p className="text-gray-600">Custom solutions for large organizations</p>
-              </div>
-            </div>
-          </div>
 
           {/* Related Services */}
           {service.relatedServices.length > 0 && (
@@ -537,7 +509,6 @@ function SubServiceCard({ subService }: { subService: { name: string; descriptio
   const [isHovered, setIsHovered] = React.useState(false);
   
   // Get icon from Lucide React using the icon name
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const IconComponent = (LucideIcons as any)[subService.icon] || Lightbulb;
   
   return (
@@ -587,109 +558,3 @@ function SubServiceCard({ subService }: { subService: { name: string; descriptio
     </motion.div>
   );
 }
-
-function KeyMetrics({ deliveryTime, pricing, featuresCount }: { deliveryTime: string; pricing: string; featuresCount: number }) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
-  const metricsData = [
-    {
-      icon: Zap,
-      value: deliveryTime,
-      label: "Delivery Timeline",
-      description: "Fast and reliable delivery to meet your deadlines"
-    },
-    {
-      icon: DollarSign,
-      value: pricing,
-      label: "Starting Price",
-      description: "Flexible pricing options to fit your budget"
-    },
-    {
-      icon: Award,
-      value: `${featuresCount}+`,
-      label: "Total Features",
-      description: "Comprehensive solution with all essential features"
-    }
-  ];
-
-  return (
-    <div>
-      {/* Header */}
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-        transition={{ duration: 0.3 }}
-        className="text-center mb-16"
-      >
-        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-          Service Highlights
-        </h2>
-        <p className="text-xl md:text-2xl text-gray-600">
-          Everything you need to know at a glance
-        </p>
-      </motion.div>
-
-      {/* Metrics Grid */}
-      <motion.div 
-        ref={ref} 
-        className="grid grid-cols-1 lg:grid-cols-3 gap-10"
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
-        variants={{
-          hidden: { opacity: 0 },
-          visible: {
-            opacity: 1,
-            transition: {
-              staggerChildren: 0.1,
-              delayChildren: 0.05
-            }
-          }
-        }}
-      >
-        {metricsData.map((metric, index) => {
-          const IconComponent = metric.icon;
-          return (
-            <motion.div
-              key={index}
-              variants={{
-                hidden: { opacity: 0, y: 50, scale: 0.9 },
-                visible: { 
-                  opacity: 1, 
-                  y: 0, 
-                  scale: 1,
-                  transition: {
-                    duration: 0.3,
-                    ease: "easeOut"
-                  }
-                }
-              }}
-              className="flex flex-col text-center items-center"
-            >
-              {/* Icon */}
-              <div className="mb-4 p-4 bg-orange-100 rounded-full">
-                <IconComponent className="w-8 h-8 text-orange-500" />
-              </div>
-          
-              {/* Value */}
-              <div className="text-3xl md:text-4xl lg:text-5xl font-bold mb-2 text-gray-900">
-                {metric.value}
-              </div>
-
-              {/* Label */}
-              <div className="text-orange-500 font-semibold text-lg mb-4">
-                {metric.label}
-              </div>
-
-              {/* Description */}
-              <p className="text-gray-600 leading-relaxed text-center max-w-xs">
-                {metric.description}
-              </p>
-            </motion.div>
-          );
-        })}
-      </motion.div>
-    </div>
-  );
-}
-

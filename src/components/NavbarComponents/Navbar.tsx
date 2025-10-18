@@ -28,7 +28,6 @@ const navLinks: NavLink[] = [
   { name: 'Data & AI', href: '#data-ai', dropdown: DataAIDropdown },
   { name: 'Security', href: '#security', dropdown: SecurityDropdown },
   { name: 'Industries', href: '#industries', dropdown: IndustriesDropdown },
-  { name: 'On-Demand Developer', href: '#on-demand-developer'},
   { name: 'Technologies', href: '#technologies', dropdown: TechnologiesDropdown },
   { name: 'Success Stories', href: '#success-stories', dropdown: SuccessStoriesDropdown },
 ]

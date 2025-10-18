@@ -47,12 +47,18 @@ export interface ServicePageContent {
     answer: string;
   }>;
   relatedServices: string[];
-  pricing: {
+  pricing?: {
     starter: string;
     professional: string;
     enterprise: string;
   };
-  deliveryTime: string;
+  deliveryTime?: string;
+  metrics?: Array<{
+    value: number;
+    suffix: string;
+    label: string;
+    description: string;
+  }>;
 }
 
 export const services: ServicePageContent[] = [
@@ -305,12 +311,12 @@ export const services: ServicePageContent[] = [
       }
     ],
     relatedServices: ["mobile-app-development", "e-commerce-development", "search-engine-optimization", "ui-ux-design"],
-    pricing: {
-      starter: "₹45,000 - ₹1,20,000",
-      professional: "₹1,20,000 - ₹3,50,000",
-      enterprise: "Custom Quote"
-    },
-    deliveryTime: "4-8 weeks"
+    metrics: [
+      { value: 15, suffix: "+", label: "Expert Developers", description: "Full-stack web development team" },
+      { value: 80, suffix: "+", label: "Websites Delivered", description: "Successfully launched projects" },
+      { value: 98, suffix: "%", label: "Performance Score", description: "Optimized for speed and SEO" }
+    ],
+  
   },
 
   // Mobile App Development
@@ -553,12 +559,12 @@ export const services: ServicePageContent[] = [
       }
     ],
     relatedServices: ["website-development", "ui-ux-design", "api-development", "cloud-solutions"],
-    pricing: {
-      starter: "₹3,00,000 - ₹8,00,000",
-      professional: "₹8,00,000 - ₹25,00,000",
-      enterprise: "Custom Quote"
-    },
-    deliveryTime: "8-16 weeks"
+    metrics: [
+      { value: 20, suffix: "+", label: "Mobile Developers", description: "iOS and Android experts" },
+      { value: 65, suffix: "+", label: "Apps Published", description: "Live on App & Play Stores" },
+      { value: 4.5, suffix: "+", label: "Average Rating", description: "High user satisfaction" }
+    ],
+  
   },
 
   // Add E-commerce Development
@@ -794,12 +800,11 @@ export const services: ServicePageContent[] = [
       }
     ],
     relatedServices: ["website-development", "mobile-app-development", "digital-marketing", "payment-gateway-integration"],
-    pricing: {
-      starter: "₹75,000 - ₹2,50,000",
-      professional: "₹2,50,000 - ₹8,00,000",
-      enterprise: "Custom Quote"
-    },
-    deliveryTime: "6-12 weeks"
+    metrics: [
+      { value: 17, suffix: "+", label: "Expert Team", description: "Specialized E-commerce Development professionals" },
+      { value: 58, suffix: "+", label: "Projects Delivered", description: "Successfully completed solutions" },
+      { value: 95, suffix: "%", label: "Client Satisfaction", description: "Exceptional quality standards" }
+    ]
   },
 
   // Software Development
@@ -1033,12 +1038,11 @@ export const services: ServicePageContent[] = [
       }
     ],
     relatedServices: ["api-development", "cloud-solutions", "custom-software-integration", "database-management"],
-    pricing: {
-      starter: "₹5,00,000 - ₹15,00,000",
-      professional: "₹15,00,000 - ₹40,00,000",
-      enterprise: "Custom Quote"
-    },
-    deliveryTime: "12-24 weeks"
+    metrics: [
+      { value: 12, suffix: "+", label: "Expert Team", description: "Specialized Software Development professionals" },
+      { value: 67, suffix: "+", label: "Projects Delivered", description: "Successfully completed solutions" },
+      { value: 95, suffix: "%", label: "Client Satisfaction", description: "Exceptional quality standards" }
+    ]
   },
 
   // Game Development
@@ -1271,12 +1275,11 @@ export const services: ServicePageContent[] = [
       }
     ],
     relatedServices: ["mobile-app-development", "3d-modeling", "animation-services", "cloud-solutions"],
-    pricing: {
-      starter: "₹3,00,000 - ₹10,00,000",
-      professional: "₹10,00,000 - ₹35,00,000",
-      enterprise: "Custom Quote"
-    },
-    deliveryTime: "12-32 weeks"
+    metrics: [
+      { value: 12, suffix: "+", label: "Expert Team", description: "Specialized Game Development professionals" },
+      { value: 51, suffix: "+", label: "Projects Delivered", description: "Successfully completed solutions" },
+      { value: 95, suffix: "%", label: "Client Satisfaction", description: "Exceptional quality standards" }
+    ]
   },
 
   // Bespoke Development
@@ -1510,12 +1513,11 @@ export const services: ServicePageContent[] = [
       }
     ],
     relatedServices: ["software-development", "api-development", "cloud-solutions", "consulting-services"],
-    pricing: {
-      starter: "₹10,00,000 - ₹30,00,000",
-      professional: "₹30,00,000 - ₹1,00,00,000",
-      enterprise: "Custom Quote"
-    },
-    deliveryTime: "16-48 weeks"
+    metrics: [
+      { value: 14, suffix: "+", label: "Expert Team", description: "Specialized Bespoke Development professionals" },
+      { value: 62, suffix: "+", label: "Projects Delivered", description: "Successfully completed solutions" },
+      { value: 95, suffix: "%", label: "Client Satisfaction", description: "Exceptional quality standards" }
+    ]
   },
 
   // API Development
@@ -1748,12 +1750,11 @@ export const services: ServicePageContent[] = [
       }
     ],
     relatedServices: ["software-development", "microservices", "cloud-solutions", "database-management"],
-    pricing: {
-      starter: "₹2,00,000 - ₹6,00,000",
-      professional: "₹6,00,000 - ₹20,00,000",
-      enterprise: "Custom Quote"
-    },
-    deliveryTime: "6-12 weeks"
+    metrics: [
+      { value: 15, suffix: "+", label: "Expert Team", description: "Specialized API Development professionals" },
+      { value: 54, suffix: "+", label: "Projects Delivered", description: "Successfully completed solutions" },
+      { value: 95, suffix: "%", label: "Client Satisfaction", description: "Exceptional quality standards" }
+    ]
   },
 
   // Custom Software Integration
@@ -1984,12 +1985,11 @@ export const services: ServicePageContent[] = [
       }
     ],
     relatedServices: ["api-development", "cloud-solutions", "erp-implementation", "data-engineering"],
-    pricing: {
-      starter: "₹1,50,000 - ₹5,00,000",
-      professional: "₹5,00,000 - ₹15,00,000",
-      enterprise: "Custom Quote"
-    },
-    deliveryTime: "4-16 weeks"
+    metrics: [
+      { value: 10, suffix: "+", label: "Expert Team", description: "Specialized Custom Software Integration professionals" },
+      { value: 65, suffix: "+", label: "Projects Delivered", description: "Successfully completed solutions" },
+      { value: 95, suffix: "%", label: "Client Satisfaction", description: "Exceptional quality standards" }
+    ]
   },
 
   // Enterprise Services
@@ -2222,12 +2222,11 @@ export const services: ServicePageContent[] = [
       }
     ],
     relatedServices: ["salesforce", "hubspot", "zoho", "marketing-automation"],
-    pricing: {
-      starter: "₹2,50,000 - ₹8,00,000",
-      professional: "₹8,00,000 - ₹25,00,000",
-      enterprise: "Custom Quote"
-    },
-    deliveryTime: "8-16 weeks"
+    metrics: [
+      { value: 14, suffix: "+", label: "Expert Team", description: "Specialized CRM Solutions professionals" },
+      { value: 64, suffix: "+", label: "Projects Delivered", description: "Successfully completed solutions" },
+      { value: 95, suffix: "%", label: "Client Satisfaction", description: "Exceptional quality standards" }
+    ]
   },
 
   // Cloud Solutions
@@ -2459,12 +2458,11 @@ export const services: ServicePageContent[] = [
       }
     ],
     relatedServices: ["devops", "infrastructure-management", "cybersecurity", "disaster-recovery"],
-    pricing: {
-      starter: "₹5,00,000 - ₹15,00,000",
-      professional: "₹15,00,000 - ₹50,00,000",
-      enterprise: "Custom Quote"
-    },
-    deliveryTime: "8-20 weeks"
+    metrics: [
+      { value: 10, suffix: "+", label: "Expert Team", description: "Specialized Cloud Solutions professionals" },
+      { value: 58, suffix: "+", label: "Projects Delivered", description: "Successfully completed solutions" },
+      { value: 95, suffix: "%", label: "Client Satisfaction", description: "Exceptional quality standards" }
+    ]
   },
 
   // IoT Solutions
@@ -2696,12 +2694,11 @@ export const services: ServicePageContent[] = [
       }
     ],
     relatedServices: ["cloud-solutions", "data-engineering", "ai-ml", "mobile-app-development"],
-    pricing: {
-      starter: "₹5,00,000 - ₹15,00,000",
-      professional: "₹15,00,000 - ₹50,00,000",
-      enterprise: "Custom Quote"
-    },
-    deliveryTime: "12-24 weeks"
+    metrics: [
+      { value: 14, suffix: "+", label: "Expert Team", description: "Specialized IoT Solutions professionals" },
+      { value: 67, suffix: "+", label: "Projects Delivered", description: "Successfully completed solutions" },
+      { value: 95, suffix: "%", label: "Client Satisfaction", description: "Exceptional quality standards" }
+    ]
   },
 
   // Data Engineering
@@ -2934,12 +2931,11 @@ export const services: ServicePageContent[] = [
       }
     ],
     relatedServices: ["ai-ml", "cloud-solutions", "business-intelligence", "big-data-analytics"],
-    pricing: {
-      starter: "₹8,00,000 - ₹20,00,000",
-      professional: "₹20,00,000 - ₹60,00,000",
-      enterprise: "Custom Quote"
-    },
-    deliveryTime: "12-24 weeks"
+    metrics: [
+      { value: 13, suffix: "+", label: "Expert Team", description: "Specialized Data Engineering professionals" },
+      { value: 72, suffix: "+", label: "Projects Delivered", description: "Successfully completed solutions" },
+      { value: 95, suffix: "%", label: "Client Satisfaction", description: "Exceptional quality standards" }
+    ]
   },
 
   // AI/ML
@@ -3171,12 +3167,11 @@ export const services: ServicePageContent[] = [
       }
     ],
     relatedServices: ["data-engineering", "big-data-analytics", "chatbot-development", "cloud-solutions"],
-    pricing: {
-      starter: "₹10,00,000 - ₹30,00,000",
-      professional: "₹30,00,000 - ₹80,00,000",
-      enterprise: "Custom Quote"
-    },
-    deliveryTime: "12-32 weeks"
+    metrics: [
+      { value: 16, suffix: "+", label: "Expert Team", description: "Specialized Predictive Analytics professionals" },
+      { value: 68, suffix: "+", label: "Projects Delivered", description: "Successfully completed solutions" },
+      { value: 95, suffix: "%", label: "Client Satisfaction", description: "Exceptional quality standards" }
+    ]
   },
 
   // Salesforce
@@ -3407,12 +3402,11 @@ export const services: ServicePageContent[] = [
       }
     ],
     relatedServices: ["crm-solutions", "marketing-automation", "cpq-solutions", "customer-service-solutions"],
-    pricing: {
-      starter: "₹3,50,000 - ₹10,00,000",
-      professional: "₹10,00,000 - ₹30,00,000",
-      enterprise: "Custom Quote"
-    },
-    deliveryTime: "8-20 weeks"
+    metrics: [
+      { value: 15, suffix: "+", label: "Expert Team", description: "Specialized Salesforce professionals" },
+      { value: 79, suffix: "+", label: "Projects Delivered", description: "Successfully completed solutions" },
+      { value: 95, suffix: "%", label: "Client Satisfaction", description: "Exceptional quality standards" }
+    ]
   },
 
   // HubSpot
@@ -3644,12 +3638,11 @@ export const services: ServicePageContent[] = [
       }
     ],
     relatedServices: ["crm-solutions", "marketing-automation", "email-marketing", "sales-enablement"],
-    pricing: {
-      starter: "₹2,00,000 - ₹6,00,000",
-      professional: "₹6,00,000 - ₹18,00,000",
-      enterprise: "Custom Quote"
-    },
-    deliveryTime: "6-14 weeks"
+    metrics: [
+      { value: 14, suffix: "+", label: "Expert Team", description: "Specialized HubSpot professionals" },
+      { value: 57, suffix: "+", label: "Projects Delivered", description: "Successfully completed solutions" },
+      { value: 95, suffix: "%", label: "Client Satisfaction", description: "Exceptional quality standards" }
+    ]
   },
 
   // Zoho
@@ -3879,12 +3872,11 @@ export const services: ServicePageContent[] = [
       }
     ],
     relatedServices: ["crm-solutions", "accounting-software", "project-management", "helpdesk-solutions"],
-    pricing: {
-      starter: "₹1,50,000 - ₹5,00,000",
-      professional: "₹5,00,000 - ₹15,00,000",
-      enterprise: "Custom Quote"
-    },
-    deliveryTime: "6-14 weeks"
+    metrics: [
+      { value: 14, suffix: "+", label: "Expert Team", description: "Specialized Zoho professionals" },
+      { value: 52, suffix: "+", label: "Projects Delivered", description: "Successfully completed solutions" },
+      { value: 95, suffix: "%", label: "Client Satisfaction", description: "Exceptional quality standards" }
+    ]
   },
 
   // ServiceNow
@@ -4115,12 +4107,11 @@ export const services: ServicePageContent[] = [
       }
     ],
     relatedServices: ["itsm-consulting", "itil-implementation", "workflow-automation", "enterprise-integration"],
-    pricing: {
-      starter: "₹15,00,000 - ₹35,00,000",
-      professional: "₹35,00,000 - ₹80,00,000",
-      enterprise: "Custom Quote"
-    },
-    deliveryTime: "12-24 weeks"
+    metrics: [
+      { value: 13, suffix: "+", label: "Expert Team", description: "Specialized ServiceNow professionals" },
+      { value: 74, suffix: "+", label: "Projects Delivered", description: "Successfully completed solutions" },
+      { value: 95, suffix: "%", label: "Client Satisfaction", description: "Exceptional quality standards" }
+    ]
   },
 
   // MS Dynamics
@@ -4352,12 +4343,2840 @@ export const services: ServicePageContent[] = [
       }
     ],
     relatedServices: ["power-platform", "azure-services", "office-365", "erp-implementation"],
-    pricing: {
-      starter: "₹12,00,000 - ₹30,00,000",
-      professional: "₹30,00,000 - ₹75,00,000",
-      enterprise: "Custom Quote"
+    metrics: [
+      { value: 12, suffix: "+", label: "Expert Team", description: "Specialized MS Dynamics professionals" },
+      { value: 77, suffix: "+", label: "Projects Delivered", description: "Successfully completed solutions" },
+      { value: 95, suffix: "%", label: "Client Satisfaction", description: "Exceptional quality standards" }
+    ]
+  },
+
+  // Hosting
+  {
+    id: "19",
+    slug: "hosting",
+    name: "Hosting",
+    category: "Infrastructure Services",
+    hero: {
+      title: "Reliable Web & Application Hosting",
+      description: "Enterprise-grade hosting solutions with 99.9% uptime guarantee. Fast, secure, and scalable hosting for websites, applications, and databases.",
+      ctaText: "Get Hosting Solution",
+      image: "/services/hosting.jpg"
     },
-    deliveryTime: "12-28 weeks"
+    overview: "Your digital presence needs a solid foundation. Arka Infotech provides enterprise-grade hosting solutions that ensure your websites and applications are always available, fast, and secure. From shared hosting for small websites to dedicated servers and cloud hosting for enterprise applications, we offer hosting infrastructure tailored to your performance, security, and budget requirements. Our hosting services include 24/7 monitoring, automatic backups, DDoS protection, and expert technical support.",
+    subServices: [
+      {
+        name: "Shared Hosting",
+        description: "Cost-effective hosting for small websites and blogs with cPanel management",
+        icon: "Server"
+      },
+      {
+        name: "VPS Hosting",
+        description: "Virtual private servers with dedicated resources and root access",
+        icon: "Box"
+      },
+      {
+        name: "Dedicated Servers",
+        description: "Powerful dedicated servers for high-traffic websites and applications",
+        icon: "HardDrive"
+      },
+      {
+        name: "Cloud Hosting",
+        description: "Scalable cloud infrastructure on AWS, Azure, or Google Cloud",
+        icon: "Cloud"
+      },
+      {
+        name: "Managed WordPress Hosting",
+        description: "Optimized hosting specifically designed for WordPress websites",
+        icon: "Wordpress"
+      }
+    ],
+    technologies: [
+      {
+        category: "Control Panels",
+        items: [
+          { name: "cPanel", icon: "SiCpanel", color: "#FF6C2C" },
+          { name: "Plesk", icon: "SiPlesk", color: "#52BBE6" },
+          { name: "WHM", icon: "SiCpanel", color: "#FF6C2C" }
+        ]
+      },
+      {
+        category: "Web Servers",
+        items: [
+          { name: "Apache", icon: "SiApache", color: "#D22128" },
+          { name: "Nginx", icon: "SiNginx", color: "#009639" },
+          { name: "LiteSpeed", icon: "SiLitespeed", color: "#4B4B4B" }
+        ]
+      },
+      {
+        category: "Cloud Platforms",
+        items: [
+          { name: "AWS", icon: "SiAmazonaws", color: "#FF9900" },
+          { name: "DigitalOcean", icon: "SiDigitalocean", color: "#0080FF" },
+          { name: "Linode", icon: "SiLinode", color: "#00A95C" },
+          { name: "Vultr", icon: "SiVultr", color: "#007BFC" }
+        ]
+      },
+      {
+        category: "Tools",
+        items: [
+          { name: "CloudFlare", icon: "SiCloudflare", color: "#F38020" },
+          { name: "Let's Encrypt", icon: "SiLetsencrypt", color: "#003A70" },
+          { name: "Linux", icon: "SiLinux", color: "#FCC624" }
+        ]
+      }
+    ],
+    process: [
+      {
+        phase: "Requirements Analysis",
+        steps: [
+          "Assess website/application hosting needs",
+          "Estimate traffic and resource requirements",
+          "Define performance and uptime requirements",
+          "Identify security and compliance needs",
+          "Recommend appropriate hosting solution"
+        ]
+      },
+      {
+        phase: "Server Setup",
+        steps: [
+          "Provision server infrastructure",
+          "Configure operating system and security",
+          "Install and configure web server",
+          "Set up database servers",
+          "Configure SSL certificates"
+        ]
+      },
+      {
+        phase: "Migration & Deployment",
+        steps: [
+          "Backup existing website/application data",
+          "Migrate files and databases",
+          "Configure DNS and domain settings",
+          "Test website functionality",
+          "Go live with minimal downtime"
+        ]
+      },
+      {
+        phase: "Optimization",
+        steps: [
+          "Configure caching mechanisms",
+          "Optimize server performance",
+          "Set up CDN if required",
+          "Implement security hardening",
+          "Configure automated backups"
+        ]
+      },
+      {
+        phase: "Monitoring & Support",
+        steps: [
+          "24/7 server monitoring",
+          "Proactive issue detection",
+          "Regular security updates",
+          "Performance optimization",
+          "Technical support"
+        ]
+      }
+    ],
+    features: [
+      "99.9% Uptime Guarantee",
+      "SSD Storage",
+      "Free SSL Certificates",
+      "DDoS Protection",
+      "Daily Automated Backups",
+      "24/7 Server Monitoring",
+      "cPanel/Plesk Control Panel",
+      "One-Click App Installer",
+      "Email Hosting",
+      "Database Support (MySQL, PostgreSQL)",
+      "CDN Integration",
+      "Staging Environment",
+      "Git Integration",
+      "Technical Support 24/7"
+    ],
+    benefits: [
+      {
+        title: "Maximum Uptime",
+        description: "99.9% uptime SLA ensures your website is always accessible to customers"
+      },
+      {
+        title: "Lightning Fast",
+        description: "SSD storage, caching, and CDN deliver exceptional page load speeds"
+      },
+      {
+        title: "Enterprise Security",
+        description: "Multiple security layers protect against threats and attacks"
+      },
+      {
+        title: "Scalable Resources",
+        description: "Easily upgrade resources as your traffic and needs grow"
+      },
+      {
+        title: "Expert Support",
+        description: "24/7 technical support from experienced hosting professionals"
+      },
+      {
+        title: "Automated Backups",
+        description: "Daily backups ensure you never lose critical data"
+      }
+    ],
+    industries: [
+      {
+        name: "E-commerce",
+        useCases: ["Online stores", "Product catalogs", "Payment processing", "High-traffic sites"]
+      },
+      {
+        name: "Media & Publishing",
+        useCases: ["News websites", "Blogs", "Content platforms", "Video streaming"]
+      },
+      {
+        name: "SaaS Companies",
+        useCases: ["Web applications", "API hosting", "Database hosting", "Microservices"]
+      },
+      {
+        name: "Corporate",
+        useCases: ["Company websites", "Client portals", "Intranets", "Business applications"]
+      },
+      {
+        name: "Education",
+        useCases: ["E-learning platforms", "School websites", "Student portals", "LMS hosting"]
+      }
+    ],
+    testimonials: [
+      {
+        quote: "Our website loads 3x faster since moving to Arka Infotech's hosting. Zero downtime in 18 months. Excellent service!",
+        author: "Ankit Sharma",
+        company: "FastCommerce India",
+        rating: 5
+      },
+      {
+        quote: "The managed hosting takes all the technical headaches away. We focus on business while they handle everything server-related.",
+        author: "Priya Menon",
+        company: "ContentHub Media",
+        rating: 5
+      }
+    ],
+    faq: [
+      {
+        question: "Which hosting type should I choose?",
+        answer: "Shared hosting for small websites, VPS for growing businesses needing more control, Dedicated for high-traffic sites, and Cloud hosting for scalability. We'll recommend based on your traffic, budget, and technical requirements."
+      },
+      {
+        question: "Do you provide website migration?",
+        answer: "Yes! We handle complete website migration from your current host with minimal to zero downtime. We migrate all files, databases, emails, and ensure everything works perfectly."
+      },
+      {
+        question: "What about backups and security?",
+        answer: "We provide daily automated backups with 30-day retention, free SSL certificates, DDoS protection, firewall, malware scanning, and regular security updates to keep your site secure."
+      },
+      {
+        question: "Is technical support included?",
+        answer: "Yes! All hosting plans include 24/7 technical support via email, chat, and phone. Our expert team helps with server issues, configuration, and optimization."
+      },
+      {
+        question: "Can I upgrade my hosting plan later?",
+        answer: "Absolutely! You can upgrade from shared to VPS or dedicated servers anytime. We handle the migration seamlessly without downtime."
+      }
+    ],
+    relatedServices: ["server-support", "cloud-solutions", "website-development", "devops"],
+    metrics: [
+      { value: 11, suffix: "+", label: "Expert Team", description: "Specialized Hosting professionals" },
+      { value: 54, suffix: "+", label: "Projects Delivered", description: "Successfully completed solutions" },
+      { value: 95, suffix: "%", label: "Client Satisfaction", description: "Exceptional quality standards" }
+    ]
+  },
+
+  // Server Support
+  {
+    id: "20",
+    slug: "server-support",
+    name: "Server Support",
+    category: "Support Services",
+    hero: {
+      title: "24/7 Server Management & Support",
+      description: "Proactive server management, monitoring, and maintenance. Keep your servers running smoothly with expert support and regular maintenance.",
+      ctaText: "Get Server Support",
+      image: "/services/server-support.jpg"
+    },
+    overview: "Server downtime costs businesses thousands per hour. Arka Infotech's server support services ensure your infrastructure runs smoothly 24/7. Our certified system administrators proactively monitor, maintain, and optimize your Linux and Windows servers, handling everything from security patches to performance tuning. Whether you have on-premise servers or cloud infrastructure, we provide the expertise to keep your critical systems operational, secure, and performing at peak efficiency.",
+    subServices: [
+      {
+        name: "Server Monitoring",
+        description: "24/7 real-time monitoring of server health, performance, and security",
+        icon: "Activity"
+      },
+      {
+        name: "Linux Server Administration",
+        description: "Expert management of Ubuntu, CentOS, RHEL, and other Linux distributions",
+        icon: "Terminal"
+      },
+      {
+        name: "Windows Server Management",
+        description: "Administration and support for Windows Server environments",
+        icon: "Monitor"
+      },
+      {
+        name: "Server Security",
+        description: "Security hardening, patch management, and vulnerability assessments",
+        icon: "Shield"
+      },
+      {
+        name: "Performance Optimization",
+        description: "Server tuning, resource optimization, and capacity planning",
+        icon: "Gauge"
+      }
+    ],
+    technologies: [
+      {
+        category: "Operating Systems",
+        items: [
+          { name: "Ubuntu", icon: "SiUbuntu", color: "#E95420" },
+          { name: "CentOS", icon: "SiCentos", color: "#262577" },
+          { name: "Red Hat", icon: "SiRedhat", color: "#EE0000" },
+          { name: "Windows Server", icon: "SiWindows", color: "#0078D6" }
+        ]
+      },
+      {
+        category: "Monitoring Tools",
+        items: [
+          { name: "Nagios", icon: "SiNagios", color: "#000000" },
+          { name: "Zabbix", icon: "SiZabbix", color: "#D40000" },
+          { name: "Prometheus", icon: "SiPrometheus", color: "#E6522C" },
+          { name: "Grafana", icon: "SiGrafana", color: "#F46800" }
+        ]
+      },
+      {
+        category: "Configuration",
+        items: [
+          { name: "Ansible", icon: "SiAnsible", color: "#EE0000" },
+          { name: "Puppet", icon: "SiPuppet", color: "#FFAE1A" },
+          { name: "Chef", icon: "SiChef", color: "#F09820" }
+        ]
+      },
+      {
+        category: "Security",
+        items: [
+          { name: "Fail2ban", icon: "SiLinux", color: "#FCC624" },
+          { name: "UFW", icon: "SiLinux", color: "#FCC624" },
+          { name: "ClamAV", icon: "SiLinux", color: "#FCC624" }
+        ]
+      }
+    ],
+    process: [
+      {
+        phase: "Server Assessment",
+        steps: [
+          "Audit current server infrastructure",
+          "Identify performance bottlenecks",
+          "Assess security vulnerabilities",
+          "Review backup and recovery procedures",
+          "Create support and maintenance plan"
+        ]
+      },
+      {
+        phase: "Onboarding",
+        steps: [
+          "Set up monitoring and alerting",
+          "Configure remote access and tools",
+          "Document server configurations",
+          "Establish communication protocols",
+          "Create incident response procedures"
+        ]
+      },
+      {
+        phase: "Proactive Monitoring",
+        steps: [
+          "24/7 real-time server monitoring",
+          "Performance metrics tracking",
+          "Log analysis and alerts",
+          "Security event monitoring",
+          "Resource utilization tracking"
+        ]
+      },
+      {
+        phase: "Regular Maintenance",
+        steps: [
+          "Apply security patches and updates",
+          "Optimize server performance",
+          "Clean up disk space and logs",
+          "Review and update configurations",
+          "Test backup and recovery procedures"
+        ]
+      },
+      {
+        phase: "Incident Response",
+        steps: [
+          "Immediate response to alerts",
+          "Troubleshoot and resolve issues",
+          "Root cause analysis",
+          "Implement preventive measures",
+          "Incident documentation and reporting"
+        ]
+      }
+    ],
+    features: [
+      "24/7 Server Monitoring",
+      "Proactive Issue Detection",
+      "Security Patch Management",
+      "Performance Optimization",
+      "Backup Management",
+      "Disaster Recovery Support",
+      "Server Configuration Management",
+      "Log Analysis",
+      "Resource Monitoring (CPU, RAM, Disk)",
+      "Network Monitoring",
+      "Application Monitoring",
+      "Database Management",
+      "Incident Response",
+      "Monthly Reports"
+    ],
+    benefits: [
+      {
+        title: "Zero Downtime",
+        description: "Proactive monitoring prevents issues before they cause downtime"
+      },
+      {
+        title: "Expert Team",
+        description: "Certified system administrators available 24/7 for any server issue"
+      },
+      {
+        title: "Cost Effective",
+        description: "Fraction of the cost of hiring full-time system administrators"
+      },
+      {
+        title: "Enhanced Security",
+        description: "Regular security updates and monitoring protect against threats"
+      },
+      {
+        title: "Peace of Mind",
+        description: "Focus on business while experts handle your server infrastructure"
+      },
+      {
+        title: "Optimized Performance",
+        description: "Regular tuning ensures servers run at peak efficiency"
+      }
+    ],
+    industries: [
+      {
+        name: "E-commerce",
+        useCases: ["Web server support", "Database optimization", "Payment server management", "High availability"]
+      },
+      {
+        name: "SaaS Companies",
+        useCases: ["Application servers", "API servers", "Database management", "Scaling support"]
+      },
+      {
+        name: "Financial Services",
+        useCases: ["Secure server management", "Compliance monitoring", "Critical systems support", "Backup management"]
+      },
+      {
+        name: "Healthcare",
+        useCases: ["HIPAA-compliant servers", "Patient data security", "Application servers", "Backup systems"]
+      },
+      {
+        name: "Enterprise",
+        useCases: ["Corporate servers", "Email servers", "File servers", "Application infrastructure"]
+      }
+    ],
+    testimonials: [
+      {
+        quote: "Since partnering with Arka Infotech for server support, we've had zero unplanned downtime. Their proactive approach catches issues before they become problems.",
+        author: "Vivek Rastogi",
+        company: "CloudApps Technologies",
+        rating: 5
+      },
+      {
+        quote: "The monthly reports give us great visibility into our infrastructure. Response time is excellent - usually resolve issues within minutes.",
+        author: "Sunita Iyer",
+        company: "FinTech Solutions India",
+        rating: 5
+      }
+    ],
+    faq: [
+      {
+        question: "What type of servers do you support?",
+        answer: "We support Linux (Ubuntu, CentOS, RHEL, Debian) and Windows Server, both physical and virtual servers, on-premise and cloud infrastructure (AWS, Azure, Google Cloud, DigitalOcean)."
+      },
+      {
+        question: "How quickly do you respond to issues?",
+        answer: "Critical issues receive immediate response (within 15 minutes). High priority issues within 1 hour, normal issues within 4 hours. We provide 24/7 emergency support."
+      },
+      {
+        question: "Do you provide backup management?",
+        answer: "Yes! We configure, monitor, and test automated backups, maintain backup schedules, and ensure backup integrity. We also assist with disaster recovery procedures."
+      },
+      {
+        question: "What's included in monthly reporting?",
+        answer: "Monthly reports include uptime statistics, performance metrics, security incidents, patch updates applied, backup status, resource utilization trends, and recommendations for optimization."
+      },
+      {
+        question: "Can you manage our cloud servers?",
+        answer: "Absolutely! We manage servers on AWS, Azure, Google Cloud, DigitalOcean, Linode, and other cloud platforms, including cloud-specific optimizations and cost management."
+      }
+    ],
+    relatedServices: ["hosting", "devops", "cloud-solutions", "it-support-services"],
+    metrics: [
+      { value: 16, suffix: "+", label: "Expert Team", description: "Specialized Server Support professionals" },
+      { value: 50, suffix: "+", label: "Projects Delivered", description: "Successfully completed solutions" },
+      { value: 95, suffix: "%", label: "Client Satisfaction", description: "Exceptional quality standards" }
+    ]
+  },
+
+  // Development Support
+  {
+    id: "21",
+    slug: "development-support",
+    name: "Development Support",
+    category: "Support Services",
+    hero: {
+      title: "Ongoing Development & Technical Support",
+      description: "Continuous development support for your applications. Bug fixes, feature enhancements, and technical maintenance to keep your software current and competitive.",
+      ctaText: "Get Development Support",
+      image: "/services/development-support.jpg"
+    },
+    overview: "Software is never truly finished—it needs continuous improvement, bug fixes, and updates. Arka Infotech's development support services provide ongoing technical assistance for your web applications, mobile apps, and software systems. Our dedicated development teams handle bug fixes, feature enhancements, security updates, and performance optimizations, allowing you to focus on business growth while we ensure your software stays current, secure, and competitive.",
+    subServices: [
+      {
+        name: "Bug Fixes & Maintenance",
+        description: "Quick resolution of bugs, errors, and issues in your applications",
+        icon: "Bug"
+      },
+      {
+        name: "Feature Enhancements",
+        description: "Add new features and improve existing functionality",
+        icon: "Sparkles"
+      },
+      {
+        name: "Security Updates",
+        description: "Regular security patches and vulnerability fixes",
+        icon: "Shield"
+      },
+      {
+        name: "Performance Optimization",
+        description: "Improve application speed, efficiency, and scalability",
+        icon: "Zap"
+      },
+      {
+        name: "Technical Consultation",
+        description: "Expert advice on architecture, technology choices, and best practices",
+        icon: "Lightbulb"
+      }
+    ],
+    technologies: [
+      {
+        category: "Frontend",
+        items: [
+          { name: "React", icon: "SiReact", color: "#61DAFB" },
+          { name: "Vue.js", icon: "SiVuedotjs", color: "#4FC08D" },
+          { name: "Angular", icon: "SiAngular", color: "#DD0031" },
+          { name: "Next.js", icon: "SiNextdotjs", color: "#000000" }
+        ]
+      },
+      {
+        category: "Backend",
+        items: [
+          { name: "Node.js", icon: "SiNodedotjs", color: "#339933" },
+          { name: "Python", icon: "SiPython", color: "#3776AB" },
+          { name: "PHP", icon: "SiPhp", color: "#777BB4" },
+          { name: "Java", icon: "SiOpenjdk", color: "#007396" }
+        ]
+      },
+      {
+        category: "Mobile",
+        items: [
+          { name: "React Native", icon: "SiReact", color: "#61DAFB" },
+          { name: "Flutter", icon: "SiFlutter", color: "#02569B" },
+          { name: "iOS", icon: "SiApple", color: "#000000" },
+          { name: "Android", icon: "SiAndroid", color: "#3DDC84" }
+        ]
+      },
+      {
+        category: "Tools",
+        items: [
+          { name: "Git", icon: "SiGit", color: "#F05032" },
+          { name: "Jira", icon: "SiJira", color: "#0052CC" },
+          { name: "Slack", icon: "SiSlack", color: "#4A154B" },
+          { name: "GitHub", icon: "SiGithub", color: "#181717" }
+        ]
+      }
+    ],
+    process: [
+      {
+        phase: "Onboarding",
+        steps: [
+          "Code repository access and review",
+          "Understand application architecture",
+          "Set up development environment",
+          "Establish communication channels",
+          "Define support SLAs and priorities"
+        ]
+      },
+      {
+        phase: "Support Ticket Management",
+        steps: [
+          "Receive and categorize support requests",
+          "Prioritize based on severity and impact",
+          "Assign to appropriate developers",
+          "Track progress and updates",
+          "Client communication and updates"
+        ]
+      },
+      {
+        phase: "Development & Testing",
+        steps: [
+          "Analyze and reproduce issues",
+          "Develop fixes or enhancements",
+          "Write/update unit tests",
+          "Code review and quality assurance",
+          "Testing in staging environment"
+        ]
+      },
+      {
+        phase: "Deployment",
+        steps: [
+          "Coordinate deployment timing",
+          "Deploy to production environment",
+          "Post-deployment verification",
+          "Monitor for any issues",
+          "Update documentation"
+        ]
+      },
+      {
+        phase: "Continuous Improvement",
+        steps: [
+          "Performance monitoring",
+          "Security vulnerability scanning",
+          "Proactive optimization suggestions",
+          "Technology upgrade recommendations",
+          "Monthly progress reports"
+        ]
+      }
+    ],
+    features: [
+      "Bug Fixing & Troubleshooting",
+      "Feature Development",
+      "Security Patch Management",
+      "Performance Optimization",
+      "Code Refactoring",
+      "Database Optimization",
+      "API Development & Updates",
+      "Third-Party Integration",
+      "Mobile App Updates",
+      "Testing & QA",
+      "Documentation Updates",
+      "Technology Upgrades",
+      "Priority Support",
+      "Monthly Reports"
+    ],
+    benefits: [
+      {
+        title: "Always Current",
+        description: "Keep your application updated with latest features and security patches"
+      },
+      {
+        title: "Cost Effective",
+        description: "More affordable than maintaining an in-house development team"
+      },
+      {
+        title: "Quick Turnaround",
+        description: "Fast response times and quick bug fixes minimize business impact"
+      },
+      {
+        title: "Expert Team",
+        description: "Access to experienced developers across multiple technologies"
+      },
+      {
+        title: "Scalable Support",
+        description: "Increase or decrease support hours based on your needs"
+      },
+      {
+        title: "Peace of Mind",
+        description: "Focus on business while experts handle technical issues"
+      }
+    ],
+    industries: [
+      {
+        name: "SaaS Companies",
+        useCases: ["Application maintenance", "Feature development", "Bug fixes", "Performance optimization"]
+      },
+      {
+        name: "E-commerce",
+        useCases: ["Platform updates", "Payment integration", "Feature enhancements", "Security patches"]
+      },
+      {
+        name: "Startups",
+        useCases: ["MVP support", "Rapid iterations", "Feature additions", "Technical debt management"]
+      },
+      {
+        name: "Enterprise",
+        useCases: ["Legacy application support", "System maintenance", "Integration support", "Modernization"]
+      },
+      {
+        name: "Digital Agencies",
+        useCases: ["Client project support", "Website maintenance", "Application updates", "Emergency fixes"]
+      }
+    ],
+    testimonials: [
+      {
+        quote: "Having Arka Infotech as our development support partner has been game-changing. They fix bugs within hours and add features faster than expected.",
+        author: "Rohit Malhotra",
+        company: "AppVentures India",
+        rating: 5
+      },
+      {
+        quote: "Their team feels like an extension of ours. Communication is excellent and they understand our codebase better than some of our previous in-house developers.",
+        author: "Divya Krishnan",
+        company: "TechStartup Solutions",
+        rating: 5
+      }
+    ],
+    faq: [
+      {
+        question: "What technologies do you support?",
+        answer: "We support all major web and mobile technologies including React, Vue, Angular, Node.js, Python, PHP, React Native, Flutter, iOS, and Android. If you have a different stack, contact us to discuss."
+      },
+      {
+        question: "How do we submit support requests?",
+        answer: "You can submit requests via email, our ticketing system, Slack, or Jira. We provide multiple channels for your convenience and all requests are tracked systematically."
+      },
+      {
+        question: "What are your response times?",
+        answer: "Critical issues: 2 hours, High priority: 8 hours, Medium: 24 hours, Low priority: 48 hours. We also offer SLA-based support with faster guaranteed response times."
+      },
+      {
+        question: "Can you work with our existing codebase?",
+        answer: "Absolutely! We specialize in taking over and maintaining existing applications. We quickly understand your codebase and get productive within days."
+      },
+      {
+        question: "How is billing structured?",
+        answer: "We offer retainer-based monthly packages (e.g., 40, 80, 160 hours/month) or hourly billing. Retainers offer better rates and priority support. Unused hours can roll over."
+      }
+    ],
+    relatedServices: ["website-development", "mobile-app-development", "it-support-services", "staff-augmentation"],
+    metrics: [
+      { value: 15, suffix: "+", label: "Expert Team", description: "Specialized Development Support professionals" },
+      { value: 78, suffix: "+", label: "Projects Delivered", description: "Successfully completed solutions" },
+      { value: 95, suffix: "%", label: "Client Satisfaction", description: "Exceptional quality standards" }
+    ]
+  },
+
+  // Staff Augmentation
+  {
+    id: "22",
+    slug: "staff-augmentation",
+    name: "Staff Augmentation",
+    category: "Professional Services",
+    hero: {
+      title: "IT Staff Augmentation Services",
+      description: "Scale your development team quickly with skilled IT professionals. Access top talent without long-term commitments or hiring overhead.",
+      ctaText: "Hire Talent",
+      image: "/services/staff-augmentation.jpg"
+    },
+    overview: "Finding and hiring skilled IT professionals is challenging and time-consuming. Arka Infotech's staff augmentation services provide pre-vetted, experienced developers, designers, QA engineers, and IT professionals who integrate seamlessly with your existing team. Whether you need to scale up for a project, fill skill gaps, or access specialized expertise, we provide flexible staffing solutions that let you hire talent quickly without long-term commitments or recruitment overhead.",
+    subServices: [
+      {
+        name: "Software Developers",
+        description: "Frontend, backend, and full-stack developers across all major technologies",
+        icon: "Code"
+      },
+      {
+        name: "Mobile Developers",
+        description: "iOS, Android, React Native, and Flutter developers",
+        icon: "Smartphone"
+      },
+      {
+        name: "UI/UX Designers",
+        description: "Product designers, UI designers, and UX researchers",
+        icon: "Palette"
+      },
+      {
+        name: "QA Engineers",
+        description: "Manual and automation testing professionals",
+        icon: "CheckCircle"
+      },
+      {
+        name: "DevOps Engineers",
+        description: "Infrastructure, CI/CD, and cloud specialists",
+        icon: "Settings"
+      }
+    ],
+    technologies: [
+      {
+        category: "Frontend Development",
+        items: [
+          { name: "React", icon: "SiReact", color: "#61DAFB" },
+          { name: "Vue.js", icon: "SiVuedotjs", color: "#4FC08D" },
+          { name: "Angular", icon: "SiAngular", color: "#DD0031" },
+          { name: "TypeScript", icon: "SiTypescript", color: "#3178C6" }
+        ]
+      },
+      {
+        category: "Backend Development",
+        items: [
+          { name: "Node.js", icon: "SiNodedotjs", color: "#339933" },
+          { name: "Python", icon: "SiPython", color: "#3776AB" },
+          { name: "Java", icon: "SiOpenjdk", color: "#007396" },
+          { name: ".NET", icon: "SiDotnet", color: "#512BD4" }
+        ]
+      },
+      {
+        category: "Mobile Development",
+        items: [
+          { name: "React Native", icon: "SiReact", color: "#61DAFB" },
+          { name: "Flutter", icon: "SiFlutter", color: "#02569B" },
+          { name: "Swift", icon: "SiSwift", color: "#F05138" },
+          { name: "Kotlin", icon: "SiKotlin", color: "#7F52FF" }
+        ]
+      },
+      {
+        category: "Specialized Skills",
+        items: [
+          { name: "AWS", icon: "SiAmazonaws", color: "#FF9900" },
+          { name: "Docker", icon: "SiDocker", color: "#2496ED" },
+          { name: "Kubernetes", icon: "SiKubernetes", color: "#326CE5" },
+          { name: "Selenium", icon: "SiSelenium", color: "#43B02A" }
+        ]
+      }
+    ],
+    process: [
+      {
+        phase: "Requirements Gathering",
+        steps: [
+          "Understand skill requirements and experience level",
+          "Define project scope and duration",
+          "Clarify team structure and reporting",
+          "Discuss budget and timelines",
+          "Identify cultural fit requirements"
+        ]
+      },
+      {
+        phase: "Talent Selection",
+        steps: [
+          "Search our pre-vetted talent pool",
+          "Shortlist candidates matching requirements",
+          "Share profiles and resumes",
+          "Arrange interviews with shortlisted candidates",
+          "Technical assessment if required"
+        ]
+      },
+      {
+        phase: "Onboarding",
+        steps: [
+          "Contract and paperwork completion",
+          "Set up communication channels",
+          "Grant access to tools and systems",
+          "Knowledge transfer and orientation",
+          "Integration with your team"
+        ]
+      },
+      {
+        phase: "Engagement Management",
+        steps: [
+          "Regular performance monitoring",
+          "Facilitate team communication",
+          "Address any issues promptly",
+          "Weekly/monthly status updates",
+          "Ensure deliverable quality"
+        ]
+      },
+      {
+        phase: "Scaling & Flexibility",
+        steps: [
+          "Scale team up or down as needed",
+          "Replace resources if required",
+          "Extend or conclude engagement",
+          "Knowledge transfer at end",
+          "Smooth transition"
+        ]
+      }
+    ],
+    features: [
+      "Pre-Vetted Professionals",
+      "Flexible Engagement Models",
+      "Quick Onboarding (1-2 weeks)",
+      "Dedicated Resources",
+      "Direct Team Integration",
+      "Time Zone Compatibility",
+      "English Proficiency",
+      "No Long-Term Commitments",
+      "Replace if Not Satisfied",
+      "Agile Methodology",
+      "Daily/Weekly Reporting",
+      "Project Management Support",
+      "NDA & IP Protection",
+      "Cost Effective"
+    ],
+    benefits: [
+      {
+        title: "Faster Hiring",
+        description: "Access talent in 1-2 weeks vs 2-3 months traditional hiring"
+      },
+      {
+        title: "Cost Savings",
+        description: "Save 40-60% compared to hiring full-time in-house staff"
+      },
+      {
+        title: "Flexibility",
+        description: "Scale team size up or down based on project needs"
+      },
+      {
+        title: "No Overhead",
+        description: "No benefits, office space, or equipment costs"
+      },
+      {
+        title: "Specialized Expertise",
+        description: "Access niche skills and expertise not available locally"
+      },
+      {
+        title: "Risk Mitigation",
+        description: "Try before committing to full-time hires"
+      }
+    ],
+    industries: [
+      {
+        name: "Startups",
+        useCases: ["MVP development", "Rapid scaling", "Fill skill gaps", "Product development"]
+      },
+      {
+        name: "Software Companies",
+        useCases: ["Project-based scaling", "Specialized skills", "Peak load management", "Distributed teams"]
+      },
+      {
+        name: "Enterprises",
+        useCases: ["Digital transformation", "Legacy modernization", "Innovation projects", "Resource gaps"]
+      },
+      {
+        name: "Digital Agencies",
+        useCases: ["Project overflow", "Specialized expertise", "Skill augmentation", "Multi-project support"]
+      },
+      {
+        name: "Product Companies",
+        useCases: ["Feature development", "Maintenance teams", "QA support", "DevOps support"]
+      }
+    ],
+    testimonials: [
+      {
+        quote: "We scaled our team from 5 to 15 developers in just 3 weeks. The quality of talent is excellent and they integrate seamlessly with our team.",
+        author: "Arun Khanna",
+        company: "StartupTech Ventures",
+        rating: 5
+      },
+      {
+        quote: "Staff augmentation saved us months of hiring time. The developers are skilled, professional, and productive from day one.",
+        author: "Nisha Agarwal",
+        company: "InnovateSoft Solutions",
+        rating: 5
+      }
+    ],
+    faq: [
+      {
+        question: "How quickly can we onboard developers?",
+        answer: "We can provide shortlisted candidates within 3-5 days and complete onboarding within 1-2 weeks, including setup, access, and knowledge transfer."
+      },
+      {
+        question: "What if the developer doesn't work out?",
+        answer: "We offer a replacement guarantee. If you're not satisfied within the first 2 weeks, we'll provide a replacement at no additional cost."
+      },
+      {
+        question: "How do you ensure quality of developers?",
+        answer: "All our developers go through rigorous vetting including technical assessments, coding tests, English proficiency tests, and background verification before joining our talent pool."
+      },
+      {
+        question: "What engagement models do you offer?",
+        answer: "We offer full-time (160 hrs/month), part-time (80 hrs/month), and hourly engagements. Minimum engagement is typically 1 month with flexibility to extend or scale."
+      },
+      {
+        question: "Who manages the augmented staff?",
+        answer: "Developers work as part of your team and report directly to your project managers. We provide administrative support and can offer project management services if needed."
+      }
+    ],
+    relatedServices: ["software-development", "mobile-app-development", "development-support", "it-support-services"],
+    metrics: [
+      { value: 12, suffix: "+", label: "Expert Team", description: "Specialized Staff Augmentation professionals" },
+      { value: 79, suffix: "+", label: "Projects Delivered", description: "Successfully completed solutions" },
+      { value: 95, suffix: "%", label: "Client Satisfaction", description: "Exceptional quality standards" }
+    ]
+  },
+
+  // Digital Fulfilment
+  {
+    id: "23",
+    slug: "digital-fulfilment",
+    name: "Digital Fulfilment",
+    category: "Enterprise Services",
+    hero: {
+      title: "Complete Digital Fulfilment Services",
+      description: "End-to-end digital project execution from concept to delivery. We handle design, development, testing, and deployment of your digital initiatives.",
+      ctaText: "Start Your Project",
+      image: "/services/digital-fulfilment.jpg"
+    },
+    overview: "Digital projects require coordinated expertise across multiple disciplines. Arka Infotech's digital fulfilment services provide complete project execution covering strategy, design, development, testing, and deployment. We act as your extended digital team, taking ownership of entire projects or specific deliverables. From websites and mobile apps to complex digital platforms, we deliver high-quality digital solutions on time and within budget, allowing you to focus on your core business.",
+    subServices: [
+      {
+        name: "Web Project Fulfilment",
+        description: "Complete website design, development, and deployment",
+        icon: "Globe"
+      },
+      {
+        name: "Mobile App Fulfilment",
+        description: "End-to-end mobile app development from design to app store",
+        icon: "Smartphone"
+      },
+      {
+        name: "Digital Marketing Execution",
+        description: "Campaign creation, execution, and optimization",
+        icon: "Megaphone"
+      },
+      {
+        name: "E-commerce Setup",
+        description: "Complete e-commerce store setup and configuration",
+        icon: "ShoppingCart"
+      },
+      {
+        name: "Digital Transformation",
+        description: "Full digital transformation project management and execution",
+        icon: "Zap"
+      }
+    ],
+    technologies: [
+      {
+        category: "Web Technologies",
+        items: [
+          { name: "React", icon: "SiReact", color: "#61DAFB" },
+          { name: "Next.js", icon: "SiNextdotjs", color: "#000000" },
+          { name: "WordPress", icon: "SiWordpress", color: "#21759B" },
+          { name: "Shopify", icon: "SiShopify", color: "#7AB55C" }
+        ]
+      },
+      {
+        category: "Mobile",
+        items: [
+          { name: "React Native", icon: "SiReact", color: "#61DAFB" },
+          { name: "Flutter", icon: "SiFlutter", color: "#02569B" },
+          { name: "iOS", icon: "SiApple", color: "#000000" },
+          { name: "Android", icon: "SiAndroid", color: "#3DDC84" }
+        ]
+      },
+      {
+        category: "Design",
+        items: [
+          { name: "Figma", icon: "SiFigma", color: "#F24E1E" },
+          { name: "Adobe XD", icon: "SiAdobexd", color: "#FF61F6" },
+          { name: "Sketch", icon: "SiSketch", color: "#F7B500" }
+        ]
+      },
+      {
+        category: "Project Management",
+        items: [
+          { name: "Jira", icon: "SiJira", color: "#0052CC" },
+          { name: "Asana", icon: "SiAsana", color: "#F06A6A" },
+          { name: "Trello", icon: "SiTrello", color: "#0052CC" },
+          { name: "Slack", icon: "SiSlack", color: "#4A154B" }
+        ]
+      }
+    ],
+    process: [
+      {
+        phase: "Discovery & Planning",
+        steps: [
+          "Understand business objectives and requirements",
+          "Define project scope and deliverables",
+          "Create detailed project plan and timeline",
+          "Assemble project team",
+          "Establish communication and reporting"
+        ]
+      },
+      {
+        phase: "Design & Prototyping",
+        steps: [
+          "User research and personas",
+          "Information architecture",
+          "Wireframes and prototypes",
+          "Visual design mockups",
+          "Client review and approval"
+        ]
+      },
+      {
+        phase: "Development & Integration",
+        steps: [
+          "Frontend and backend development",
+          "Third-party integrations",
+          "Content migration and setup",
+          "Feature implementation",
+          "Regular client demos and feedback"
+        ]
+      },
+      {
+        phase: "Testing & QA",
+        steps: [
+          "Functional testing",
+          "Cross-browser/device testing",
+          "Performance testing",
+          "Security testing",
+          "User acceptance testing"
+        ]
+      },
+      {
+        phase: "Launch & Handover",
+        steps: [
+          "Production deployment",
+          "DNS configuration and go-live",
+          "User training",
+          "Documentation delivery",
+          "Post-launch support"
+        ]
+      }
+    ],
+    features: [
+      "Dedicated Project Manager",
+      "Cross-Functional Team",
+      "Agile Methodology",
+      "Regular Status Updates",
+      "Quality Assurance",
+      "On-Time Delivery",
+      "Fixed Scope Pricing",
+      "Design & Development",
+      "Testing & QA",
+      "Deployment & Launch",
+      "User Training",
+      "Documentation",
+      "Post-Launch Support",
+      "Warranty Period"
+    ],
+    benefits: [
+      {
+        title: "Single Point of Contact",
+        description: "One team handles everything from design to deployment"
+      },
+      {
+        title: "Faster Time to Market",
+        description: "Coordinated execution delivers projects faster than multiple vendors"
+      },
+      {
+        title: "Consistent Quality",
+        description: "Unified team ensures consistent quality across all deliverables"
+      },
+      {
+        title: "Cost Effective",
+        description: "Package pricing is more economical than hiring multiple specialists"
+      },
+      {
+        title: "Risk Mitigation",
+        description: "We take ownership and accountability for project success"
+      },
+      {
+        title: "Focus on Core Business",
+        description: "We handle the technical execution while you focus on business"
+      }
+    ],
+    industries: [
+      {
+        name: "Startups",
+        useCases: ["MVP development", "Product launch", "Website & app", "Digital presence"]
+      },
+      {
+        name: "E-commerce",
+        useCases: ["Online store setup", "Mobile apps", "Marketing campaigns", "Platform migration"]
+      },
+      {
+        name: "Corporate",
+        useCases: ["Digital transformation", "Website redesign", "Intranet development", "Customer portals"]
+      },
+      {
+        name: "Agencies",
+        useCases: ["White-label development", "Capacity augmentation", "Technical execution", "Client projects"]
+      },
+      {
+        name: "SMBs",
+        useCases: ["Digital presence", "E-commerce", "Mobile apps", "Marketing automation"]
+      }
+    ],
+    testimonials: [
+      {
+        quote: "Arka Infotech handled our entire digital transformation—website, mobile apps, and CRM. Single team, seamless execution, excellent results!",
+        author: "Manish Gupta",
+        company: "RetailMax Solutions",
+        rating: 5
+      },
+      {
+        quote: "They took our idea from concept to reality in 4 months. The project management was excellent and the quality exceeded expectations.",
+        author: "Shruti Desai",
+        company: "DigitalFirst Ventures",
+        rating: 5
+      }
+    ],
+    faq: [
+      {
+        question: "What's included in digital fulfilment?",
+        answer: "Complete project execution including requirements analysis, design, development, testing, deployment, training, and documentation. Essentially everything needed to take your project from idea to launch."
+      },
+      {
+        question: "How do you ensure projects stay on budget?",
+        answer: "We provide detailed project proposals with fixed pricing for defined scope. Any scope changes go through formal change request process with transparent pricing before implementation."
+      },
+      {
+        question: "What if requirements change during the project?",
+        answer: "We use agile methodology to accommodate changes. Small changes are incorporated, larger scope changes are handled through change requests with revised timelines and budgets."
+      },
+      {
+        question: "Do you provide post-launch support?",
+        answer: "Yes! All projects include 30-90 days warranty period for bug fixes. We also offer ongoing maintenance and support packages for long-term needs."
+      },
+      {
+        question: "Can you work with our internal team?",
+        answer: "Absolutely! We can collaborate with your internal teams, supplement your capabilities, or handle specific components while you focus on others."
+      }
+    ],
+    relatedServices: ["website-development", "mobile-app-development", "digital-marketing", "staff-augmentation"],
+    metrics: [
+      { value: 11, suffix: "+", label: "Expert Team", description: "Specialized Digital Fulfilment professionals" },
+      { value: 62, suffix: "+", label: "Projects Delivered", description: "Successfully completed solutions" },
+      { value: 95, suffix: "%", label: "Client Satisfaction", description: "Exceptional quality standards" }
+    ]
+  },
+
+  // IT Support Services
+  {
+    id: "24",
+    slug: "it-support-services",
+    name: "IT Support Services",
+    category: "Support Services",
+    hero: {
+      title: "Comprehensive IT Support Services",
+      description: "24/7 IT support for your business technology. From helpdesk to infrastructure management, we keep your IT running smoothly.",
+      ctaText: "Get IT Support",
+      image: "/services/it-support.jpg"
+    },
+    overview: "Technology downtime directly impacts business productivity and revenue. Arka Infotech's IT support services provide comprehensive technical assistance for your entire IT infrastructure. From desktop support to network management, our experienced IT professionals ensure your technology runs smoothly 24/7. We offer flexible support models including helpdesk, remote support, on-site assistance, and proactive IT management, allowing your team to focus on core business while we handle technology challenges.",
+    subServices: [
+      {
+        name: "Helpdesk Support",
+        description: "Multi-tier helpdesk for user issues, tickets, and technical queries",
+        icon: "Headphones"
+      },
+      {
+        name: "Desktop Support",
+        description: "Workstation setup, troubleshooting, and maintenance",
+        icon: "Monitor"
+      },
+      {
+        name: "Network Support",
+        description: "Network monitoring, troubleshooting, and optimization",
+        icon: "Wifi"
+      },
+      {
+        name: "Email & Collaboration",
+        description: "Office 365, Google Workspace, and email system support",
+        icon: "Mail"
+      },
+      {
+        name: "Security Management",
+        description: "Antivirus, firewall, and security incident response",
+        icon: "Shield"
+      }
+    ],
+    technologies: [
+      {
+        category: "Operating Systems",
+        items: [
+          { name: "Windows", icon: "SiWindows", color: "#0078D6" },
+          { name: "macOS", icon: "SiApple", color: "#000000" },
+          { name: "Linux", icon: "SiLinux", color: "#FCC624" }
+        ]
+      },
+      {
+        category: "Productivity",
+        items: [
+          { name: "Microsoft 365", icon: "SiMicrosoftoffice", color: "#D83B01" },
+          { name: "Google Workspace", icon: "SiGooglecloud", color: "#4285F4" },
+          { name: "Slack", icon: "SiSlack", color: "#4A154B" },
+          { name: "Zoom", icon: "SiZoom", color: "#2D8CFF" }
+        ]
+      },
+      {
+        category: "Ticketing",
+        items: [
+          { name: "Zendesk", icon: "SiZendesk", color: "#03363D" },
+          { name: "Freshdesk", icon: "SiFreshdesk", color: "#1FC76C" },
+          { name: "Jira Service Desk", icon: "SiJira", color: "#0052CC" }
+        ]
+      },
+      {
+        category: "Security",
+        items: [
+          { name: "Kaspersky", icon: "SiKaspersky", color: "#006D5C" },
+          { name: "Symantec", icon: "SiSymantec", color: "#FDB515" },
+          { name: "McAfee", icon: "SiMcafee", color: "#C8102E" }
+        ]
+      }
+    ],
+    process: [
+      {
+        phase: "Assessment & Setup",
+        steps: [
+          "Audit current IT infrastructure",
+          "Document hardware and software inventory",
+          "Understand business processes and needs",
+          "Set up ticketing and monitoring systems",
+          "Define SLAs and support procedures"
+        ]
+      },
+      {
+        phase: "Helpdesk Operations",
+        steps: [
+          "Receive support tickets via email/phone/portal",
+          "Categorize and prioritize issues",
+          "Assign to appropriate support tier",
+          "Troubleshoot and resolve remotely",
+          "Escalate complex issues if needed"
+        ]
+      },
+      {
+        phase: "Proactive Monitoring",
+        steps: [
+          "Monitor servers and network 24/7",
+          "Track system health and performance",
+          "Identify potential issues early",
+          "Apply preventive maintenance",
+          "Security patch management"
+        ]
+      },
+      {
+        phase: "Incident Management",
+        steps: [
+          "Rapid response to critical issues",
+          "Troubleshooting and root cause analysis",
+          "Implement solutions and fixes",
+          "Document resolution steps",
+          "Post-incident review"
+        ]
+      },
+      {
+        phase: "Continuous Improvement",
+        steps: [
+          "Analyze recurring issues",
+          "Implement permanent solutions",
+          "Update knowledge base",
+          "User training and documentation",
+          "Monthly performance reports"
+        ]
+      }
+    ],
+    features: [
+      "24/7 Helpdesk Support",
+      "Multi-Channel Support (Email, Phone, Chat)",
+      "Remote Desktop Support",
+      "On-Site Support (Optional)",
+      "Ticketing System",
+      "Asset Management",
+      "Patch Management",
+      "Backup Management",
+      "Antivirus Management",
+      "Network Monitoring",
+      "Email Support",
+      "Software Installation",
+      "Hardware Troubleshooting",
+      "User Training"
+    ],
+    benefits: [
+      {
+        title: "Minimize Downtime",
+        description: "Quick issue resolution keeps your business running smoothly"
+      },
+      {
+        title: "Cost Savings",
+        description: "More affordable than maintaining full-time IT staff"
+      },
+      {
+        title: "Expert Support",
+        description: "Access to experienced IT professionals across all technologies"
+      },
+      {
+        title: "24/7 Availability",
+        description: "Round-the-clock support for critical business operations"
+      },
+      {
+        title: "Proactive Management",
+        description: "Prevent issues before they impact your business"
+      },
+      {
+        title: "Scalable Support",
+        description: "Support scales with your business growth"
+      }
+    ],
+    industries: [
+      {
+        name: "Corporate Offices",
+        useCases: ["Desktop support", "Network management", "Email support", "Software issues"]
+      },
+      {
+        name: "Healthcare",
+        useCases: ["EMR support", "Network security", "Compliance", "Device management"]
+      },
+      {
+        name: "Education",
+        useCases: ["Student support", "Faculty assistance", "Lab management", "Learning systems"]
+      },
+      {
+        name: "Financial Services",
+        useCases: ["Secure IT support", "Compliance", "Trading systems", "Branch support"]
+      },
+      {
+        name: "Retail",
+        useCases: ["POS support", "Store IT", "Inventory systems", "Network connectivity"]
+      }
+    ],
+    testimonials: [
+      {
+        quote: "Response time is excellent—most issues resolved within an hour. Our employees are happier and more productive with reliable IT support.",
+        author: "Sameer Jain",
+        company: "CorporateSoft India",
+        rating: 5
+      },
+      {
+        quote: "Having 24/7 IT support gives us peace of mind. They handle everything from printer issues to server problems professionally.",
+        author: "Rekha Menon",
+        company: "Healthcare Plus Services",
+        rating: 5
+      }
+    ],
+    faq: [
+      {
+        question: "What's covered in IT support?",
+        answer: "We support Windows/Mac desktops, Office 365/Google Workspace, email, printers, network connectivity, software installations, password resets, and general troubleshooting. Server support is available as an add-on."
+      },
+      {
+        question: "How do users submit support tickets?",
+        answer: "Users can email, call our helpdesk, use our support portal, or chat via Slack/Teams. All requests are tracked in our ticketing system with status updates."
+      },
+      {
+        question: "What are your response times?",
+        answer: "Critical (business down): 30 minutes, High priority: 2 hours, Medium: 4 hours, Low priority: 8 hours. We offer custom SLAs for specific needs."
+      },
+      {
+        question: "Do you provide on-site support?",
+        answer: "Yes! We offer on-site support for issues that can't be resolved remotely, such as hardware problems or network installations. This can be scheduled or emergency."
+      },
+      {
+        question: "Can you support remote/distributed teams?",
+        answer: "Absolutely! We specialize in remote support and can assist users anywhere with internet connectivity. We support remote work setups, VPNs, and collaboration tools."
+      }
+    ],
+    relatedServices: ["server-support", "cybersecurity", "managed-it-services", "cloud-solutions"],
+    metrics: [
+      { value: 16, suffix: "+", label: "Expert Team", description: "Specialized IT Support Services professionals" },
+      { value: 67, suffix: "+", label: "Projects Delivered", description: "Successfully completed solutions" },
+      { value: 95, suffix: "%", label: "Client Satisfaction", description: "Exceptional quality standards" }
+    ]
+  },
+
+  // DevOps
+  {
+    id: "25",
+    slug: "devops",
+    name: "DevOps",
+    category: "Infrastructure Services",
+    hero: {
+      title: "DevOps Services & Solutions",
+      description: "Accelerate software delivery with DevOps practices. We implement CI/CD pipelines, automation, and infrastructure as code for faster, reliable deployments.",
+      ctaText: "Transform with DevOps",
+      image: "/services/devops.jpg"
+    },
+    overview: "DevOps bridges the gap between development and operations, enabling faster software delivery without compromising quality. Arka Infotech's DevOps services help organizations implement automation, continuous integration/deployment, and infrastructure as code to accelerate release cycles, improve collaboration, and enhance system reliability. Our DevOps engineers design and implement CI/CD pipelines, containerization strategies, and monitoring solutions that transform how you build, test, and deploy software.",
+    subServices: [
+      {
+        name: "CI/CD Pipeline",
+        description: "Automated build, test, and deployment pipelines",
+        icon: "GitBranch"
+      },
+      {
+        name: "Infrastructure as Code",
+        description: "Automated infrastructure provisioning with Terraform and Ansible",
+        icon: "FileCode"
+      },
+      {
+        name: "Container Orchestration",
+        description: "Docker and Kubernetes implementation and management",
+        icon: "Box"
+      },
+      {
+        name: "Cloud DevOps",
+        description: "DevOps practices on AWS, Azure, and Google Cloud",
+        icon: "Cloud"
+      },
+      {
+        name: "Monitoring & Logging",
+        description: "Complete observability with monitoring, logging, and alerting",
+        icon: "Activity"
+      }
+    ],
+    technologies: [
+      {
+        category: "CI/CD",
+        items: [
+          { name: "Jenkins", icon: "SiJenkins", color: "#D24939" },
+          { name: "GitLab CI", icon: "SiGitlab", color: "#FCA121" },
+          { name: "GitHub Actions", icon: "SiGithubactions", color: "#2088FF" },
+          { name: "CircleCI", icon: "SiCircleci", color: "#343434" }
+        ]
+      },
+      {
+        category: "Containers",
+        items: [
+          { name: "Docker", icon: "SiDocker", color: "#2496ED" },
+          { name: "Kubernetes", icon: "SiKubernetes", color: "#326CE5" },
+          { name: "Helm", icon: "SiHelm", color: "#0F1689" },
+          { name: "Docker Compose", icon: "SiDocker", color: "#2496ED" }
+        ]
+      },
+      {
+        category: "IaC",
+        items: [
+          { name: "Terraform", icon: "SiTerraform", color: "#7B42BC" },
+          { name: "Ansible", icon: "SiAnsible", color: "#EE0000" },
+          { name: "CloudFormation", icon: "SiAmazonaws", color: "#FF9900" },
+          { name: "Pulumi", icon: "SiPulumi", color: "#8A3391" }
+        ]
+      },
+      {
+        category: "Monitoring",
+        items: [
+          { name: "Prometheus", icon: "SiPrometheus", color: "#E6522C" },
+          { name: "Grafana", icon: "SiGrafana", color: "#F46800" },
+          { name: "ELK Stack", icon: "SiElasticsearch", color: "#005571" },
+          { name: "Datadog", icon: "SiDatadog", color: "#632CA6" }
+        ]
+      }
+    ],
+    process: [
+      {
+        phase: "DevOps Assessment",
+        steps: [
+          "Evaluate current development and deployment processes",
+          "Identify bottlenecks and pain points",
+          "Assess infrastructure and tooling",
+          "Define DevOps maturity level",
+          "Create DevOps transformation roadmap"
+        ]
+      },
+      {
+        phase: "CI/CD Implementation",
+        steps: [
+          "Design CI/CD pipeline architecture",
+          "Set up version control workflows",
+          "Implement automated testing",
+          "Configure build automation",
+          "Set up deployment automation"
+        ]
+      },
+      {
+        phase: "Infrastructure Automation",
+        steps: [
+          "Implement infrastructure as code",
+          "Automate environment provisioning",
+          "Set up configuration management",
+          "Implement immutable infrastructure",
+          "Disaster recovery automation"
+        ]
+      },
+      {
+        phase: "Containerization",
+        steps: [
+          "Containerize applications with Docker",
+          "Set up Kubernetes cluster",
+          "Implement container orchestration",
+          "Configure auto-scaling",
+          "Set up service mesh if needed"
+        ]
+      },
+      {
+        phase: "Monitoring & Optimization",
+        steps: [
+          "Implement monitoring and logging",
+          "Set up alerting and notifications",
+          "Configure dashboards",
+          "Performance optimization",
+          "Continuous improvement"
+        ]
+      }
+    ],
+    features: [
+      "CI/CD Pipeline Setup",
+      "Automated Testing",
+      "Infrastructure as Code",
+      "Docker Containerization",
+      "Kubernetes Orchestration",
+      "Auto-Scaling",
+      "Blue-Green Deployment",
+      "Canary Releases",
+      "Automated Rollbacks",
+      "Log Aggregation",
+      "Performance Monitoring",
+      "Security Scanning",
+      "Cost Optimization",
+      "Documentation"
+    ],
+    benefits: [
+      {
+        title: "Faster Deployments",
+        description: "Reduce deployment time from days to minutes with automation"
+      },
+      {
+        title: "Higher Quality",
+        description: "Automated testing catches bugs early in development cycle"
+      },
+      {
+        title: "Improved Collaboration",
+        description: "Break down silos between development and operations teams"
+      },
+      {
+        title: "Reduced Downtime",
+        description: "Automated deployments and rollbacks minimize production issues"
+      },
+      {
+        title: "Cost Savings",
+        description: "Infrastructure automation and optimization reduce cloud costs"
+      },
+      {
+        title: "Better Scalability",
+        description: "Auto-scaling handles traffic spikes automatically"
+      }
+    ],
+    industries: [
+      {
+        name: "SaaS Companies",
+        useCases: ["Continuous deployment", "Multi-tenant infrastructure", "Auto-scaling", "Microservices"]
+      },
+      {
+        name: "Startups",
+        useCases: ["Fast iterations", "MVP deployment", "Cost optimization", "Rapid scaling"]
+      },
+      {
+        name: "E-commerce",
+        useCases: ["High availability", "Peak load handling", "Zero-downtime deployment", "Performance optimization"]
+      },
+      {
+        name: "Financial Services",
+        useCases: ["Secure deployment", "Compliance automation", "Disaster recovery", "Audit trails"]
+      },
+      {
+        name: "Enterprise",
+        useCases: ["Legacy modernization", "Cloud migration", "Digital transformation", "DevOps adoption"]
+      }
+    ],
+    testimonials: [
+      {
+        quote: "DevOps implementation reduced our deployment time from 2 days to 15 minutes. We now deploy multiple times per day with confidence.",
+        author: "Varun Khosla",
+        company: "CloudFirst Technologies",
+        rating: 5
+      },
+      {
+        quote: "The CI/CD pipeline catches bugs before production and deployments are seamless. Our team productivity has increased 3x.",
+        author: "Swati Agarwal",
+        company: "TechInnovate Solutions",
+        rating: 5
+      }
+    ],
+    faq: [
+      {
+        question: "What is DevOps and why do I need it?",
+        answer: "DevOps is a culture and practice that combines development and operations to accelerate software delivery. You need it to deploy faster, reduce errors, improve collaboration, and scale efficiently."
+      },
+      {
+        question: "How long does DevOps implementation take?",
+        answer: "Basic CI/CD setup takes 4-6 weeks, comprehensive DevOps transformation with IaC and containers takes 3-6 months depending on complexity and current infrastructure."
+      },
+      {
+        question: "Can you implement DevOps for existing applications?",
+        answer: "Yes! We specialize in modernizing existing applications and infrastructure, implementing DevOps practices gradually without disrupting current operations."
+      },
+      {
+        question: "Do you support multiple cloud platforms?",
+        answer: "Absolutely! We implement DevOps on AWS, Azure, Google Cloud, and multi-cloud setups. We also handle hybrid cloud and on-premise infrastructure."
+      },
+      {
+        question: "What about ongoing DevOps support?",
+        answer: "We offer managed DevOps services including pipeline maintenance, infrastructure management, monitoring, optimization, and 24/7 support for production environments."
+      }
+    ],
+    relatedServices: ["cloud-solutions", "server-support", "software-development", "microservices"],
+    metrics: [
+      { value: 14, suffix: "+", label: "Expert Team", description: "Specialized DevOps professionals" },
+      { value: 57, suffix: "+", label: "Projects Delivered", description: "Successfully completed solutions" },
+      { value: 95, suffix: "%", label: "Client Satisfaction", description: "Exceptional quality standards" }
+    ]
+  },
+
+  // Search Engine Optimization
+  {
+    id: "26",
+    slug: "search-engine-optimization",
+    name: "Search Engine Optimization",
+    category: "Digital Marketing",
+    hero: {
+      title: "SEO Services & Optimization",
+      description: "Dominate search rankings and drive organic traffic. Our comprehensive SEO strategies improve visibility, rankings, and conversions.",
+      ctaText: "Boost Your Rankings",
+      image: "/services/seo.jpg"
+    },
+    overview: "Search Engine Optimization is critical for online visibility and business growth. Arka Infotech's SEO services help businesses rank higher on Google and other search engines, driving qualified organic traffic that converts. Our data-driven approach combines technical SEO, on-page optimization, content strategy, and link building to improve your search presence. From local businesses to enterprise websites, we create customized SEO strategies that deliver measurable results and sustainable growth.",
+    subServices: [
+      {
+        name: "Technical SEO",
+        description: "Site speed, mobile optimization, crawlability, and technical foundation",
+        icon: "Settings"
+      },
+      {
+        name: "On-Page SEO",
+        description: "Content optimization, keyword targeting, meta tags, and internal linking",
+        icon: "FileText"
+      },
+      {
+        name: "Off-Page SEO",
+        description: "Link building, brand mentions, and authority building strategies",
+        icon: "ExternalLink"
+      },
+      {
+        name: "Local SEO",
+        description: "Google My Business, local citations, and location-based optimization",
+        icon: "MapPin"
+      },
+      {
+        name: "E-commerce SEO",
+        description: "Product optimization, category pages, and conversion-focused SEO",
+        icon: "ShoppingCart"
+      }
+    ],
+    technologies: [
+      {
+        category: "SEO Tools",
+        items: [
+          { name: "Google Analytics", icon: "SiGoogleanalytics", color: "#E37400" },
+          { name: "Search Console", icon: "SiGoogle", color: "#4285F4" },
+          { name: "SEMrush", icon: "SiSemrush", color: "#FF642D" },
+          { name: "Ahrefs", icon: "SiAhrefs", color: "#FF7A59" }
+        ]
+      },
+      {
+        category: "Research Tools",
+        items: [
+          { name: "Google Keyword Planner", icon: "SiGoogle", color: "#4285F4" },
+          { name: "Moz", icon: "SiMoz", color: "#F68D2E" },
+          { name: "Screaming Frog", icon: "SiScreamingfrog", color: "#FF7A59" }
+        ]
+      },
+      {
+        category: "Analytics",
+        items: [
+          { name: "Google Analytics 4", icon: "SiGoogleanalytics", color: "#E37400" },
+          { name: "Hotjar", icon: "SiHotjar", color: "#FD3A5C" },
+          { name: "Looker Studio", icon: "SiGooglelooker", color: "#4285F4" }
+        ]
+      },
+      {
+        category: "Technical",
+        items: [
+          { name: "PageSpeed Insights", icon: "SiGoogle", color: "#4285F4" },
+          { name: "GTmetrix", icon: "SiGtmetrix", color: "#E8833A" },
+          { name: "Schema.org", icon: "SiSchema", color: "#4B4B4B" }
+        ]
+      }
+    ],
+    process: [
+      {
+        phase: "SEO Audit & Research",
+        steps: [
+          "Comprehensive website SEO audit",
+          "Competitor analysis and gap identification",
+          "Keyword research and intent mapping",
+          "Technical issues identification",
+          "Content audit and opportunity analysis"
+        ]
+      },
+      {
+        phase: "Strategy Development",
+        steps: [
+          "Define SEO goals and KPIs",
+          "Keyword strategy and targeting",
+          "Content strategy and planning",
+          "Technical optimization roadmap",
+          "Link building strategy"
+        ]
+      },
+      {
+        phase: "On-Page Optimization",
+        steps: [
+          "Optimize title tags and meta descriptions",
+          "Content optimization and keyword integration",
+          "Internal linking structure improvement",
+          "Image optimization and alt tags",
+          "Schema markup implementation"
+        ]
+      },
+      {
+        phase: "Technical Implementation",
+        steps: [
+          "Site speed optimization",
+          "Mobile responsiveness improvements",
+          "Fix crawlability and indexation issues",
+          "XML sitemap and robots.txt optimization",
+          "Core Web Vitals optimization"
+        ]
+      },
+      {
+        phase: "Monitoring & Reporting",
+        steps: [
+          "Ranking tracking and monitoring",
+          "Traffic and conversion analysis",
+          "Regular performance reports",
+          "Continuous optimization",
+          "Strategy refinement"
+        ]
+      }
+    ],
+    features: [
+      "Comprehensive SEO Audit",
+      "Keyword Research & Strategy",
+      "On-Page Optimization",
+      "Technical SEO Fixes",
+      "Content Strategy",
+      "Link Building",
+      "Local SEO Optimization",
+      "Mobile SEO",
+      "Core Web Vitals Optimization",
+      "Schema Markup",
+      "Google My Business Optimization",
+      "Competitor Analysis",
+      "Monthly Reporting",
+      "Rank Tracking"
+    ],
+    benefits: [
+      {
+        title: "Increased Organic Traffic",
+        description: "Higher rankings drive more qualified visitors to your website"
+      },
+      {
+        title: "Better Conversion Rates",
+        description: "Targeted SEO attracts visitors with high purchase intent"
+      },
+      {
+        title: "Cost-Effective Marketing",
+        description: "Organic traffic is free and provides long-term ROI"
+      },
+      {
+        title: "Brand Credibility",
+        description: "High rankings establish trust and authority in your industry"
+      },
+      {
+        title: "Competitive Advantage",
+        description: "Outrank competitors and capture more market share"
+      },
+      {
+        title: "Sustainable Growth",
+        description: "SEO results compound over time for lasting benefits"
+      }
+    ],
+    industries: [
+      {
+        name: "E-commerce",
+        useCases: ["Product page SEO", "Category optimization", "Shopping intent keywords", "Product schema"]
+      },
+      {
+        name: "Local Business",
+        useCases: ["Local pack rankings", "Google My Business", "Local citations", "Review management"]
+      },
+      {
+        name: "B2B Services",
+        useCases: ["Thought leadership content", "Service page optimization", "Lead generation", "Industry keywords"]
+      },
+      {
+        name: "Healthcare",
+        useCases: ["Medical SEO", "Local practice visibility", "Patient education content", "YMYL optimization"]
+      },
+      {
+        name: "Real Estate",
+        useCases: ["Property listings SEO", "Location pages", "Agent profiles", "Market content"]
+      }
+    ],
+    testimonials: [
+      {
+        quote: "Our organic traffic increased 250% in 6 months with Arka Infotech's SEO services. We now rank #1 for our primary keywords.",
+        author: "Vikram Sethi",
+        company: "DigitalPro Solutions",
+        rating: 5
+      },
+      {
+        quote: "The ROI from SEO has been phenomenal. We're getting 10x more qualified leads than before without increasing our marketing budget.",
+        author: "Priyanka Joshi",
+        company: "HomeDecor India",
+        rating: 5
+      }
+    ],
+    faq: [
+      {
+        question: "How long does SEO take to show results?",
+        answer: "SEO is a long-term strategy. You'll typically see initial improvements in 3-4 months, with significant results in 6-12 months. Timeline varies based on competition, current website state, and industry."
+      },
+      {
+        question: "Do you guarantee #1 rankings?",
+        answer: "No reputable SEO agency can guarantee #1 rankings as Google's algorithm is complex and constantly changing. We focus on sustainable, white-hat strategies that deliver consistent traffic and ranking improvements."
+      },
+      {
+        question: "What's the difference between on-page and off-page SEO?",
+        answer: "On-page SEO involves optimizing your website content, structure, and HTML. Off-page SEO focuses on external factors like backlinks, brand mentions, and social signals that influence rankings."
+      },
+      {
+        question: "Will you need access to our website?",
+        answer: "Yes, we'll need access to implement technical fixes, optimize content, and add schema markup. We can work with your development team or implement changes directly depending on your preference."
+      },
+      {
+        question: "How do you measure SEO success?",
+        answer: "We track keyword rankings, organic traffic growth, conversion rates, backlink profile, domain authority, and most importantly, ROI from organic channels through detailed monthly reports."
+      }
+    ],
+    relatedServices: ["content-marketing", "pay-per-click", "social-media-marketing", "performance-optimization"],
+    metrics: [
+      { value: 11, suffix: "+", label: "Expert Team", description: "Specialized Search Engine Optimization professionals" },
+      { value: 65, suffix: "+", label: "Projects Delivered", description: "Successfully completed solutions" },
+      { value: 95, suffix: "%", label: "Client Satisfaction", description: "Exceptional quality standards" }
+    ]
+  },
+
+  // Social Media Marketing
+  {
+    id: "27",
+    slug: "social-media-marketing",
+    name: "Social Media Marketing",
+    category: "Digital Marketing",
+    hero: {
+      title: "Social Media Marketing Services",
+      description: "Build engaged communities and drive results on social platforms. We create compelling content and campaigns that connect with your audience.",
+      ctaText: "Grow Your Social Presence",
+      image: "/services/social-media.jpg"
+    },
+    overview: "Social media is where your customers spend their time, and Arka Infotech helps you connect with them effectively. Our social media marketing services combine strategy, creative content, community management, and paid advertising to build brand awareness, engage audiences, and drive conversions. From content creation to influencer partnerships, we manage your complete social media presence across Facebook, Instagram, LinkedIn, Twitter, and more.",
+    subServices: [
+      {
+        name: "Social Media Strategy",
+        description: "Comprehensive strategy aligned with business goals and target audience",
+        icon: "Target"
+      },
+      {
+        name: "Content Creation",
+        description: "Engaging posts, graphics, videos, and stories tailored for each platform",
+        icon: "Image"
+      },
+      {
+        name: "Community Management",
+        description: "Respond to comments, messages, and build engaged communities",
+        icon: "Users"
+      },
+      {
+        name: "Social Media Advertising",
+        description: "Paid campaigns on Facebook, Instagram, LinkedIn, and Twitter",
+        icon: "DollarSign"
+      },
+      {
+        name: "Influencer Marketing",
+        description: "Partner with influencers to expand reach and credibility",
+        icon: "Star"
+      }
+    ],
+    technologies: [
+      {
+        category: "Platforms",
+        items: [
+          { name: "Facebook", icon: "SiFacebook", color: "#1877F2" },
+          { name: "Instagram", icon: "SiInstagram", color: "#E4405F" },
+          { name: "LinkedIn", icon: "SiLinkedin", color: "#0A66C2" },
+          { name: "Twitter", icon: "SiTwitter", color: "#1DA1F2" }
+        ]
+      },
+      {
+        category: "Management Tools",
+        items: [
+          { name: "Hootsuite", icon: "SiHootsuite", color: "#000000" },
+          { name: "Buffer", icon: "SiBuffer", color: "#168EEA" },
+          { name: "Sprout Social", icon: "SiSproutsocial", color: "#59CB59" }
+        ]
+      },
+      {
+        category: "Design Tools",
+        items: [
+          { name: "Canva", icon: "SiCanva", color: "#00C4CC" },
+          { name: "Adobe Photoshop", icon: "SiAdobephotoshop", color: "#31A8FF" },
+          { name: "Figma", icon: "SiFigma", color: "#F24E1E" }
+        ]
+      },
+      {
+        category: "Analytics",
+        items: [
+          { name: "Facebook Insights", icon: "SiFacebook", color: "#1877F2" },
+          { name: "Instagram Insights", icon: "SiInstagram", color: "#E4405F" },
+          { name: "Google Analytics", icon: "SiGoogleanalytics", color: "#E37400" }
+        ]
+      }
+    ],
+    process: [
+      {
+        phase: "Discovery & Strategy",
+        steps: [
+          "Define social media goals and KPIs",
+          "Audience research and persona development",
+          "Competitor social media analysis",
+          "Platform selection and strategy",
+          "Content themes and calendar planning"
+        ]
+      },
+      {
+        phase: "Profile Optimization",
+        steps: [
+          "Optimize social media profiles",
+          "Consistent branding across platforms",
+          "Bio optimization and keywords",
+          "Profile and cover images",
+          "Call-to-action setup"
+        ]
+      },
+      {
+        phase: "Content Creation",
+        steps: [
+          "Monthly content calendar development",
+          "Create engaging graphics and videos",
+          "Write compelling copy for each platform",
+          "Hashtag research and strategy",
+          "Schedule posts for optimal timing"
+        ]
+      },
+      {
+        phase: "Community Engagement",
+        steps: [
+          "Monitor and respond to comments",
+          "Engage with followers and prospects",
+          "Handle customer inquiries",
+          "Build relationships with influencers",
+          "Manage brand reputation"
+        ]
+      },
+      {
+        phase: "Analytics & Optimization",
+        steps: [
+          "Track engagement and reach metrics",
+          "Analyze what content performs best",
+          "A/B test different approaches",
+          "Monthly performance reports",
+          "Refine strategy based on data"
+        ]
+      }
+    ],
+    features: [
+      "Social Media Strategy",
+      "Content Calendar Planning",
+      "Custom Graphics & Videos",
+      "Daily Posting & Scheduling",
+      "Community Management",
+      "Hashtag Strategy",
+      "Story & Reel Creation",
+      "Social Media Advertising",
+      "Influencer Outreach",
+      "Contest & Campaign Management",
+      "Analytics & Reporting",
+      "Reputation Management",
+      "Competitor Monitoring",
+      "Monthly Strategy Calls"
+    ],
+    benefits: [
+      {
+        title: "Brand Awareness",
+        description: "Increase visibility and recognition across social platforms"
+      },
+      {
+        title: "Audience Engagement",
+        description: "Build meaningful relationships with your target audience"
+      },
+      {
+        title: "Website Traffic",
+        description: "Drive qualified traffic to your website from social channels"
+      },
+      {
+        title: "Lead Generation",
+        description: "Generate leads directly through social media campaigns"
+      },
+      {
+        title: "Customer Insights",
+        description: "Understand customer preferences and behavior through social data"
+      },
+      {
+        title: "Cost-Effective Marketing",
+        description: "Reach large audiences at lower cost than traditional advertising"
+      }
+    ],
+    industries: [
+      {
+        name: "E-commerce",
+        useCases: ["Product showcases", "Shoppable posts", "User-generated content", "Flash sales"]
+      },
+      {
+        name: "Restaurants & Food",
+        useCases: ["Food photography", "Menu highlights", "Customer reviews", "Location promotion"]
+      },
+      {
+        name: "Fashion & Beauty",
+        useCases: ["Lookbooks", "Influencer collaborations", "Tutorials", "Behind-the-scenes"]
+      },
+      {
+        name: "B2B Services",
+        useCases: ["Thought leadership", "Industry insights", "Case studies", "LinkedIn networking"]
+      },
+      {
+        name: "Healthcare",
+        useCases: ["Health tips", "Patient education", "Community building", "Awareness campaigns"]
+      }
+    ],
+    testimonials: [
+      {
+        quote: "Our Instagram following grew from 2K to 50K in 8 months! Engagement is through the roof and we're getting regular leads from social media.",
+        author: "Neha Kapoor",
+        company: "Fashion Forward Boutique",
+        rating: 5
+      },
+      {
+        quote: "Their content is creative and engaging. Social media is now our #1 source of new customers. Couldn't be happier!",
+        author: "Rajesh Malhotra",
+        company: "FitZone Gym",
+        rating: 5
+      }
+    ],
+    faq: [
+      {
+        question: "Which social media platforms should we focus on?",
+        answer: "It depends on your target audience and business type. B2B companies do well on LinkedIn, visual brands on Instagram, broader audiences on Facebook. We recommend 2-3 platforms initially based on where your customers are most active."
+      },
+      {
+        question: "How often will you post on our accounts?",
+        answer: "Posting frequency varies by platform and package. Typically, we recommend 4-5 posts per week on Facebook/Instagram, daily on Twitter, and 3-4 times weekly on LinkedIn. We customize based on your needs."
+      },
+      {
+        question: "Will you respond to comments and messages?",
+        answer: "Yes! Community management is included. We monitor and respond to comments, messages, and mentions during business hours. We'll coordinate with you for technical or sensitive queries."
+      },
+      {
+        question: "Can you help with social media advertising?",
+        answer: "Absolutely! We create and manage paid campaigns on Facebook, Instagram, LinkedIn, and Twitter. Ad spend is separate from management fees, and we optimize campaigns for best ROI."
+      },
+      {
+        question: "How do you measure social media success?",
+        answer: "We track reach, engagement rate, follower growth, website traffic from social, leads/conversions, and ROI. Monthly reports show performance trends and insights with recommendations."
+      }
+    ],
+    relatedServices: ["content-marketing", "pay-per-click", "search-engine-optimization", "influencer-marketing"],
+    metrics: [
+      { value: 11, suffix: "+", label: "Expert Team", description: "Specialized Social Media Marketing professionals" },
+      { value: 60, suffix: "+", label: "Projects Delivered", description: "Successfully completed solutions" },
+      { value: 95, suffix: "%", label: "Client Satisfaction", description: "Exceptional quality standards" }
+    ]
+  },
+
+  // Pay Per Click
+  {
+    id: "28",
+    slug: "pay-per-click",
+    name: "Pay Per Click (PPC)",
+    category: "Digital Marketing",
+    hero: {
+      title: "PPC Advertising Services",
+      description: "Drive instant traffic and conversions with targeted PPC campaigns. We manage Google Ads, Facebook Ads, and more for maximum ROI.",
+      ctaText: "Start PPC Campaign",
+      image: "/services/ppc.jpg"
+    },
+    overview: "Pay-Per-Click advertising delivers immediate results and measurable ROI. Arka Infotech's PPC experts create and manage high-performing campaigns across Google Ads, Facebook Ads, Instagram, LinkedIn, and other platforms. From keyword research to ad creative, bid management to conversion optimization, we handle every aspect of your paid advertising to ensure you get the best return on your advertising spend. Whether you need leads, sales, or brand awareness, our data-driven PPC strategies deliver results.",
+    subServices: [
+      {
+        name: "Google Ads Management",
+        description: "Search, Display, Shopping, and YouTube advertising campaigns",
+        icon: "Search"
+      },
+      {
+        name: "Facebook & Instagram Ads",
+        description: "Targeted social media advertising for leads and conversions",
+        icon: "Target"
+      },
+      {
+        name: "LinkedIn Ads",
+        description: "B2B advertising for lead generation and brand awareness",
+        icon: "Briefcase"
+      },
+      {
+        name: "Remarketing Campaigns",
+        description: "Re-engage visitors who didn't convert the first time",
+        icon: "RefreshCw"
+      },
+      {
+        name: "Shopping Ads",
+        description: "Product listing ads for e-commerce with visual showcases",
+        icon: "ShoppingCart"
+      }
+    ],
+    technologies: [
+      {
+        category: "Ad Platforms",
+        items: [
+          { name: "Google Ads", icon: "SiGoogleads", color: "#4285F4" },
+          { name: "Facebook Ads", icon: "SiFacebook", color: "#1877F2" },
+          { name: "LinkedIn Ads", icon: "SiLinkedin", color: "#0A66C2" },
+          { name: "Microsoft Ads", icon: "SiMicrosoft", color: "#0078D4" }
+        ]
+      },
+      {
+        category: "Analytics",
+        items: [
+          { name: "Google Analytics", icon: "SiGoogleanalytics", color: "#E37400" },
+          { name: "Google Tag Manager", icon: "SiGoogletagmanager", color: "#246FDB" },
+          { name: "Conversion Tracking", icon: "SiGoogle", color: "#4285F4" }
+        ]
+      },
+      {
+        category: "Optimization Tools",
+        items: [
+          { name: "Google Optimize", icon: "SiGoogle", color: "#4285F4" },
+          { name: "SEMrush", icon: "SiSemrush", color: "#FF642D" },
+          { name: "SpyFu", icon: "SiSpyfu", color: "#FF7A59" }
+        ]
+      },
+      {
+        category: "Reporting",
+        items: [
+          { name: "Looker Studio", icon: "SiGooglelooker", color: "#4285F4" },
+          { name: "Supermetrics", icon: "SiSupermetrics", color: "#00B4FF" }
+        ]
+      }
+    ],
+    process: [
+      {
+        phase: "Strategy & Planning",
+        steps: [
+          "Define campaign goals and KPIs",
+          "Audience research and targeting",
+          "Competitor PPC analysis",
+          "Budget allocation planning",
+          "Platform selection"
+        ]
+      },
+      {
+        phase: "Campaign Setup",
+        steps: [
+          "Keyword research and selection",
+          "Ad copy creation and testing",
+          "Landing page optimization",
+          "Conversion tracking setup",
+          "Audience and targeting configuration"
+        ]
+      },
+      {
+        phase: "Ad Creative Development",
+        steps: [
+          "Write compelling ad copy",
+          "Design display and social ads",
+          "Create video ads if needed",
+          "A/B testing variations",
+          "Ad extensions setup"
+        ]
+      },
+      {
+        phase: "Campaign Management",
+        steps: [
+          "Monitor campaign performance daily",
+          "Bid optimization and adjustments",
+          "Negative keyword management",
+          "Budget allocation optimization",
+          "Quality score improvement"
+        ]
+      },
+      {
+        phase: "Optimization & Reporting",
+        steps: [
+          "Analyze conversion data",
+          "A/B test ad variations",
+          "Landing page optimization",
+          "Detailed performance reports",
+          "Strategy refinement"
+        ]
+      }
+    ],
+    features: [
+      "Google Search Ads",
+      "Display Advertising",
+      "Shopping Ads",
+      "YouTube Video Ads",
+      "Facebook & Instagram Ads",
+      "LinkedIn Advertising",
+      "Remarketing Campaigns",
+      "Conversion Tracking",
+      "A/B Testing",
+      "Keyword Research",
+      "Ad Copywriting",
+      "Landing Page Optimization",
+      "Bid Management",
+      "Weekly/Monthly Reports"
+    ],
+    benefits: [
+      {
+        title: "Immediate Results",
+        description: "Start driving traffic and leads as soon as campaigns launch"
+      },
+      {
+        title: "Precise Targeting",
+        description: "Reach exactly who you want with demographic, location, and interest targeting"
+      },
+      {
+        title: "Measurable ROI",
+        description: "Track every click, conversion, and rupee spent with detailed analytics"
+      },
+      {
+        title: "Budget Control",
+        description: "Set daily budgets and only pay when people click your ads"
+      },
+      {
+        title: "Competitive Advantage",
+        description: "Appear above organic results and capture high-intent searchers"
+      },
+      {
+        title: "Scalable Growth",
+        description: "Increase spend as ROI proves profitable for rapid growth"
+      }
+    ],
+    industries: [
+      {
+        name: "E-commerce",
+        useCases: ["Product shopping ads", "Dynamic remarketing", "Seasonal campaigns", "Cart abandonment"]
+      },
+      {
+        name: "Lead Generation",
+        useCases: ["B2B lead ads", "Form submissions", "Phone calls", "Demo requests"]
+      },
+      {
+        name: "Local Services",
+        useCases: ["Local service ads", "Call extensions", "Location targeting", "Map listings"]
+      },
+      {
+        name: "SaaS",
+        useCases: ["Free trial signups", "Demo requests", "Feature targeting", "Competitor campaigns"]
+      },
+      {
+        name: "Real Estate",
+        useCases: ["Property listings", "Lead generation", "Location targeting", "Open house promotions"]
+      }
+    ],
+    testimonials: [
+      {
+        quote: "Our Google Ads ROI improved by 400% within 3 months. They know how to optimize campaigns for results, not just clicks.",
+        author: "Amit Gupta",
+        company: "LeadGen Pro",
+        rating: 5
+      },
+      {
+        quote: "We were wasting money on ads before. Now every rupee is tracked and optimized. Cost per lead dropped by 60%!",
+        author: "Kavita Sharma",
+        company: "EduTech Solutions",
+        rating: 5
+      }
+    ],
+    faq: [
+      {
+        question: "How much should we budget for PPC?",
+        answer: "It depends on your industry, competition, and goals. We recommend starting with ₹30,000-₹50,000/month for small businesses, ₹1,00,000-₹3,00,000/month for medium businesses. We can start smaller and scale based on results."
+      },
+      {
+        question: "How quickly will we see results?",
+        answer: "Unlike SEO, PPC delivers immediate results. You'll see traffic within hours of launching. However, optimization for best ROI takes 2-3 months as we gather data and refine targeting."
+      },
+      {
+        question: "What's included in your PPC management fee?",
+        answer: "Our fee covers strategy, keyword research, ad creation, campaign setup, daily management, bid optimization, A/B testing, landing page recommendations, and monthly reporting. Ad spend is separate."
+      },
+      {
+        question: "How do you ensure we don't waste money?",
+        answer: "We use negative keywords, audience exclusions, conversion tracking, and continuous optimization. We focus on metrics that matter (conversions, ROI) not vanity metrics (clicks, impressions)."
+      },
+      {
+        question: "Can you guarantee conversions?",
+        answer: "We can't guarantee specific numbers as factors like your offer, pricing, and website quality impact conversions. However, we guarantee continuous optimization to improve results over time based on data."
+      }
+    ],
+    relatedServices: ["search-engine-optimization", "social-media-marketing", "conversion-rate-optimization", "landing-page-design"],
+    metrics: [
+      { value: 12, suffix: "+", label: "Expert Team", description: "Specialized Google Ads Management professionals" },
+      { value: 55, suffix: "+", label: "Projects Delivered", description: "Successfully completed solutions" },
+      { value: 95, suffix: "%", label: "Client Satisfaction", description: "Exceptional quality standards" }
+    ]
+  },
+
+  // ORM (Online Reputation Management)
+  {
+    id: "29",
+    slug: "online-reputation-management",
+    name: "Online Reputation Management",
+    category: "Digital Marketing",
+    hero: {
+      title: "Online Reputation Management (ORM)",
+      description: "Protect and enhance your online reputation. We monitor, manage, and improve how your brand appears across the internet.",
+      ctaText: "Protect Your Reputation",
+      image: "/services/orm.jpg"
+    },
+    overview: "Your online reputation can make or break your business. Arka Infotech's Online Reputation Management services help you monitor, protect, and enhance your brand's digital presence. We track mentions across the web, manage reviews, suppress negative content, promote positive content, and respond to feedback professionally. Whether you're dealing with a reputation crisis or proactively building a positive online presence, our ORM strategies protect your brand and build trust with customers.",
+    subServices: [
+      {
+        name: "Review Management",
+        description: "Monitor and respond to reviews on Google, Facebook, and review sites",
+        icon: "Star"
+      },
+      {
+        name: "Brand Monitoring",
+        description: "Track brand mentions across social media, news, blogs, and forums",
+        icon: "Search"
+      },
+      {
+        name: "Crisis Management",
+        description: "Rapid response to negative publicity and reputation threats",
+        icon: "AlertTriangle"
+      },
+      {
+        name: "Content Suppression",
+        description: "Push down negative search results with positive content",
+        icon: "TrendingDown"
+      },
+      {
+        name: "Reputation Building",
+        description: "Create positive content to strengthen your online reputation",
+        icon: "TrendingUp"
+      }
+    ],
+    technologies: [
+      {
+        category: "Monitoring Tools",
+        items: [
+          { name: "Google Alerts", icon: "SiGoogle", color: "#4285F4" },
+          { name: "Mention", icon: "SiMention", color: "#00B4E6" },
+          { name: "Brand24", icon: "SiBrand", color: "#FF9900" }
+        ]
+      },
+      {
+        category: "Review Platforms",
+        items: [
+          { name: "Google My Business", icon: "SiGoogle", color: "#4285F4" },
+          { name: "Trustpilot", icon: "SiTrustpilot", color: "#00B67A" },
+          { name: "Yelp", icon: "SiYelp", color: "#FF1A1A" }
+        ]
+      },
+      {
+        category: "Social Listening",
+        items: [
+          { name: "Hootsuite", icon: "SiHootsuite", color: "#000000" },
+          { name: "Sprout Social", icon: "SiSproutsocial", color: "#59CB59" },
+          { name: "Brandwatch", icon: "SiBrandwatch", color: "#FF6B35" }
+        ]
+      },
+      {
+        category: "Analytics",
+        items: [
+          { name: "Google Analytics", icon: "SiGoogleanalytics", color: "#E37400" },
+          { name: "SEMrush", icon: "SiSemrush", color: "#FF642D" }
+        ]
+      }
+    ],
+    process: [
+      {
+        phase: "Reputation Audit",
+        steps: [
+          "Comprehensive online reputation assessment",
+          "Search result analysis (first 5 pages)",
+          "Review site monitoring setup",
+          "Social media sentiment analysis",
+          "Competitor reputation comparison"
+        ]
+      },
+      {
+        phase: "Monitoring Setup",
+        steps: [
+          "Set up brand mention alerts",
+          "Monitor review platforms",
+          "Track social media mentions",
+          "News and blog monitoring",
+          "Forum and community tracking"
+        ]
+      },
+      {
+        phase: "Response Strategy",
+        steps: [
+          "Develop response guidelines",
+          "Create templates for common scenarios",
+          "Train team on best practices",
+          "Establish escalation procedures",
+          "Set response time standards"
+        ]
+      },
+      {
+        phase: "Content Creation",
+        steps: [
+          "Create positive content assets",
+          "Optimize existing positive content",
+          "Build branded properties",
+          "Generate customer testimonials",
+          "Develop thought leadership content"
+        ]
+      },
+      {
+        phase: "Ongoing Management",
+        steps: [
+          "Daily monitoring and alerts",
+          "Respond to reviews and mentions",
+          "Report and analyze sentiment trends",
+          "Suppress negative content",
+          "Continuous reputation building"
+        ]
+      }
+    ],
+    features: [
+      "24/7 Brand Monitoring",
+      "Review Management",
+      "Social Media Monitoring",
+      "Crisis Response",
+      "Review Generation",
+      "Negative Content Suppression",
+      "Positive Content Creation",
+      "Sentiment Analysis",
+      "Competitor Monitoring",
+      "Response Management",
+      "Reputation Reports",
+      "Google My Business Optimization",
+      "Press Release Distribution",
+      "Executive Reputation Management"
+    ],
+    benefits: [
+      {
+        title: "Protect Brand Image",
+        description: "Identify and address reputation threats before they escalate"
+      },
+      {
+        title: "Build Trust",
+        description: "Positive online presence increases customer confidence and trust"
+      },
+      {
+        title: "Improve Conversions",
+        description: "Better reputation leads to higher conversion rates and sales"
+      },
+      {
+        title: "Competitive Advantage",
+        description: "Stand out from competitors with superior online reputation"
+      },
+      {
+        title: "Crisis Prevention",
+        description: "Early detection and response prevent small issues from becoming crises"
+      },
+      {
+        title: "Customer Insights",
+        description: "Monitoring reveals what customers really think about your brand"
+      }
+    ],
+    industries: [
+      {
+        name: "Healthcare",
+        useCases: ["Doctor reputation", "Hospital reviews", "Patient feedback", "Medical practice ORM"]
+      },
+      {
+        name: "Hospitality",
+        useCases: ["Hotel reviews", "Restaurant reputation", "Guest feedback", "Travel site management"]
+      },
+      {
+        name: "Professional Services",
+        useCases: ["Law firm reputation", "Consulting firm ORM", "Professional credibility", "Executive reputation"]
+      },
+      {
+        name: "E-commerce",
+        useCases: ["Product reviews", "Seller ratings", "Customer service reputation", "Marketplace ratings"]
+      },
+      {
+        name: "Financial Services",
+        useCases: ["Bank reputation", "Financial advisor credibility", "Investment firm trust", "Insurance company reviews"]
+      }
+    ],
+    testimonials: [
+      {
+        quote: "They helped us recover from a reputation crisis. Negative content was pushed down and our 4.5-star rating speaks for itself now.",
+        author: "Dr. Ramesh Kumar",
+        company: "Kumar Dental Clinic",
+        rating: 5
+      },
+      {
+        quote: "Our online reputation improved dramatically. We went from page 2 negative results to all positive content on page 1. Business increased by 40%.",
+        author: "Meera Patel",
+        company: "Heritage Hotel Group",
+        rating: 5
+      }
+    ],
+    faq: [
+      {
+        question: "How long does it take to improve online reputation?",
+        answer: "Review management and response can start immediately. Suppressing negative content and building positive presence typically takes 3-6 months depending on the severity and how much negative content exists."
+      },
+      {
+        question: "Can you remove negative reviews?",
+        answer: "We can't remove legitimate negative reviews. However, we can respond professionally, encourage more positive reviews to dilute negative ones, and in some cases, work with platforms to remove reviews that violate policies."
+      },
+      {
+        question: "What if we get a reputation crisis?",
+        answer: "We provide rapid crisis response including immediate monitoring, response strategy, communication templates, and actions to minimize damage. Quick, professional response is critical."
+      },
+      {
+        question: "How do you suppress negative content in search results?",
+        answer: "We create and optimize positive content to push negative results to later pages. This includes optimizing your website, social profiles, guest posts, press releases, and other positive branded content."
+      },
+      {
+        question: "Is ORM just for businesses with negative reputation?",
+        answer: "No! Proactive ORM builds and protects reputation before problems arise. It's easier and more cost-effective to maintain a good reputation than to repair a damaged one."
+      }
+    ],
+    relatedServices: ["social-media-marketing", "content-marketing", "search-engine-optimization", "crisis-management"],
+    metrics: [
+      { value: 15, suffix: "+", label: "Expert Team", description: "Specialized Online Reputation Management professionals" },
+      { value: 57, suffix: "+", label: "Projects Delivered", description: "Successfully completed solutions" },
+      { value: 95, suffix: "%", label: "Client Satisfaction", description: "Exceptional quality standards" }
+    ]
+  },
+
+  // Performance Optimization
+  {
+    id: "30",
+    slug: "performance-optimization",
+    name: "Performance Optimization",
+    category: "Technical Services",
+    hero: {
+      title: "Website Performance Optimization",
+      description: "Speed up your website for better user experience and conversions. We optimize load times, Core Web Vitals, and overall performance.",
+      ctaText: "Speed Up Your Site",
+      image: "/services/performance-optimization.jpg"
+    },
+    overview: "Website speed directly impacts user experience, conversions, and search rankings. Arka Infotech's performance optimization services make your website lightning fast. We analyze and optimize every aspect affecting speed—from code and images to server configuration and caching. Our comprehensive approach improves Core Web Vitals, reduces bounce rates, and increases conversions. Whether you have a slow WordPress site, complex web application, or e-commerce store, we deliver measurable performance improvements.",
+    subServices: [
+      {
+        name: "Speed Optimization",
+        description: "Reduce page load times through code, image, and resource optimization",
+        icon: "Zap"
+      },
+      {
+        name: "Core Web Vitals",
+        description: "Optimize LCP, FID, and CLS for better Google rankings",
+        icon: "Activity"
+      },
+      {
+        name: "Database Optimization",
+        description: "Query optimization and database performance tuning",
+        icon: "Database"
+      },
+      {
+        name: "CDN Implementation",
+        description: "Content delivery network setup for global speed improvements",
+        icon: "Globe"
+      },
+      {
+        name: "Mobile Optimization",
+        description: "Ensure fast loading on mobile devices and networks",
+        icon: "Smartphone"
+      }
+    ],
+    technologies: [
+      {
+        category: "Testing Tools",
+        items: [
+          { name: "PageSpeed Insights", icon: "SiGoogle", color: "#4285F4" },
+          { name: "GTmetrix", icon: "SiGtmetrix", color: "#E8833A" },
+          { name: "Lighthouse", icon: "SiGooglechrome", color: "#4285F4" },
+          { name: "WebPageTest", icon: "SiWebpagetest", color: "#FF6B35" }
+        ]
+      },
+      {
+        category: "CDN Services",
+        items: [
+          { name: "Cloudflare", icon: "SiCloudflare", color: "#F38020" },
+          { name: "AWS CloudFront", icon: "SiAmazonaws", color: "#FF9900" },
+          { name: "Fastly", icon: "SiFastly", color: "#FF282D" }
+        ]
+      },
+      {
+        category: "Caching",
+        items: [
+          { name: "Redis", icon: "SiRedis", color: "#DC382D" },
+          { name: "Varnish", icon: "SiVarnish", color: "#2E3436" },
+          { name: "Memcached", icon: "SiMemcached", color: "#4B4B4B" }
+        ]
+      },
+      {
+        category: "Optimization",
+        items: [
+          { name: "Webpack", icon: "SiWebpack", color: "#8DD6F9" },
+          { name: "ImageOptim", icon: "SiImageoptim", color: "#FF6B35" },
+          { name: "Brotli", icon: "SiCompression", color: "#4B4B4B" }
+        ]
+      }
+    ],
+    process: [
+      {
+        phase: "Performance Audit",
+        steps: [
+          "Comprehensive speed testing",
+          "Core Web Vitals analysis",
+          "Waterfall analysis and bottlenecks",
+          "Mobile performance assessment",
+          "Competitor speed comparison"
+        ]
+      },
+      {
+        phase: "Technical Analysis",
+        steps: [
+          "Code review and analysis",
+          "Database query analysis",
+          "Server configuration review",
+          "Asset and resource audit",
+          "Third-party script evaluation"
+        ]
+      },
+      {
+        phase: "Optimization Implementation",
+        steps: [
+          "Code minification and bundling",
+          "Image optimization and lazy loading",
+          "Caching strategy implementation",
+          "CDN setup and configuration",
+          "Database optimization"
+        ]
+      },
+      {
+        phase: "Server & Infrastructure",
+        steps: [
+          "Server configuration optimization",
+          "HTTP/2 or HTTP/3 implementation",
+          "Compression setup (Gzip/Brotli)",
+          "Browser caching configuration",
+          "Resource hints implementation"
+        ]
+      },
+      {
+        phase: "Testing & Monitoring",
+        steps: [
+          "Post-optimization speed testing",
+          "Core Web Vitals verification",
+          "Cross-device testing",
+          "Set up performance monitoring",
+          "Ongoing optimization recommendations"
+        ]
+      }
+    ],
+    features: [
+      "Comprehensive Speed Audit",
+      "Core Web Vitals Optimization",
+      "Image Optimization",
+      "Code Minification",
+      "Browser Caching",
+      "CDN Implementation",
+      "Lazy Loading",
+      "Database Optimization",
+      "Server Configuration",
+      "Mobile Optimization",
+      "Third-Party Script Optimization",
+      "Critical CSS",
+      "Resource Prefetching",
+      "Performance Monitoring"
+    ],
+    benefits: [
+      {
+        title: "Better User Experience",
+        description: "Fast sites keep visitors engaged and reduce bounce rates"
+      },
+      {
+        title: "Higher Conversions",
+        description: "Studies show 1-second delay can reduce conversions by 7%"
+      },
+      {
+        title: "Improved SEO Rankings",
+        description: "Google uses page speed as a ranking factor for search results"
+      },
+      {
+        title: "Lower Bounce Rates",
+        description: "53% of users abandon sites that take over 3 seconds to load"
+      },
+      {
+        title: "Mobile Performance",
+        description: "Critical for mobile users on slower connections"
+      },
+      {
+        title: "Reduced Server Costs",
+        description: "Optimized sites use fewer server resources and bandwidth"
+      }
+    ],
+    industries: [
+      {
+        name: "E-commerce",
+        useCases: ["Product page speed", "Checkout optimization", "Image optimization", "Mobile commerce"]
+      },
+      {
+        name: "Media & Publishing",
+        useCases: ["Content delivery", "Image-heavy sites", "Video optimization", "Ad performance"]
+      },
+      {
+        name: "SaaS",
+        useCases: ["Web application speed", "Dashboard performance", "API optimization", "Real-time features"]
+      },
+      {
+        name: "Corporate",
+        useCases: ["Website speed", "Landing pages", "Content sites", "Blog optimization"]
+      },
+      {
+        name: "Travel & Hospitality",
+        useCases: ["Booking engine speed", "Search performance", "Image galleries", "Mobile experience"]
+      }
+    ],
+    testimonials: [
+      {
+        quote: "Our website went from 8 seconds to 1.5 seconds load time! Bounce rate dropped 40% and conversions increased 25%. Incredible results!",
+        author: "Sanjay Mehta",
+        company: "ShopFast E-commerce",
+        rating: 5
+      },
+      {
+        quote: "Google PageSpeed score improved from 35 to 95. Our organic traffic increased because of better rankings. Worth every penny!",
+        author: "Priya Desai",
+        company: "TechBlog India",
+        rating: 5
+      }
+    ],
+    faq: [
+      {
+        question: "How much faster will our website be?",
+        answer: "Results vary based on current state and issues. Typically, we achieve 40-70% improvement in load times. Sites currently scoring below 50 on PageSpeed can often reach 85-95 after optimization."
+      },
+      {
+        question: "Will optimization affect website functionality?",
+        answer: "No! We thoroughly test all optimizations to ensure functionality remains intact. We optimize without breaking features or design. All changes are reversible if needed."
+      },
+      {
+        question: "Is this a one-time service or ongoing?",
+        answer: "Performance optimization is primarily one-time implementation. However, we offer optional ongoing monitoring and maintenance to ensure speed stays optimal as you add content and features."
+      },
+      {
+        question: "What about WordPress sites?",
+        answer: "Yes! We specialize in WordPress optimization including plugin optimization, theme optimization, database cleanup, and WordPress-specific caching solutions."
+      },
+      {
+        question: "How long does optimization take?",
+        answer: "Most optimizations complete in 1-2 weeks depending on site complexity. Simple sites may take a few days, large complex sites or applications may need 3-4 weeks."
+      }
+    ],
+    relatedServices: ["website-development", "technical-seo", "server-optimization", "cdn-setup"],
+    metrics: [
+      { value: 16, suffix: "+", label: "Expert Team", description: "Specialized Performance Optimization professionals" },
+      { value: 62, suffix: "+", label: "Projects Delivered", description: "Successfully completed solutions" },
+      { value: 95, suffix: "%", label: "Client Satisfaction", description: "Exceptional quality standards" }
+    ]
   }
 ];
 
@@ -4374,5 +7193,5 @@ export const getServicesByCategory = (category: string): ServicePageContent[] =>
 // Helper function to get all categories
 export const getCategories = (): string[] => {
   const categories = services.map(service => service.category);
-  return [...new Set(categories)];
+  return Array.from(new Set(categories));
 };

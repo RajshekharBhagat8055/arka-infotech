@@ -1,12 +1,17 @@
 'use client';
 
+import React from "react";
 import ContactForm from "@/components/Forms/ContactForm";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import { Mail, Phone, MapPin, Clock, Globe, Headphones, Building2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { DotPattern } from "@/components/ui/dot-pattern";
+import { usePageReady } from "@/hooks/usePageReady";
 
 export default function ContactPage() {
+    const isPageReady = usePageReady();
+    const [selectedOffice, setSelectedOffice] = React.useState(0);
+    
     const contactMethods = [
         {
             icon: Phone,
@@ -42,7 +47,21 @@ export default function ContactPage() {
             pincode: "400077",
             country: "India",
             phone: "+91 8898124167",
-            email: "arkasoftware@zohomail.in"
+            email: "arkasoftware@zohomail.in",
+            mapUrl: "https://maps.google.com/maps?q=19.085116550762237,72.90790578768954&z=15&output=embed",
+            directionsUrl: "https://www.google.com/maps/dir/?api=1&destination=19.085116550762237,72.90790578768954",
+            color: "from-orange-500 to-red-500"
+        },
+        {
+            city: "Siwan - Bihar",
+            address: "Ground Floor 1, Kiran Palace, Sikshak Nagar, Kandwara, Siwan",
+            pincode: "841226",
+            country: "India",
+            phone: "+91 8898124167",
+            email: "arkasoftware@zohomail.in",
+            mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d223.70080530147987!2d84.33643887729365!3d26.222271525167077!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3992fc0166e38983%3A0x623c6c1cb7d5211f!2sSiwan%2C%20Bihar!5e0!3m2!1sen!2sin!4v1760788811079!5m2!1sen!2sin",
+            directionsUrl: "https://www.google.com/maps/dir/?api=1&destination=26.219,84.356",
+            color: "from-blue-500 to-cyan-500"
         },
     ];
 
@@ -56,7 +75,7 @@ export default function ContactPage() {
                 <MaxWidthWrapper className="relative z-10">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
+                        animate={isPageReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                         transition={{ duration: 0.6 }}
                         className="text-center mb-12"
                     >
@@ -68,7 +87,7 @@ export default function ContactPage() {
                             <span className="text-orange-500"> Amazing Together</span>
                         </h1>
                         <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-                            Have a project in mind? We&apos;re here to turn your ideas into reality. 
+                            Have a project in mind? We&apos;re here to turn your ideas into reality.
                             Get in touch with our expert team today.
                         </p>
                     </motion.div>
@@ -78,7 +97,7 @@ export default function ContactPage() {
                         {/* Left Side - Info */}
                         <motion.div
                             initial={{ opacity: 0, x: -50 }}
-                            animate={{ opacity: 1, x: 0 }}
+                            animate={isPageReady ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
                             transition={{ duration: 0.6, delay: 0.2 }}
                             className="space-y-8"
                         >
@@ -87,8 +106,8 @@ export default function ContactPage() {
                                     Why Choose Arka Infotech?
                                 </h2>
                                 <p className="text-gray-400 leading-relaxed mb-6">
-                                    We&apos;re not just a software company—we&apos;re your technology partner. 
-                                    With years of experience and a proven track record, we deliver solutions 
+                                    We&apos;re not just a software company—we&apos;re your technology partner.
+                                    With 6+ years of experience and a proven track record of 100+ successful projects, we deliver solutions
                                     that drive real business results.
                                 </p>
                             </div>
@@ -96,15 +115,15 @@ export default function ContactPage() {
                             {/* Quick Stats */}
                             <div className="grid grid-cols-2 gap-6">
                                 <div className="bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-xl border border-orange-500/30">
-                                    <div className="text-3xl font-bold text-orange-500 mb-2">500+</div>
+                                    <div className="text-3xl font-bold text-orange-500 mb-2">100+</div>
                                     <div className="text-gray-300 font-medium">Projects Delivered</div>
                                 </div>
                                 <div className="bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-xl border border-orange-500/30">
-                                    <div className="text-3xl font-bold text-orange-500 mb-2">98%</div>
+                                    <div className="text-3xl font-bold text-orange-500 mb-2">95%</div>
                                     <div className="text-gray-300 font-medium">Client Satisfaction</div>
                                 </div>
                                 <div className="bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-xl border border-orange-500/30">
-                                    <div className="text-3xl font-bold text-orange-500 mb-2">50+</div>
+                                    <div className="text-3xl font-bold text-orange-500 mb-2">20+</div>
                                     <div className="text-gray-300 font-medium">Expert Team Members</div>
                                 </div>
                                 <div className="bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-xl border border-orange-500/30">
@@ -119,12 +138,12 @@ export default function ContactPage() {
                                     { icon: Headphones, text: "Dedicated Support Team" },
                                     { icon: Clock, text: "Quick Response Time" },
                                     { icon: Globe, text: "Global Delivery Centers" },
-                                    { icon: Building2, text: "Trusted by 100+ Companies" }
+                                    { icon: Building2, text: "Trusted by 150+ Clients" }
                                 ].map((feature, index) => (
                                     <motion.div
                                         key={index}
                                         initial={{ opacity: 0, x: -20 }}
-                                        animate={{ opacity: 1, x: 0 }}
+                                        animate={isPageReady ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
                                         transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
                                         className="flex items-center gap-3"
                                     >
@@ -140,10 +159,10 @@ export default function ContactPage() {
                         {/* Right Side - Contact Form */}
                         <motion.div
                             initial={{ opacity: 0, x: 50 }}
-                            animate={{ opacity: 1, x: 0 }}
+                            animate={isPageReady ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
                             transition={{ duration: 0.6, delay: 0.3 }}
                         >
-                            <ContactForm 
+                            <ContactForm
                                 serviceName="General Inquiry"
                                 serviceCategory="Contact Page"
                             />
@@ -216,7 +235,7 @@ export default function ContactPage() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
-                        className="max-w-3xl mx-auto"
+                        className=" grid grid-cols-1 md:grid-cols-2  gap-8 mx-auto"
                     >
                         {officeLocations.map((office, index) => (
                             <div
@@ -286,10 +305,14 @@ export default function ContactPage() {
                         transition={{ duration: 0.6 }}
                         className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-orange-500/20"
                     >
-                        {/* Google Maps Embed */}
+                        {/* Google Maps Embed with Multiple Markers */}
                         <div className="relative w-full h-[500px]">
-                            <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3203.5565340001185!2d72.90790578768954!3d19.085116550762237!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c62d82a76461%3A0x97c7aa3e1b6a4949!2sSuchita%20Business%20Park!5e0!3m2!1sen!2sin!4v1760698066100!5m2!1sen!2sin"
+                            <motion.iframe
+                                key={selectedOffice}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ duration: 0.3 }}
+                                src={officeLocations[selectedOffice].mapUrl}
                                 width="100%"
                                 height="100%"
                                 style={{ border: 0 }}
@@ -297,30 +320,61 @@ export default function ContactPage() {
                                 loading="lazy"
                                 referrerPolicy="no-referrer-when-downgrade"
                                 className="grayscale-[20%] contrast-[1.1]"
-                            ></iframe>
+                                title={`${officeLocations[selectedOffice].city} Location`}
+                            ></motion.iframe>
 
-                            {/* Overlay Card */}
-                            <div className="absolute bottom-6 left-6 right-6 md:left-auto md:right-6 md:w-96 bg-white rounded-xl shadow-2xl p-2 md:p-3 lg:p-6 border border-gray-200">
-                                <div className="flex items-start gap-4">
-                                    <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-500 rounded-xl flex items-center justify-center flex-shrink-0">
-                                        <MapPin className="w-6 h-6 text-white" />
-                                    </div>
-                                    <div>
-                                        <h3 className="text-lg font-bold text-gray-900 mb-2">Head Office</h3>
-                                        <p className="text-gray-600 text-sm mb-1">Ghatkopar, Mumbai - 400077</p>
-                                        <a
-                                            href="https://maps.google.com/?q=Mumbai+Maharashtra"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="inline-flex items-center gap-2 text-orange-500 font-semibold text-sm hover:text-orange-600 transition-colors"
+                            {/* Overlay Card - Toggle for All Screens */}
+                            <div className="absolute bottom-6 left-6 right-6 md:left-6 md:right-auto md:w-96 bg-white rounded-xl shadow-2xl border border-gray-200">
+                                {/* Toggle Buttons */}
+                                <div className="flex gap-2 p-2 bg-gray-100 rounded-t-xl">
+                                    {officeLocations.map((office, index) => (
+                                        <button
+                                            key={index}
+                                            onClick={() => setSelectedOffice(index)}
+                                            className={`flex-1 py-2 px-3 rounded-lg text-xs md:text-sm font-semibold transition-all ${
+                                                selectedOffice === index
+                                                    ? 'bg-orange-500 text-white shadow-md'
+                                                    : 'bg-white text-gray-600 hover:bg-gray-50'
+                                            }`}
                                         >
-                                            Get Directions
-                                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                                            </svg>
-                                        </a>
-                                    </div>
+                                            {index === 0 ? 'Maharashtra' : 'Bihar'}
+                                        </button>
+                                    ))}
                                 </div>
+                                
+                                {/* Show only selected office */}
+                                <motion.div
+                                    key={selectedOffice}
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.2 }}
+                                    className="p-3 md:p-4"
+                                >
+                                    <div className="flex items-start gap-3">
+                                        <div className={`w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br ${officeLocations[selectedOffice].color} rounded-lg flex items-center justify-center flex-shrink-0`}>
+                                            <MapPin className="w-5 h-5 md:w-6 md:h-6 text-white" />
+                                        </div>
+                                        <div className="flex-1">
+                                            <h3 className="text-sm md:text-base font-bold text-gray-900 mb-1">
+                                                {selectedOffice === 0 ? 'Head Office' : 'Branch Office'}
+                                            </h3>
+                                            <p className="text-gray-600 text-xs md:text-sm mb-2">
+                                                {officeLocations[selectedOffice].city}
+                                            </p>
+                                            <a
+                                                href={officeLocations[selectedOffice].directionsUrl}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="inline-flex items-center gap-1 text-orange-500 font-semibold text-xs md:text-sm hover:text-orange-600 transition-colors"
+                                            >
+                                                Get Directions
+                                                <svg className="w-3 h-3 md:w-4 md:h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </motion.div>
                             </div>
                         </div>
                     </motion.div>

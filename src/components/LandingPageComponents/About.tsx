@@ -9,17 +9,17 @@ import TransitionLink from '../TransitionLink';
 const stats = [
   {
     icon: Users,
-    number: "1,000+",
+    number: "20+",
     label: "Full Time Technical Team",
   },
   {
     icon: Briefcase,
-    number: "15,000+",
+    number: "150+",
     label: "Happy Clients",
   },
   {
     icon: Award,
-    number: "27,000+",
+    number: "110+",
     label: "Successful Projects",
   },
   {
@@ -29,12 +29,12 @@ const stats = [
   },
   {
     icon: Clock,
-    number: "23+",
+    number: "6+",
     label: "Years of Experience",
   },
   {
     icon: Building,
-    number: "6+",
+    number: "2+",
     label: "Offices Worldwide",
   },
 ];
@@ -59,7 +59,7 @@ export default function About() {
             Trusted By Businesses Worldwide
           </h3>
           <p className="text-lg md:text-lg lg:text-xl xl:text-2xl text-gray-400 max-w-7xl mx-auto">
-            Arka Infotech Software Solution is a leading technology company delivering innovative solutions to businesses across the globe. With decades of experience and a team of expert professionals, we transform ideas into reality.
+            Arka Infotech Software Solution is a leading technology company delivering innovative solutions to businesses across the globe. With 6+ years of experience and a team of 20+ expert professionals, we transform ideas into reality.
           </p>
         </motion.div>
 

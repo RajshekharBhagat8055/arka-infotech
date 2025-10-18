@@ -1,27 +1,32 @@
 import React from 'react'
-import { Cloud, CloudLightning, CloudRain, Wrench } from 'lucide-react'
+import { Cloud, CloudLightning, CloudRain, Server } from 'lucide-react'
+import TransitionLink from '@/components/TransitionLink'
 
 export default function CloudDropdown() {
   const cloudServices = [
     {
       icon: Cloud,
       name: 'AWS',
-      description: 'Amazon Web Services'
+      description: 'Amazon Web Services',
+      slug: 'aws'
     },
     {
       icon: CloudLightning,
       name: 'Azure',
-      description: 'Microsoft Azure'
+      description: 'Microsoft Azure',
+      slug: 'azure'
     },
     {
       icon: CloudRain,
       name: 'Google Cloud',
-      description: 'Google Cloud Platform'
+      description: 'Google Cloud Platform',
+      slug: 'gcp'
     },
     {
-      icon: Wrench,
-      name: 'DevOps',
-      description: 'Development Operations'
+      icon: Server,
+      name: 'DigitalOcean',
+      description: 'Developer Cloud Platform',
+      slug: 'digitalocean'
     }
   ]
 
@@ -39,8 +44,10 @@ export default function CloudDropdown() {
           {cloudServices.map((service, index) => {
             const IconComponent = service.icon
             return (
-              <div 
+              <TransitionLink
                 key={index}
+                href={`/cloud/${service.slug}`}
+                name={service.name}
                 className='group flex items-center space-x-3 p-4 rounded-lg hover:bg-gray-50 hover:ring hover:ring-gray-200 transition-all cursor-pointer'
               >
                 {/* Icon */}
@@ -57,16 +64,18 @@ export default function CloudDropdown() {
                     {service.description}
                   </p>
                 </div>
-              </div>
+              </TransitionLink>
             )
           })}
         </div>
 
         {/* CTA Button */}
         <div className='mt-6'>
-          <button className='w-full bg-orange-500 text-white py-3 rounded-lg font-semibold hover:bg-orange-600 transition-colors'>
-            Explore Cloud Solutions
-          </button>
+          <TransitionLink href="/cloud/aws" name="Explore Cloud Solutions">
+            <button className='w-full bg-orange-500 text-white py-3 rounded-lg font-semibold hover:bg-orange-600 transition-colors'>
+              Explore Cloud Solutions
+            </button>
+          </TransitionLink>
         </div>
       </div>
     </div>

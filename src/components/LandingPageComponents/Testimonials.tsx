@@ -187,7 +187,7 @@ export default function Testimonials() {
           transition={{ duration: 0.3, delay: 0.2 }}
         >
           <p className="text-gray-400 mb-6">
-            Join thousands of satisfied clients worldwide
+            Join 150+ satisfied clients worldwide
           </p>
           <TransitionLink href="/contact" name="Contact Us">
             <motion.button 

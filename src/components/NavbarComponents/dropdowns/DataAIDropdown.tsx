@@ -1,5 +1,6 @@
 import React from 'react'
 import { Database, Brain } from 'lucide-react'
+import TransitionLink from '@/components/TransitionLink'
 
 export default function DataAIDropdown() {
   const serviceCategories = [
@@ -7,27 +8,27 @@ export default function DataAIDropdown() {
       icon: Database,
       header: 'Data',
       services: [
-        'Strategy Consulting',
-        'Processing',
-        'Governance Solution',
-        'Storage Solution',
-        'Quality Management',
-        'Modelling Design',
-        'Architecture',
-        'Analytics & Visualization',
-        'Cloud Data Migration'
+        { name: 'Strategy Consulting', slug: 'data-strategy-consulting' },
+        { name: 'Processing', slug: 'data-processing' },
+        { name: 'Governance Solution', slug: 'data-governance' },
+        { name: 'Storage Solution', slug: 'data-storage' },
+        { name: 'Quality Management', slug: 'data-quality-management' },
+        { name: 'Modelling Design', slug: 'data-modelling' },
+        { name: 'Architecture', slug: 'data-architecture' },
+        { name: 'Analytics & Visualization', slug: 'analytics-visualization' },
+        { name: 'Cloud Data Migration', slug: 'cloud-data-migration' }
       ]
     },
     {
       icon: Brain,
       header: 'AI',
       services: [
-        'Custom AI Development',
-        'AI Consulting Strategy',
-        'AI Business Intelligence',
-        'Large Language Models Solutions',
-        'AI Personalized Customer Experience',
-        'Blockchain'
+        { name: 'Custom AI Development', slug: 'custom-ai-development' },
+        { name: 'AI Consulting Strategy', slug: 'ai-consulting-strategy' },
+        { name: 'AI Business Intelligence', slug: 'ai-business-intelligence' },
+        { name: 'Large Language Models', slug: 'large-language-models' },
+        { name: 'AI Personalized Experience', slug: 'ai-personalized-customer-experience' },
+        { name: 'Blockchain', slug: 'blockchain' }
       ]
     }
   ]
@@ -56,12 +57,14 @@ export default function DataAIDropdown() {
                 {/* Services List */}
                 <div className='space-y-2'>
                   {category.services.map((service, serviceIndex) => (
-                    <div 
-                      key={serviceIndex} 
-                      className='text-sm lg:text-base font-semibold text-gray-600 hover:text-black hover:bg-gray-50 hover:ring hover:ring-gray-200 px-2 py-1 rounded-md transition-colors cursor-pointer'
+                    <TransitionLink
+                      key={serviceIndex}
+                      href={`/data-ai/${service.slug}`}
+                      name={service.name}
+                      className='block text-sm lg:text-base font-semibold text-gray-600 hover:text-black hover:bg-gray-50 hover:ring hover:ring-gray-200 px-2 py-1 rounded-md transition-colors cursor-pointer'
                     >
-                      {service}
-                    </div>
+                      {service.name}
+                    </TransitionLink>
                   ))}
                 </div>
               </div>
@@ -71,9 +74,11 @@ export default function DataAIDropdown() {
 
         {/* CTA Button */}
         <div className='mt-6'>
-          <button className='w-full bg-orange-500 text-white py-3 rounded-lg font-semibold hover:bg-orange-600 transition-colors'>
-            Explore Data & AI Solutions
-          </button>
+          <TransitionLink href="/data-ai/data-strategy-consulting" name="Explore Data & AI">
+            <button className='w-full bg-orange-500 text-white py-3 rounded-lg font-semibold hover:bg-orange-600 transition-colors'>
+              Explore Data & AI Solutions
+            </button>
+          </TransitionLink>
         </div>
       </div>
     </div>

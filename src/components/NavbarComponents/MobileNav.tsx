@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetTrigger } from '@/components/ui/sheet'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 import { Menu } from 'lucide-react'
 import { Palette, Building2, Wrench, TrendingUp, Cloud, Shield, Database, Globe, Code } from 'lucide-react'
@@ -67,17 +67,28 @@ export default function MobileNav() {
   ]
 
   const cloudServices = [
-    { name: 'AWS Services', icon: Cloud },
-    { name: 'Azure Solutions', icon: Cloud },
-    { name: 'Google Cloud', icon: Cloud },
-    { name: 'Cloud Migration', icon: Cloud },
+    { name: 'AWS', icon: Cloud, slug: 'aws' },
+    { name: 'Azure', icon: Cloud, slug: 'azure' },
+    { name: 'Google Cloud Platform', icon: Cloud, slug: 'gcp' },
+    { name: 'DigitalOcean', icon: Cloud, slug: 'digitalocean' },
   ]
 
   const dataAIServices = [
-    { name: 'Data Analytics', icon: Database },
-    { name: 'Machine Learning', icon: Database },
-    { name: 'AI Solutions', icon: Database },
-    { name: 'Business Intelligence', icon: Database },
+    { name: 'Data Strategy Consulting', icon: Database, slug: 'data-strategy-consulting' },
+    { name: 'Data Processing', icon: Database, slug: 'data-processing' },
+    { name: 'Data Governance', icon: Database, slug: 'data-governance' },
+    { name: 'Data Storage', icon: Database, slug: 'data-storage' },
+    { name: 'Data Quality Management', icon: Database, slug: 'data-quality-management' },
+    { name: 'Data Modelling', icon: Database, slug: 'data-modelling' },
+    { name: 'Data Architecture', icon: Database, slug: 'data-architecture' },
+    { name: 'Analytics & Visualization', icon: Database, slug: 'analytics-visualization' },
+    { name: 'Cloud Data Migration', icon: Database, slug: 'cloud-data-migration' },
+    { name: 'Custom AI Development', icon: Database, slug: 'custom-ai-development' },
+    { name: 'AI Consulting Strategy', icon: Database, slug: 'ai-consulting-strategy' },
+    { name: 'AI Business Intelligence', icon: Database, slug: 'ai-business-intelligence' },
+    { name: 'Large Language Models', icon: Database, slug: 'large-language-models' },
+    { name: 'AI Personalized Experience', icon: Database, slug: 'ai-personalized-customer-experience' },
+    { name: 'Blockchain', icon: Database, slug: 'blockchain' },
   ]
 
   const securityServices = [
@@ -96,11 +107,14 @@ export default function MobileNav() {
   ]
 
   const technologies = [
-    { name: 'React', icon: Code },
-    { name: 'Node.js', icon: Code },
-    { name: 'Python', icon: Code },
-    { name: 'Java', icon: Code },
-    { name: 'AWS', icon: Code },
+    { name: 'React Native', icon: Code, slug: 'react-native' },
+    { name: 'Flutter', icon: Code, slug: 'flutter' },
+    { name: 'Node.js', icon: Code, slug: 'nodejs' },
+    { name: 'React', icon: Code, slug: 'react' },
+    { name: 'Python', icon: Code, slug: 'python' },
+    { name: 'Angular', icon: Code, slug: 'angular' },
+    { name: 'Laravel', icon: Code, slug: 'laravel' },
+    { name: 'WordPress', icon: Code, slug: 'wordpress' },
   ]
 
   const handleClose = () => {
@@ -117,6 +131,9 @@ export default function MobileNav() {
       <SheetContent side="right" className="w-[300px] z-[99999] sm:w-[400px] overflow-y-auto px-3 pt-10">
         <SheetHeader className='border rounded-2xl bg-gray-100'>
           <SheetTitle className="text-2xl text-center font-bold text-gray-900">Arka Infotech Software Solutions LLP</SheetTitle>
+          <SheetDescription className="text-center text-gray-600 text-sm">
+            Navigate through our services and solutions
+          </SheetDescription>
         </SheetHeader>
 
         <div className="">
@@ -171,7 +188,8 @@ export default function MobileNav() {
                     return (
                       <TransitionLink
                         key={index}
-                        href="#cloud"
+                        href={`/cloud/${service.slug}`}
+                        name={service.name}
                         onClick={handleClose}
                         className="flex items-center gap-3 text-sm font-medium text-gray-700 hover:text-white hover:bg-orange-500 bg-gray-50 border border-gray-200 px-3 py-2.5 rounded-lg transition-all duration-200 hover:shadow-md hover:scale-[1.02]"
                       >
@@ -196,7 +214,8 @@ export default function MobileNav() {
                     return (
                       <TransitionLink
                         key={index}
-                        href="#data-ai"
+                        href={`/data-ai/${service.slug}`}
+                        name={service.name}
                         onClick={handleClose}
                         className="flex items-center gap-3 text-sm font-medium text-gray-700 hover:text-white hover:bg-orange-500 bg-gray-50 border border-gray-200 px-3 py-2.5 rounded-lg transition-all duration-200 hover:shadow-md hover:scale-[1.02]"
                       >
@@ -282,7 +301,8 @@ export default function MobileNav() {
                     return (
                       <TransitionLink
                         key={index}
-                        href="#technologies"
+                        href={`/technology/${tech.slug}`}
+                        name={tech.name}
                         onClick={handleClose}
                         className="flex items-center gap-3 text-sm font-medium text-gray-700 hover:text-white hover:bg-orange-500 bg-gray-50 border border-gray-200 px-3 py-2.5 rounded-lg transition-all duration-200 hover:shadow-md hover:scale-[1.02]"
                       >

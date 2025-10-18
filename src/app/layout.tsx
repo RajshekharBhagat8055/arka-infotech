@@ -3,7 +3,6 @@ import { Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/NavbarComponents/Navbar";
 import Footer from "@/components/Footer";
-import Preloader from "@/components/Preloader";
 import PageTransition from "@/components/PageTransition";
 import { TransitionProvider } from "@/contexts/TransitionContext";
 

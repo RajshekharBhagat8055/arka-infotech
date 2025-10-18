@@ -60,7 +60,7 @@ export default function Footer() {
               ARKA <span className='text-orange-500'>INFOTECH</span>
             </h3>
             <p className='text-gray-400 mb-6'>
-              Empowering businesses with cutting-edge technology solutions for over 23 years.
+              Empowering businesses with cutting-edge technology solutions for over 6 years. Trusted by 150+ clients worldwide.
             </p>
             <div className='flex gap-4'>
               <SocialIcon Icon={Facebook} href='#' />
